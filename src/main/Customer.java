@@ -8,8 +8,8 @@ import java.util.Date;
 public class Customer extends Person{
     private Video[] borrowedVideos;
 
-    public Customer() {
-        super();
+    public Customer(String name) {
+        super(name);
         this.borrowedVideos = new Video[1];
     }
 }
