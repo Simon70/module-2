@@ -1,0 +1,11 @@
+1.5 b)	String Title
+		String Author
+	c)	Float Price
+	d)	int Size
+		int Weight
+	e)	float Weight
+		float Speed
+		Floor[] Floors
+
+1.7
+		
