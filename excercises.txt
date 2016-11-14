@@ -11,6 +11,3 @@ int seats
 		float Speed
 		Floor[] Floors
 
-1.6
-
-1.7
