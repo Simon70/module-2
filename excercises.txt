@@ -78,3 +78,8 @@
 
 1.8
  (see Video)
+ 
+ 
+ 2.4 A lamp instance should always be in exactly one state. This means when it's created it should be in a state and 
+ when setting the state of the lamp the previous state should be overridden. 
+ 
