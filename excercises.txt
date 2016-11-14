@@ -1,7 +1,16 @@
-1.5 
+1.5
 a)
 String roomNumber
 int seats
+ b)	String Title
+		String Author
+	c)	Float Price
+	d)	int Size
+		int Weight
+	e)	float Weight
+		float Speed
+		Floor[] Floors
 
 1.6
 
+1.7
