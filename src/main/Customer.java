@@ -9,6 +9,7 @@ public class Customer extends Person{
     private Video[] borrowedVideos;
 
     public Customer() {
+        super();
         this.borrowedVideos = new Video[1];
     }
 }

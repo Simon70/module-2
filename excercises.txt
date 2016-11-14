@@ -1,8 +1,7 @@
 1.5
-a)
-String roomNumber
-int seats
- b)	String Title
+    a)  String roomNumber
+        int seats
+    b)	String Title
 		String Author
 	c)	Float Price
 	d)	int Size
@@ -10,4 +9,72 @@ int seats
 	e)	float Weight
 		float Speed
 		Floor[] Floors
+1.6
+    public String getRoomNumber() {
+        return roomNumber;
+    }
 
+    public int getSeats() {
+        return seats;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+1.7
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public float getWeight() {
+        return weight;
+
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+1.8
+ (see Video)
