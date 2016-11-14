@@ -1,0 +1,7 @@
+1.5 
+a)
+String roomNumber
+int seats
+
+1.6
+
