@@ -95,4 +95,18 @@
  P-1.9 4.7
 See Employee.java
 
+p - 1.11
+It does fail because no values are saved. This means getname won't return the right name and getRoom won't return the right room.
 
+P-1.13
+information about functions, classes and variables.
+For big projects or code that other people will use it will explain what the code will do.
+It's also nice for auto completion. 
+
+
+P - 1.14
+Package: java.lang
+Constructors: 15
+factory methods: 27
+
+P - 1.15 
