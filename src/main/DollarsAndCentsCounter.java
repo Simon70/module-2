@@ -40,7 +40,7 @@ public class DollarsAndCentsCounter {
 	public void substract(int dollars, int cents) {
 		this.dollars -= dollars;
 		this.cents -= cents;
-		
+
 		while (this.cents < 0) {
 			this.dollars -= 1;
 			this.cents += 100;
