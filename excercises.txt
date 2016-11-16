@@ -98,6 +98,7 @@ See Employee.java
 p - 1.11
 It does fail because no values are saved. This means getname won't return the right name and getRoom won't return the right room.
 
+<<<<<<< HEAD
 P-1.13
 information about functions, classes and variables.
 For big projects or code that other people will use it will explain what the code will do.
@@ -110,3 +111,10 @@ Constructors: 15
 factory methods: 27
 
 P - 1.15 
+=======
+1.17
+    To fill the so there is a known value in the password and the password can be replaced.
+
+1.18
+    So the test can check if it is accepted.
+>>>>>>> branch 'master' of https://github.com/Simon70/module-2.git

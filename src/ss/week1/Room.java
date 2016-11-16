@@ -30,12 +30,16 @@ public class Room {
     	return number;
     }
 
+<<<<<<< HEAD
     @Override
 	public String toString() {
 		return "Room [number=" + number + "]";
 	}
 
 	/**
+=======
+    /**
+>>>>>>> branch 'master' of https://github.com/Simon70/module-2.git
      * Returns the current guest living in this <code>Room</code>.
      * @return the guest of this <code>Room</code>;
      *         <code>null</code> if this <code>Room</code> 

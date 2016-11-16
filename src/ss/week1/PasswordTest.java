@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 package main;
 
 import org.junit.Before;
 import org.junit.Test;
 import ss.week1.Password;
+=======
+package ss.week1;
+
+import org.junit.Before;
+import org.junit.Test;
+>>>>>>> branch 'master' of https://github.com/Simon70/module-2.git
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
