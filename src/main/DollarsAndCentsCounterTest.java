@@ -26,7 +26,7 @@ public class DollarsAndCentsCounterTest {
     }
 
     /**
-     * Test the method <tt>dollars()</tt>
+     * Test the method <tt>Dollars()</tt>
      */
     @Test
     public void testDollars() {
@@ -48,7 +48,7 @@ public class DollarsAndCentsCounterTest {
     }
 
     /**
-     * Test the method <tt>add(dollars, cents)</tt>
+     * Test the method <tt>add(Dollars, cents)</tt>
      */
     @Test
     public void testAdd() {
