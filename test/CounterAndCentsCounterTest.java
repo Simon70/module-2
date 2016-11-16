@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  * @author Jip Spel
  * @version $Revision: 1.0 $
  */
-public class DollarsAndCentsCounterTest {
+public class CounterAndCentsCounterTest {
     /** Testvariabele for a <tt>DollarsAndCentsCounter</tt> object. */
     private DollarsAndCentsCounter counter;
 
