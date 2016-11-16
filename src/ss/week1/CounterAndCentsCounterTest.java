@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import main.DollarsAndCentsCounter;
-=======
-package ss.week1;
 
->>>>>>> branch 'master' of https://github.com/Simon70/module-2.git
+package ss.week1;
 import org.junit.Before;
 import org.junit.Test;
 

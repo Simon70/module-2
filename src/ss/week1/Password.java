@@ -4,8 +4,6 @@ package ss.week1;
  * Created by simon on 16.11.16.
  */
 public class Password {
-<<<<<<< HEAD
-=======
     public static final String INITIAL = "123456";
 
     private String password;
@@ -29,5 +27,4 @@ public class Password {
     public boolean testWord(String test) {
         return password.equals(test);
     }
->>>>>>> branch 'master' of https://github.com/Simon70/module-2.git
 }

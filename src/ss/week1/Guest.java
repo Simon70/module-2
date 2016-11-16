@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package ss.week1;
 
 /**
@@ -76,29 +75,3 @@ public class Guest {
 		return "Guest [name=" + name + "]";
 	}
 }
-=======
-package ss.week1;
-
-public class Guest {
-
-	public Guest(String name) {
-		
-	}
-
-	public String getName() {
-		return null;
-	}
-
-	public Room getRoom() {
-		return null;
-	}
-
-	public boolean checkin(Room room) {
-		return false;
-	}
-
-	public boolean checkout() {
-		return false;
-	}
-}
->>>>>>> branch 'master' of https://github.com/Simon70/module-2.git

@@ -1,18 +1,8 @@
-<<<<<<< HEAD
-package main;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import main.Lamp.LampOptions;
-=======
 package ss.week1;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
->>>>>>> branch 'master' of https://github.com/Simon70/module-2.git
 
 
 public class Lamp2Test {
