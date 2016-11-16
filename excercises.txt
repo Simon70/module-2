@@ -96,3 +96,8 @@
 See Employee.java
 
 
+1.17
+    To fill the so there is a known value in the password and the password can be replaced.
+
+1.18
+    So the test can check if it is accepted.

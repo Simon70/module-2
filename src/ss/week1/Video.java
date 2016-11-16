@@ -1,4 +1,4 @@
-package main;
+package ss.week1;
 
 /**
  * Created by simon on 14.11.16.

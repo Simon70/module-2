@@ -1,10 +1,8 @@
-package main;
+package ss.week1;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import main.Lamp.LampOptions;
 
 
 public class Lamp2Test {

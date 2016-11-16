@@ -1,4 +1,5 @@
-import main.DollarsAndCentsCounter;
+package ss.week1;
+
 import org.junit.Before;
 import org.junit.Test;
 
