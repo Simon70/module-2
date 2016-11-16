@@ -1,13 +1,11 @@
-package main;
-
+import main.DollarsAndCentsCounter;
 import org.junit.Before;
 import org.junit.Test;
-import ss.week1.DollarsAndCentsCounter;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Testprogram for Dollars and Cents Counter.
+ * Testprogram for DollarsAndCentsCounter and Cents Counter.
  * Lab Exercise SoftwareSystems
  * @author Jip Spel
  * @version $Revision: 1.0 $
@@ -26,7 +24,7 @@ public class DollarsAndCentsCounterTest {
     }
 
     /**
-     * Test the method <tt>Dollars()</tt>
+     * Test the method <tt>DollarsAndCentsCounter()</tt>
      */
     @Test
     public void testDollars() {
@@ -48,7 +46,7 @@ public class DollarsAndCentsCounterTest {
     }
 
     /**
-     * Test the method <tt>add(Dollars, cents)</tt>
+     * Test the method <tt>add(DollarsAndCentsCounter, cents)</tt>
      */
     @Test
     public void testAdd() {
