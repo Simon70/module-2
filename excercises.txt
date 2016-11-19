@@ -81,11 +81,11 @@
  2.4 A lamp instance should always be in exactly one state. This means when it's created it should be in a state and
              when setting the state of the lamp the previous state should be overridden.
        
- P-1.8 4.2 public Boolean passed(){
+ P-1.8 4.2
+ public Boolean passed(){
  	if(score>=70){
  		return true;
- 	}
- 	else{
+ 	}else{
  		return false;
  	}
  	

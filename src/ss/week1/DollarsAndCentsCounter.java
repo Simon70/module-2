@@ -6,10 +6,10 @@ public class DollarsAndCentsCounter {
 	private int	cents;
 
 	public int dollars() {
-		if (this.dollars < 0) {
+		if (dollars < 0) {
 			System.out.println("DollarsAndCentsCounter is negative");
 		}
-        return this.dollars;
+        return dollars;
 	}
 
 	public int cents() {
@@ -25,7 +25,7 @@ public class DollarsAndCentsCounter {
 		this.dollars += dollars;
 		this.cents += cents;
 
-		while (this.cents > 100) {
+		while (this.cents > 99) {
 			this.dollars += 1;
 			this.cents -= 100;
 		}
