@@ -3,7 +3,7 @@ package ss.week1;
 /**
  * Created by simon on 14.11.16.
  */
-public class Customer extends Person{
+public class Customer extends Person {
     private Video[] borrowedVideos;
 
     public Customer(String name) {
