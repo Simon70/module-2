@@ -1,5 +1,6 @@
 package ss.week2.test;
 
+import org.junit.Assert;
 import org.junit.Test;
 import ss.week2.Rectangle;
 
@@ -10,7 +11,12 @@ import ss.week2.Rectangle;
 public class RectangleTest {
     @Test
     public void test() {
-        Rectangle testRectangle = new Rectangle(10,10);
-
+        int length = 10;
+        int width = 20;
+        Rectangle testRectangle = new Rectangle(length, width);
+        Assert.assertEquals(length, testRectangle.length());
+        Assert.assertEquals(width, testRectangle.width());
+        Assert.assertEquals(length * width, testRectangle.area());
+        Assert.assertEquals(2 * length + 2 * width, testRectangle.perimeter());
     }
 }
