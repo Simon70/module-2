@@ -1,8 +1,9 @@
-package ss.week1;
+package ss.week1.ss.week1.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import ss.week1.Lamp2;
 
 
 public class Lamp2Test {
