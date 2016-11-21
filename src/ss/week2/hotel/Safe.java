@@ -1,14 +1,21 @@
 package ss.week2.hotel;
 
 public class Safe {
-
-	private /*@ spec_public @*/ String	password;
+	private /*@ spec_public @*/ Password password;
 	private /*@ spec_public @*/ Boolean	active;
 	private /*@ spec_public @*/ Boolean open;
 
 	//@ assignable active;
+	//@ assignable open;
+	public Safe() {
+		this.active = false;
+		this.open = false;
+		
+	}
+
+	//@ assignable active;
 	public void activate(String password) {
-		if (password.equals(this.password)) {
+		if (this.password.testWord(password)) {
 			active = true;
 		}
 	}
@@ -22,7 +29,7 @@ public class Safe {
 
 	//@ assignable open;
 	public void open(String password) {
-		if (active && password.equals(this.password)) {
+		if (active && this.password.testWord(password)) {
 			open = true;
 		}
 	}
@@ -40,5 +47,10 @@ public class Safe {
 	//@ pure
 	public Boolean isOpen() {
 		return open;
+	}
+	
+	//@ pure
+	public Password getPassword() {
+		return this.password;
 	}
 }
