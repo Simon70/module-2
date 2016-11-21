@@ -1,5 +1,5 @@
 
-package ss.week1.ss.week1.test;
+package ss.week1.test;
 
 import org.junit.Assert;
 import org.junit.Test;

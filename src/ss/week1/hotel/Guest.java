@@ -1,4 +1,4 @@
-package ss.week1.ss.week1.hotel;
+package ss.week1.hotel;
 
 /**
  * Contains all information about a guest. Used in Rooms.

@@ -1,4 +1,4 @@
-package ss.week1.ss.week1.hotel;
+package ss.week1.hotel;
 
 /**
  * Hotel room with number and possibly a guest.
