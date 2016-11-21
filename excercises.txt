@@ -118,3 +118,12 @@ P - 1.15
 1.18
     So the test can check if it is accepted.
 >>>>>>> branch 'master' of https://github.com/Simon70/module-2.git
+
+2.2
+	because no variables are assigned.
+	
+2.3
+	save a list of points in 2D space. With those points you can calculate any area and perimeter.
+	
+2.4
+	
