@@ -1,15 +1,17 @@
 package ss.week1;
 
+import org.junit.Ignore;
+
 public class DollarsAndCentsCounter {
 
-	private int	dollars;
-	private int	cents;
+	private int dollars;
+	private int cents;
 
 	public int dollars() {
 		if (dollars < 0) {
 			System.out.println("DollarsAndCentsCounter is negative");
 		}
-        return dollars;
+		return dollars;
 	}
 
 	public int cents() {
