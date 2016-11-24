@@ -3,7 +3,7 @@ package ss.week2;
 public class Rectangle {
     private /*@ spec_public @*/ int length;
     private /*@ spec_public @*/ int width;
-
+    
     /**
      * Create a new Rectangle with the specified length and width.
      */    
@@ -21,6 +21,7 @@ public class Rectangle {
     /**
      * The length of this Rectangle.
      */
+    //@ ensures \result > 0;
     //@ pure
     public int length() {
     	return length;
@@ -29,6 +30,7 @@ public class Rectangle {
     /**
      * The width of this Rectangle.
      */
+    //@ ensures \result > 0;
     //@ pure
     public int width() {
     	return width;

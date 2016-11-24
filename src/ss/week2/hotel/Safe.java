@@ -7,10 +7,11 @@ public class Safe {
 
 	//@ assignable active;
 	//@ assignable open;
+	//@ assignable this.password;
 	public Safe() {
+		this.password = new Password();
 		this.active = false;
 		this.open = false;
-		
 	}
 
 	//@ assignable active;
