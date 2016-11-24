@@ -10,12 +10,15 @@ public class Hotel {
     private Room room1;
 
     public Hotel(String name) {
+        assert name != null && !name.isEmpty() : "Parameter name may not be null.";
         this.name = name;
         this.room0 = new Room(1, new Safe());
         this.room1 = new Room(2, new Safe());
     }
 
     public Room checkIn(String password, String guestName) {
+        assert password != null && !password.isEmpty() : "Parameter password may not be null.";
+        assert guestName != null && !guestName.isEmpty() : "Parameter guestName may not be null.";
         Room room;
         if ((room = getFreeRoom()) == null)
             return null;
@@ -28,6 +31,7 @@ public class Hotel {
     }
 
     public void checkOut(String guestName) {
+        assert guestName != null && !guestName.isEmpty() : "Parameter guestName may not be null.";
         Room room = getRoom(guestName);
         if (room != null) {
             room.getSafe().deactivate();
@@ -36,7 +40,7 @@ public class Hotel {
     }
 
     public Room getRoom(String guestName) {
-
+        assert guestName != null && !guestName.isEmpty() : "Parameter guestName may not be null.";
         if (room0.getGuest() != null && room0.getGuest().getName().equals(guestName))
             return room0;
         if (room1.getGuest() != null && room1.getGuest().getName().equals(guestName))

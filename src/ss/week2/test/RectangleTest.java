@@ -17,17 +17,28 @@ public class RectangleTest {
 
     @Before
     public void setup() {
-        length = (int) Math.random() * 40;
-        width = (int) Math.random() * 20;
+        length = (int) (Math.random() * 40);
+        width = (int) (Math.random() * 20);
         testRectangle = new Rectangle(length, width);
-        System.out.println(length + " : " + width);
     }
 
     @Test
-    public void test() {
+    public void testLength() {
         Assert.assertEquals(length, testRectangle.length());
+    }
+
+    @Test
+    public void testWidth() {
         Assert.assertEquals(width, testRectangle.width());
+    }
+
+    @Test
+    public void testArea() {
         Assert.assertEquals(length * width, testRectangle.area());
+    }
+
+    @Test
+    public void testPerimeter() {
         Assert.assertEquals(2 * length + 2 * width, testRectangle.perimeter());
     }
 }
