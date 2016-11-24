@@ -6,12 +6,14 @@ package ss.week2.hotel;
 public class Password {
     public static final String INITIAL = "123456";
 
-    private String password;
+    private /*@ spec_public @*/ String password;
 
+    //@ ensures password == INITIAL;
     public Password() {
         password = INITIAL;
     }
 
+    //@ pure
     public boolean acceptable(String suggestion) {
         return (suggestion.length() > 5 && !suggestion.contains(" "));
     }
@@ -24,6 +26,7 @@ public class Password {
         return false;
     }
 
+    //@ pure
     public boolean testWord(String test) {
         return password.equals(test);
     }

@@ -1,40 +1,50 @@
 package ss.week2.hotel;
 
 public class Safe {
-	//@ assignable active;
-	//@ assignable open;
+	public static void main(String[] args) {
+		Safe safe = new Safe();
+		safe.activate(null);
+	}
+	
 	//@ assignable this.password;
+	//@ ensures this.isActive() == false;
+	//@ ensures this.isOpen() == false;
 	public Safe() {
 		this.password = new Password();
 		this.active = false;
 		this.open = false;
 	}
     private /*@ spec_public @*/ Password password;
-    private /*@ spec_public @*/ Boolean active;
-    private /*@ spec_public @*/ Boolean open;
-
-    //@ assignable active;
+    private boolean active;
+    private boolean open;
+    
+    //@ invariant this.isOpen() ==> this.isActive();
     public void activate(String password) {
+    	assert password != null : "Password text may not be null.";
         if (this.password.testWord(password)) {
             active = true;
         }
     }
 
-    //@ assignable open;
-    //@ assignable active;
+    //@ ensures isOpen() == false;
+    //@ ensures isActive() == false;
+    //@ requires isActive() == true;
     public void deactivate() {
-        open = false;
-        active = false;
+		if (isActive()) {
+			open = false;
+			active = false;
+    	}
     }
 
-    //@ assignable open;
+    //@ ensures (isActive() && this.password.testWord(password)) ==> isOpen() ==true;
     public void open(String password) {
+    	assert password != null : "Password text may not be null.";
         if (active && this.password.testWord(password)) {
             open = true;
         }
     }
 
-    //@ assignable open;
+    //@ ensures isOpen() == false;
     public void close() {
         open = false;
     }
