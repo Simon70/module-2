@@ -19,7 +19,7 @@ public class Room {
      * Creates a <code>Room</code> with the given number, without a guest.
      *
      * @param number number of the new <code>Room</code>
-     * @param safe safe that belongs to this <code>Room</code>
+     * @param safe   safe that belongs to this <code>Room</code>
      */
     public Room(int number, Safe safe) {
         this.number = number;
@@ -27,18 +27,6 @@ public class Room {
     }
 
     // ------------------ Queries --------------------------
-
-    /**
-     * Returns the number of this <code>Room</code>.
-     */
-    public int getNumber() {
-        return number;
-    }
-
-    @Override
-    public String toString() {
-        return "Room [number=" + number + "]";
-    }
 
     /**
      * Returns the current guest living in this <code>Room</code>.
@@ -68,4 +56,17 @@ public class Room {
     public Safe getSafe() {
         return safe;
     }
+
+    /**
+     * Returns the number of this <code>Room</code>.
+     */
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public String toString() {
+        return "Room [number=" + number + ", guest=" + ((guest != null) ? guest.toString() : "null") + "]";
+    }
+
 }
