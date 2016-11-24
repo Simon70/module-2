@@ -14,6 +14,8 @@ public class Rectangle {
     //@ ensures this.length == length;
     //@ ensures this.width == width;
     public Rectangle(int length, int width) {
+    	assert length >= 0 : "length should be bigger or equal to zero.";
+    	assert width >= 0 : "width should be bigger or equal to zero.";
     	this.length = length;
     	this.width = width;
     }
@@ -42,6 +44,8 @@ public class Rectangle {
     //@ requires width >= 0 && length >= 0;
     //@ pure
     public int area() {
+    	assert length >= 0 : "length should be bigger or equal to zero.";
+    	assert width >= 0 : "width should be bigger or equal to zero.";
     	return length * width;
     }
 
@@ -51,6 +55,8 @@ public class Rectangle {
     //@ requires width >= 0 && length >= 0;
     //@ pure
     public int perimeter() {
+    	assert length >= 0 : "length should be bigger or equal to zero.";
+    	assert width >= 0 : "width should be bigger or equal to zero.";
     	return width * 2 + length * 2;
     }
 }
