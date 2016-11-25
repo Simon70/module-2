@@ -12,7 +12,6 @@ public class RoomTest {
     private static final int ROOM_NUMBER = 101;
     private Guest guest;
     private Room room;
-    private Safe safe;
 
 
     @Before

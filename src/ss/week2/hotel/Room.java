@@ -19,7 +19,6 @@ public class Room {
      * Creates a <code>Room</code> with the given number, without a guest.
      *
      * @param number number of the new <code>Room</code>
-     * @param safe   safe that belongs to this <code>Room</code>
      */
     public Room(int number) {
         this.number = number;
