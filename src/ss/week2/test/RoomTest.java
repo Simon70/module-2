@@ -18,8 +18,7 @@ public class RoomTest {
     @Before
     public void setUp() {
         guest = new Guest(NAME);
-        safe = new Safe();
-        room = new Room(ROOM_NUMBER, safe);
+        room = new Room(ROOM_NUMBER);
     }
 
     @Test
@@ -35,7 +34,7 @@ public class RoomTest {
 
     @Test
     public void testSafeExistance() {
-        Assert.assertEquals(safe, room.getSafe());
+        Assert.assertNotNull(room.getSafe());
     }
 
     @Test

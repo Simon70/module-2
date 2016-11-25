@@ -42,6 +42,7 @@ public class Rectangle {
      * The area of this Rectangle.
      */
     //@ requires width >= 0 && length >= 0;
+    //@ ensures \result == length() * width();
     //@ pure
     public int area() {
     	assert length >= 0 : "length should be bigger or equal to zero.";
@@ -53,6 +54,7 @@ public class Rectangle {
      * The perimeter of this Rectangle.
      */
     //@ requires width >= 0 && length >= 0;
+    //@ ensures \result == width() * 2 + length() * 2;
     //@ pure
     public int perimeter() {
     	assert length >= 0 : "length should be bigger or equal to zero.";

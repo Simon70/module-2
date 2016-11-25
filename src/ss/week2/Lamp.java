@@ -16,6 +16,8 @@ public class Lamp {
 	}
 
 	//@ ensures this.status != \old(status);
+	//@ ensures \old(getStatus())==LampOptions.OFF ==> getStatus()==LampOptions.LOW;
+	//@ ensures \old(getStatus())==LampOptions.LOW ==> getStatus()==LampOptions.MEDIUM;
 	public void changeStatus() {
 		switch (status) {
 			case OFF:
