@@ -19,6 +19,7 @@ public class Safe {
     private boolean open;
     
     //@ invariant this.isOpen() ==> this.isActive();
+    //@ ensures this.password.testWord(password) ==> this.isActive();
     public void activate(String password) {
     	assert password != null : "Password text may not be null.";
         if (this.password.testWord(password)) {
@@ -36,7 +37,8 @@ public class Safe {
     	}
     }
 
-    //@ ensures (isActive() && this.password.testWord(password)) ==> isOpen() ==true;
+    //@ requires isActive();
+    //@ ensures (isActive() && this.password.testWord(password)) ==> isOpen();
     public void open(String password) {
     	assert password != null : "Password text may not be null.";
         if (active && this.password.testWord(password)) {

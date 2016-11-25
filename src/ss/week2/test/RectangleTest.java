@@ -24,21 +24,21 @@ public class RectangleTest {
 
     @Test
     public void testLength() {
-        Assert.assertEquals(length, testRectangle.length());
+        Assert.assertEquals("length should be ",length, testRectangle.length());
     }
 
     @Test
     public void testWidth() {
-        Assert.assertEquals(width, testRectangle.width());
+        Assert.assertEquals("",width, testRectangle.width());
     }
 
     @Test
     public void testArea() {
-        Assert.assertEquals(length * width, testRectangle.area());
+        Assert.assertEquals("",length * width, testRectangle.area());
     }
 
     @Test
     public void testPerimeter() {
-        Assert.assertEquals(2 * length + 2 * width, testRectangle.perimeter());
+        Assert.assertEquals("",2 * length + 2 * width, testRectangle.perimeter());
     }
 }
