@@ -68,4 +68,27 @@ public class World {
 			return false;
 		}
 	}
+
+	/**
+	 * Create and set a new GameItem in this world with specified owner.
+	 * 
+	 * @param coordinates
+	 *            Coordinates where the GameItem should be placed.
+	 * @param owner
+	 *            The owner of the GameItem.
+	 * @return False if this move is not possible, true if possible.
+	 */
+	public boolean addGameItem(Vector3 coordinates, Player owner) {
+		WorldPosition wp = getWorldPosition(coordinates);
+		if (wp != null) {
+			if (wp.hasGameItem()) {
+				return false;
+			} else {
+				wp.setGameItem(owner);
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
 }

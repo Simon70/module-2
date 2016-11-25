@@ -45,4 +45,13 @@ public class Vector3 {
 	public int getZ() {
 		return z;
 	}
+
+	/**
+	 * Easy way of writing vector3(1,1,1).
+	 * 
+	 * @return a standard vector3(1,1,1).
+	 */
+	public static Vector3 One() {
+		return new Vector3(1, 1, 1);
+	}
 }

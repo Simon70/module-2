@@ -53,8 +53,8 @@ public class Game {
      */
     public Player getPlayer(int id) {
         if (id < players.length && id >= 0) {
-            return null;
+            return players[id];
         }
-        return players[id];
+        return null;
     }
 }

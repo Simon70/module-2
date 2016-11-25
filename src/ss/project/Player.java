@@ -21,4 +21,11 @@ public class Player {
 		}
 	}
 
+	/**
+	 * 
+	 * @return True if this player is controlled by the computer.
+	 */
+	public boolean isHasAI() {
+		return hasAI;
+	}
 }
