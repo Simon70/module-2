@@ -105,6 +105,10 @@ public class GameTest {
 	public void testAddItems() {
 		game = new Game(new Vector3(4, 4, 4), 2, 0);
 
-		assertTrue(game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+		assertTrue("Player 0 should be able to place his GameItem at (0,0,0).", game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+		
+		assertFalse("Player 0 should not be able to place his GameItem at (0,0,0), it's already in ues.", game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+		
+		assertFalse("Player 0 should not be able to place his GameItem at (-1,0,0).", game.getWorld().addGameItem(new Vector3(-1, 0, 0), game.getPlayer(0)));
 	}
 }

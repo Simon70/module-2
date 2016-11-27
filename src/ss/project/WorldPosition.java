@@ -12,7 +12,7 @@ public class WorldPosition {
 	 */
 	public WorldPosition(Vector3 coordinates) {
 		this.coordinates = coordinates;
-		setGameItem(null);
+		this.gameItem = null;
 	}
 
 	/**
