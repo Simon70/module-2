@@ -10,7 +10,7 @@ import java.util.Enumeration;
  */
 public class Network {
     public static ArrayList<NetworkInterface> getMulticastInterfaces() throws SocketException {
-        ArrayList<NetworkInterface> compatibleInterfaces = new ArrayList<>();
+        ArrayList<NetworkInterface> compatibleInterfaces = new ArrayList<NetworkInterface>();
         Enumeration<NetworkInterface> availableIntefaces = NetworkInterface.getNetworkInterfaces();
 
         while (availableIntefaces.hasMoreElements()) {
