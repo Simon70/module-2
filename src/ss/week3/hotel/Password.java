@@ -8,18 +8,15 @@ public class Password {
 
     private /*@ spec_public @*/ String password;
 
+    private IChecker checker;
+
     //@ ensures password == INITIAL;
     public Password() {
         password = INITIAL;
     }
 
-    //@ pure
-    public boolean acceptable(String suggestion) {
-        return (suggestion.length() > 5 && !suggestion.contains(" "));
-    }
-
     public boolean setWord(String oldPass, String newPass) {
-        if (password.equals(oldPass) && acceptable(newPass)) {
+        if (password.equals(oldPass) && checker.acceptable(newPass)) {
             password = newPass;
             return true;
         }

@@ -35,9 +35,9 @@ public class Hotel {
         room.getSafe().activate(password);
         if (!room.getSafe().isActive())
             return null;
-        if (room0.getGuest() != null && !room0.getGuest().getName().equals(guestName))
+        if (room0.getGuest() != null && room0.getGuest().getName().equals(guestName))
             return null;
-        if (room1.getGuest() != null && !room1.getGuest().getName().equals(guestName))
+        if (room1.getGuest() != null && room1.getGuest().getName().equals(guestName))
             return null;
         Guest guest = new Guest(guestName);
         guest.checkin(room);
