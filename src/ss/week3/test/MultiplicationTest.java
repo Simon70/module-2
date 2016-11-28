@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import ss.week3.Multiplication;
 
+import static org.junit.Assert.assertEquals;
+
 public class MultiplicationTest {
 
     private Multiplication mul;
