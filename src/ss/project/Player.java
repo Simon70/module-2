@@ -4,7 +4,7 @@ public class Player {
 
 	private String	name;
 	private boolean	hasAI;
-	private AI		ai;
+	private Iai		ai;
 
 	/**
 	 * Create a new player object with specified name.

@@ -46,6 +46,17 @@ public class GameTest {
 	}
 
 	@Test
+	public void testCoordinates() {
+		//Create 2 players of which 0 AI.
+		game = new Game(new Vector3(4, 4, 4), 2, 0);
+
+		assertTrue("The WorldPosition at coordinates (0,0,0) should have coordinates (0,0,0).",
+			game.getWorld().getWorldPosition(Vector3.Zero()).getCoordinates().equals(Vector3.Zero()));
+		assertTrue("The WorldPosition at coordinates (3,3,3) should have coordinates (3,3,3).",
+			game.getWorld().getWorldPosition(new Vector3(3, 3, 3)).getCoordinates().equals(new Vector3(3, 3, 3)));
+	}
+
+	@Test
 	public void testPlayersReal() {
 		//Create 2 players of which 0 AI.
 		game = new Game(new Vector3(4, 4, 4), 2, 0);
@@ -105,10 +116,27 @@ public class GameTest {
 	public void testAddItems() {
 		game = new Game(new Vector3(4, 4, 4), 2, 0);
 
-		assertTrue("Player 0 should be able to place his GameItem at (0,0,0).", game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
-		
-		assertFalse("Player 0 should not be able to place his GameItem at (0,0,0), it's already in ues.", game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
-		
-		assertFalse("Player 0 should not be able to place his GameItem at (-1,0,0).", game.getWorld().addGameItem(new Vector3(-1, 0, 0), game.getPlayer(0)));
+		assertTrue("Player 0 should be able to place his GameItem at (0,0,0).",
+			game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+
+		assertEquals("Owner should be player 0.",
+			game.getWorld().getWorldPosition(new Vector3(0, 0, 0)).getGameItem().getOwner(),
+			game.getPlayer(0));
+
+		assertFalse("Player 0 should not be able to place his GameItem at (0,0,0), it's already in use.",
+			game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+
+		assertFalse("Player 0 should not be able to place his GameItem at (-1,0,0).",
+			game.getWorld().addGameItem(new Vector3(-1, 0, 0), game.getPlayer(0)));
+
+		assertTrue("Player 0 should be able to place his GameItem at (3,3,3).",
+			game.getWorld().addGameItem(new Vector3(3, 3, 3), game.getPlayer(0)));
+
+		assertEquals("Owner should be player 0.",
+			game.getWorld().getWorldPosition(new Vector3(3, 3, 3)).getGameItem().getOwner(),
+			game.getPlayer(0));
+
+		assertFalse("Player 0 should be able to place his GameItem at (4,4,4).",
+			game.getWorld().addGameItem(new Vector3(4, 4, 4), game.getPlayer(0)));
 	}
 }

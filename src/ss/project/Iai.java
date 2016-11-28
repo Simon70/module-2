@@ -8,7 +8,7 @@ package ss.project;
  * @author fw
  *
  */
-public interface AI {
+public interface Iai {
 	/**
 	 * Called when the game starts.
 	 */
