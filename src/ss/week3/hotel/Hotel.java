@@ -11,8 +11,6 @@ public class Hotel {
     private Password password;
 
     //@ requires name != null
-    //@ ensures this.room0 != null;
-    //@ ensures this.room1 != null;
     //@ ensures this.getName() == name;
     //@ ensures this.getPassword() != null;
     public Hotel(String name) {
@@ -45,7 +43,6 @@ public class Hotel {
     }
 
     //@ requires guestName != null;
-    //@ ensures \old(getRoom(guestName)) != null ==> \old(getRoom).getSafe().isActive() == false;
     public void checkOut(String guestName) {
         assert guestName != null && !guestName.isEmpty() : "Parameter guestName may not be null.";
         Room room = getRoom(guestName);
@@ -89,7 +86,7 @@ public class Hotel {
         }
         return null;
     }
-
+    
     //@ pure
     @Override
     public String toString() {

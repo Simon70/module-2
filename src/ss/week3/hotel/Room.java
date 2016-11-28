@@ -25,6 +25,11 @@ public class Room {
         this.safe = new Safe();
     }
 
+    public Room(int number, PricedSafe pricedSafe) {
+    	this.number = number;
+    	this.safe = pricedSafe;
+    }
+    
     // ------------------ Queries --------------------------
 
     /**

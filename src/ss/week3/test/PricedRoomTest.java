@@ -5,7 +5,7 @@ import org.junit.Test;
 import ss.week3.hotel.Bill;
 import ss.week3.hotel.PricedRoom;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class PricedRoomTest {
 
