@@ -3,3 +3,10 @@
 /.checkstyle
 .project
 .classpath
+.idea
+.settings
+.idea/compiler.xml
+.idea/copyright/
+.idea/misc.xml
+.idea/workspace.xml
+SoftwareSystems.iml
