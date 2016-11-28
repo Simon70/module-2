@@ -3,12 +3,14 @@ package ss.week3;
 /**
  * Created by simon on 28.11.16.
  */
-public class Multiplication {
-    public int operate(int i, int i1) {
-        return 0;
+public class Multiplication implements OperatorWithIdentity {
+    @Override
+    public int operate(int left, int right) {
+        return left * right;
     }
 
+    @Override
     public int identity() {
-        return 0;
+        return 1;
     }
 }

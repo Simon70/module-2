@@ -3,8 +3,8 @@ package ss.week3.test;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ss.week3.Password;
 import ss.week3.hotel.Safe;
+import ss.week3.pw.BasicChecker;
 
 public class SafeTest {
 
@@ -21,7 +21,7 @@ public class SafeTest {
         safe.activate("wrong password");
         Assert.assertFalse("Safe should not be activated with wrong password.", safe.isActive());
 
-        safe.activate(Password.INITIAL);
+        safe.activate(BasicChecker.INITPASS);
         Assert.assertTrue("Safe should be activated with right password.", safe.isActive());
 
         //Deactivate while active.
@@ -40,7 +40,7 @@ public class SafeTest {
         Assert.assertFalse("Safe is closed by default,", safe.isOpen());
         Assert.assertFalse("Safe is inactive by default.", safe.isActive());
 
-        safe.activate(Password.INITIAL);
+        safe.activate(BasicChecker.INITPASS);
         Assert.assertTrue("Safe should be activated.", safe.isActive());
         Assert.assertFalse("Safe should be closed.", safe.isOpen());
 
@@ -49,12 +49,12 @@ public class SafeTest {
         Assert.assertFalse("Safe should still be closed.", safe.isOpen());
 
         //Try to open it while it's closed.
-        safe.open(Password.INITIAL);
+        safe.open(BasicChecker.INITPASS);
         Assert.assertTrue("Safe should still be activated.", safe.isActive());
         Assert.assertTrue("Safe should be opened.", safe.isOpen());
 
         //Try again while opened.
-        safe.open(Password.INITIAL);
+        safe.open(BasicChecker.INITPASS);
         Assert.assertTrue("Safe should still be activated.", safe.isActive());
         Assert.assertTrue("Safe should be opened.", safe.isOpen());
 
@@ -69,7 +69,7 @@ public class SafeTest {
         Assert.assertFalse("Safe should be deactivated.", safe.isActive());
 
         //Try to open it while deactivated.
-        safe.open(Password.INITIAL);
+        safe.open(BasicChecker.INITPASS);
         Assert.assertFalse("Safe should still be deactivated.", safe.isActive());
         Assert.assertFalse("Safe should still be closed.", safe.isOpen());
     }

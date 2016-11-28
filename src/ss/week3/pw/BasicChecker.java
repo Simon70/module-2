@@ -1,4 +1,4 @@
-package ss.week3.hotel;
+package ss.week3.pw;
 
 import java.util.Random;
 
@@ -6,6 +6,8 @@ import java.util.Random;
  * Created by simon on 28.11.16.
  */
 public class BasicChecker implements IChecker {
+    public static final String INITPASS = "password1";
+
     //@ pure
     @Override
     public boolean acceptable(String suggestion) {
@@ -22,7 +24,7 @@ public class BasicChecker implements IChecker {
         return sb.toString();
     }
 
-    char getRandomChar(Random random) {
+    private char getRandomChar(Random random) {
         char x;
         do {
             x = (char) (65 + random.nextInt(122 - 65 + 1));

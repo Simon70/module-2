@@ -1,4 +1,4 @@
-package ss.week3.hotel;
+package ss.week3.pw;
 
 import java.util.Random;
 

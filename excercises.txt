@@ -127,3 +127,5 @@ P - 1.15
 	
 2.4
 	
+3.7
+You can't activate/change the password anymore.

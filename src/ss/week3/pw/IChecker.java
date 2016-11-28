@@ -1,4 +1,4 @@
-package ss.week3.hotel;
+package ss.week3.pw;
 
 /**
  * Created by simon on 28.11.16.

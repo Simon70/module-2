@@ -1,5 +1,7 @@
 package ss.week3.hotel;
 
+import ss.week3.pw.Password;
+
 public class Safe {
     private /*@ spec_public @*/ Password password;
     private boolean active;

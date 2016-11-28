@@ -1,18 +1,24 @@
-package ss.week3.hotel;
+package ss.week3.pw;
 
 /**
  * Created by simon on 16.11.16.
  */
 public class Password {
     public static final String INITIAL = "123456";
+    private IChecker checker;
+    private String factoryPassword;
 
     private /*@ spec_public @*/ String password;
 
-    private IChecker checker;
+    public Password(IChecker checker, String factoryPassword) {
+        this.checker = checker;
+        this.factoryPassword = factoryPassword;
+        this.password = factoryPassword;
+    }
 
     //@ ensures password == INITIAL;
     public Password() {
-        password = INITIAL;
+        this(new BasicChecker(), BasicChecker.INITPASS);
     }
 
     public boolean setWord(String oldPass, String newPass) {

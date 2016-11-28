@@ -1,5 +1,7 @@
 package ss.week3.hotel;
 
+import ss.week3.pw.Password;
+
 /**
  * Created by simon on 21.11.16.
  */

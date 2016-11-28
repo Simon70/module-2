@@ -19,7 +19,6 @@ public class TimedPasswordTest {
         Thread.sleep(2000);
         // Assert that the password has expired.
         assertTrue("The password should have expired.", tp.isExpired());
-
         // Change the password
         tp.setWord(BasicChecker.INITPASS, "test123");
         // Assert that it is valid.
