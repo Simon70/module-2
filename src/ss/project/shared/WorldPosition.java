@@ -12,8 +12,8 @@ public class WorldPosition {
 	 */
 	public WorldPosition(Vector3 coordinates) {
 		this.coordinates = coordinates;
-		setGameItem(null);
-	}
+        this.gameItem = null;
+    }
 
 	/**
 	 * 
@@ -28,21 +28,20 @@ public class WorldPosition {
 	}
 
 	/**
-	 * 
-	 * @return True if this position has a gameitem, false if not.
-	 */
-	public boolean hasGameItem() {
-		return getGameItem() != null;
-	}
-
-	/**
 	 * Set the gameItem of this worldposition with the specified owner, will
 	 * create a new one.
-	 * 
-	 * @param owner
-	 *            owner of the new GameItem.
-	 */
-	public void setGameItem(Player owner) {
-		this.gameItem = new GameItem(owner);
+     *
+     * @param owner
+     *            owner of the new GameItem.
+     */
+    public void setGameItem(Player owner) {
+        this.gameItem = new GameItem(owner);
 	}
+
+    /**
+     * @return True if this position has a gameitem, false if not.
+     */
+    public boolean hasGameItem() {
+        return getGameItem() != null;
+    }
 }

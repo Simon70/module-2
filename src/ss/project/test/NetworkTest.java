@@ -1,7 +1,6 @@
 package ss.project.test;
 
 import org.junit.Before;
-import org.junit.Test;
 import ss.project.client.MulticastSocketClient;
 import ss.project.server.MulticastSocketServer;
 
@@ -24,7 +23,6 @@ public class NetworkTest {
         clientThread = new Thread(client);
     }
 
-    @Test
     public void test() {
         clientThread.start();
         serverThread.start();

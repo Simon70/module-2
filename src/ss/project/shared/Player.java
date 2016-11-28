@@ -17,8 +17,8 @@ public class Player {
 		this.hasAI = ai;
 
 		if (this.hasAI) {
-			//Assign an IArtificialIntelligence.
-		}
+            //Assign an AI.
+        }
 	}
 
 	/**

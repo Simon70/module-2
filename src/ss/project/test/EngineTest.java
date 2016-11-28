@@ -1,11 +1,11 @@
 package ss.project.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import ss.project.shared.Engine;
 import ss.project.shared.Vector3;
+
+import static org.junit.Assert.*;
 
 public class EngineTest {
 
@@ -47,8 +47,19 @@ public class EngineTest {
 	}
 
 	@Test
+	public void testCoordinates() {
+		//Create 2 players of which 0 AI.
+		game = new Engine(new Vector3(4, 4, 4), 2, 0);
+
+		assertTrue("The WorldPosition at coordinates (0,0,0) should have coordinates (0,0,0).",
+				game.getWorld().getWorldPosition(Vector3.Zero()).getCoordinates().equals(Vector3.Zero()));
+		assertTrue("The WorldPosition at coordinates (3,3,3) should have coordinates (3,3,3).",
+				game.getWorld().getWorldPosition(new Vector3(3, 3, 3)).getCoordinates().equals(new Vector3(3, 3, 3)));
+	}
+
+	@Test
 	public void testPlayersReal() {
-		//Create 2 players of which 0 IArtificialIntelligence.
+		//Create 2 players of which 0 AI.
 		game = new Engine(new Vector3(4, 4, 4), 2, 0);
 
 		assertNotNull("Player 0 should be created. ", game.getPlayer(0));
@@ -72,13 +83,13 @@ public class EngineTest {
 		assertNull("Player 2 should not be created. ", game.getPlayer(2));
 		assertNull("Player -1 should not be created. ", game.getPlayer(-1));
 
-		assertTrue("Player 0 should be an IArtificialIntelligence player.", game.getPlayer(0).isHasAI());
-		assertTrue("Player 1 should be an IArtificialIntelligence player.", game.getPlayer(1).isHasAI());
+		assertTrue("Player 0 should be an AI player.", game.getPlayer(0).isHasAI());
+		assertTrue("Player 1 should be an AI player.", game.getPlayer(1).isHasAI());
 	}
 
 	@Test
 	public void testPlayersRealAI() {
-		//Create 2 players of which 1 IArtificialIntelligence.
+		//Create 2 players of which 1 AI.
 		game = new Engine(new Vector3(4, 4, 4), 2, 1);
 
 		assertNotNull("Player 0 should be created. ", game.getPlayer(0));
@@ -87,13 +98,13 @@ public class EngineTest {
 		assertNull("Player 2 should not be created. ", game.getPlayer(2));
 		assertNull("Player -1 should not be created. ", game.getPlayer(-1));
 
-		assertTrue("Player 0 should be an IArtificialIntelligence player.", game.getPlayer(0).isHasAI());
+		assertTrue("Player 0 should be an AI player.", game.getPlayer(0).isHasAI());
 		assertFalse("Player 1 should be a real player.", game.getPlayer(1).isHasAI());
 	}
 
 	@Test
 	public void testPlayersInvalid() {
-		//Create 0 players of which 2 IArtificialIntelligence.
+		//Create 0 players of which 2 AI.
 		game = new Engine(new Vector3(4, 4, 4), 0, 2);
 
 		assertNull("Player 0 should not be created. ", game.getPlayer(0));
@@ -106,6 +117,27 @@ public class EngineTest {
 	public void testAddItems() {
 		game = new Engine(new Vector3(4, 4, 4), 2, 0);
 
-		assertTrue(game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+		assertTrue("Player 0 should be able to place his GameItem at (0,0,0).",
+				game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+
+		assertEquals("Owner should be player 0.",
+				game.getWorld().getWorldPosition(new Vector3(0, 0, 0)).getGameItem().getOwner(),
+				game.getPlayer(0));
+
+		assertFalse("Player 0 should not be able to place his GameItem at (0,0,0), it's already in use.",
+				game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+
+		assertFalse("Player 0 should not be able to place his GameItem at (-1,0,0).",
+				game.getWorld().addGameItem(new Vector3(-1, 0, 0), game.getPlayer(0)));
+
+		assertTrue("Player 0 should be able to place his GameItem at (3,3,3).",
+				game.getWorld().addGameItem(new Vector3(3, 3, 3), game.getPlayer(0)));
+
+		assertEquals("Owner should be player 0.",
+				game.getWorld().getWorldPosition(new Vector3(3, 3, 3)).getGameItem().getOwner(),
+				game.getPlayer(0));
+
+		assertFalse("Player 0 should be able to place his GameItem at (4,4,4).",
+				game.getWorld().addGameItem(new Vector3(4, 4, 4), game.getPlayer(0)));
 	}
 }
