@@ -1,27 +1,28 @@
 package ss.week2.hotel;
 
 public class Safe {
-	public static void main(String[] args) {
-		Safe safe = new Safe();
-		safe.activate(null);
-	}
-	
-	//@ assignable this.password;
-	//@ ensures this.isActive() == false;
-	//@ ensures this.isOpen() == false;
-	public Safe() {
-		this.password = new Password();
-		this.active = false;
-		this.open = false;
-	}
     private /*@ spec_public @*/ Password password;
     private boolean active;
     private boolean open;
-    
+
+    //@ assignable this.password;
+    //@ ensures this.isActive() == false;
+    //@ ensures this.isOpen() == false;
+    public Safe() {
+        this.password = new Password();
+        this.active = false;
+        this.open = false;
+    }
+
+    public static void main(String[] args) {
+        Safe safe = new Safe();
+        safe.activate(null);
+    }
+
     //@ invariant this.isOpen() ==> this.isActive();
     //@ ensures this.password.testWord(password) ==> this.isActive();
     public void activate(String password) {
-    	assert password != null : "Password text may not be null.";
+        assert password != null : "Password text may not be null.";
         if (this.password.testWord(password)) {
             active = true;
         }
@@ -31,16 +32,16 @@ public class Safe {
     //@ ensures isActive() == false;
     //@ requires isActive() == true;
     public void deactivate() {
-		if (isActive()) {
-			open = false;
-			active = false;
-    	}
+        if (isActive()) {
+            open = false;
+            active = false;
+        }
     }
 
     //@ requires isActive();
     //@ ensures (isActive() && this.password.testWord(password)) ==> isOpen();
     public void open(String password) {
-    	assert password != null : "Password text may not be null.";
+        assert password != null : "Password text may not be null.";
         if (active && this.password.testWord(password)) {
             open = true;
         }
