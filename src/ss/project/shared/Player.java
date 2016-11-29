@@ -1,10 +1,13 @@
 package ss.project.shared;
 
+import ss.project.shared.AI.*;
+
 public class Player {
 
-	private String	name;
-	private boolean	hasAI;
-	private IArtificialIntelligence ai;
+	private Engine					engine;
+	private String					name;
+	private boolean					hasAI;
+	private IArtificialIntelligence	ai;
 
 	/**
 	 * Create a new player object with specified name.
@@ -12,13 +15,15 @@ public class Player {
 	 * @param name
 	 *            name of the new player.
 	 */
-	public Player(String name, boolean ai) {
+	public Player(Engine engine, String name, boolean ai) {
+		this.engine = engine;
 		this.name = name;
 		this.hasAI = ai;
 
 		if (this.hasAI) {
-            //Assign an AI.
-        }
+			//Assign an AI.
+			this.ai = new AiRandom();
+		}
 	}
 
 	/**
@@ -27,5 +32,19 @@ public class Player {
 	 */
 	public boolean isHasAI() {
 		return hasAI;
+	}
+
+	/**
+	 * Called everytime a new turn should be done. TODO: add the possibility for
+	 * the user to do a turn, now it's just AI.
+	 */
+	public void doTurn() {
+		if (this.hasAI) {
+			//The user is an AI, make the AI do a turn.
+			this.ai.doTurn(engine.getWorld());
+		} else {
+			//The user can select a place to build.
+
+		}
 	}
 }

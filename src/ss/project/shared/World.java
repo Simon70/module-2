@@ -2,6 +2,7 @@ package ss.project.shared;
 
 public class World {
 
+
 	private Vector3				size;
 	private WorldPosition[][][]	worldPosition;
 

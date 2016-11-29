@@ -1,5 +1,4 @@
 package ss.project.shared;
-
 /**
  * Creates a game and has the main function.
  * 
