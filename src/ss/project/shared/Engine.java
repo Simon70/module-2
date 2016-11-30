@@ -86,6 +86,11 @@ public class Engine {
 		//By default start with player 0.
 		int currentPlayer = 0;
 
+		//Don't start the game if there are no players.
+		if(getPlayerCount()<=0) {
+			return;
+		}
+		
 		while (gameRunning) {
 			getPlayer(currentPlayer).doTurn();
 
@@ -96,8 +101,9 @@ public class Engine {
 			
 			//TODO: make the game end when someone wins.
 			turns++;
-			if(turns > 100) {
-				break;
+			if(turns > 10) {
+				System.out.println(turns);
+				return;
 			}
 		}
 	}

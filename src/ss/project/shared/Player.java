@@ -44,7 +44,7 @@ public class Player {
 			this.ai.doTurn(engine.getWorld());
 		} else {
 			//The user can select a place to build.
-
+			return;
 		}
 	}
 }
