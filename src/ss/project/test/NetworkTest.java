@@ -1,6 +1,7 @@
 package ss.project.test;
 
 import org.junit.Before;
+import org.junit.Test;
 import ss.project.client.MulticastSocketClient;
 import ss.project.server.MulticastSocketServer;
 
@@ -23,15 +24,13 @@ public class NetworkTest {
         clientThread = new Thread(client);
     }
 
-    public void test() {
-        clientThread.start();
-        serverThread.start();
-        while (serverThread.isAlive() || clientThread.isAlive()) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    @Test
+    public void testServer() {
+        server.run();
+    }
+
+    @Test
+    public void testClient() {
+        client.run();
     }
 }

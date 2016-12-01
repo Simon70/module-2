@@ -20,8 +20,8 @@ public class MulticastSocketClient implements Runnable {
 
 				String msg = new String(buf, 0, buf.length);
 				System.out.println("REC: " + msg);
-				if (msg.equals("end")) {
-					doRun = false;
+                if (msg.equals("test")) {
+                    doRun = false;
 					clientSocket.close();
 				}
 			}

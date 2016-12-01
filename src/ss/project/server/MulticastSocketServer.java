@@ -20,7 +20,7 @@ public class MulticastSocketServer implements Runnable {
     @Override
     public void run() {
         try {
-            String msg = "end";
+            String msg = "test";
             DatagramSocket serverSocket = new DatagramSocket(1234);
             serverSocket.setBroadcast(true);
             DatagramPacket msgPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length);
