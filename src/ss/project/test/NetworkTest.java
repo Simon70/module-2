@@ -41,25 +41,3 @@ public class NetworkTest {
         client.run();
     }
 }
-
-class ServerTest {
-    private static MulticastSocketServer server;
-    private static Thread serverThread;
-
-
-    public static void main(String[] args) {
-        serverThread = new Thread(server);
-        serverThread.start();
-    }
-}
-
-class ClientTest {
-    private static MulticastSocketClient client;
-    private static Thread clientThread;
-
-
-    public static void main(String[] args) {
-        clientThread = new Thread(client);
-        clientThread.start();
-    }
-}
