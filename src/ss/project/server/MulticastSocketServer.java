@@ -3,7 +3,6 @@ package ss.project.server;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class MulticastSocketServer implements Runnable {
@@ -16,16 +15,20 @@ public class MulticastSocketServer implements Runnable {
     @Override
     public void run() {
         try {
-            String msg = "test";
-            DatagramSocket serverSocket = new DatagramSocket();
-            serverSocket.setBroadcast(true);
-            DatagramPacket msgPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length, InetAddress.getByName("255.255.255.255"), 1234);
-            serverSocket.send(msgPacket);
-            serverSocket.close();
-        } catch (
+            DatagramSocket serverSocket = new DatagramSocket(1234);
+            byte[] receiveData = new byte[1024];
 
-                IOException ex) {
-            ex.printStackTrace();
+            while (true) {
+                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                serverSocket.receive(receivePacket);
+                System.out.println("RECEIVED: " + new String(receivePacket.getData()));
+                byte[] sendData = "Message from Server!".getBytes();
+                DatagramPacket sendPacket =
+                        new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
+                serverSocket.send(sendPacket);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -2,31 +2,25 @@ package ss.project.client;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
-import java.net.MulticastSocket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class MulticastSocketClient implements Runnable {
 
-	@Override
-	public void run() {
-		try {
-			MulticastSocket clientSocket = new MulticastSocket(1234);
-			clientSocket.setBroadcast(true);
-			boolean doRun = true;
-			while (doRun) {
-				byte[] buf = new byte[256];
-				// Receive the information and print it.
-				DatagramPacket msgPacket = new DatagramPacket(buf, buf.length);
-				clientSocket.receive(msgPacket);
-
-				String msg = new String(buf, 0, buf.length);
-				System.out.println("REC: " + msg);
-                if (msg.equals("test")) {
-                    doRun = false;
-					clientSocket.close();
-				}
-			}
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-	}
+    @Override
+    public void run() {
+        try {
+            DatagramSocket clientSocket = new DatagramSocket();
+            byte[] sendData = "Message from Client!".getBytes();
+            byte[] receiveData = new byte[1024];
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), 1234);
+            clientSocket.send(sendPacket);
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            clientSocket.receive(receivePacket);
+            System.out.println("FROM SERVER:" + new String(receivePacket.getData()));
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

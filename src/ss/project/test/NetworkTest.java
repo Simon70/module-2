@@ -16,6 +16,12 @@ public class NetworkTest {
     private Thread serverThread;
     private Thread clientThread;
 
+    public static void main(String[] args) {
+        NetworkTest nt = new NetworkTest();
+        nt.setup();
+        nt.testBoth();
+    }
+
     @Before
     public void setup() {
         server = new MulticastSocketServer();
@@ -25,9 +31,16 @@ public class NetworkTest {
     }
 
     @Test
+    public void testBoth() {
+        serverThread.start();
+        clientThread.start();
+    }
+
+    @Test
     public void testServer() {
         server.run();
     }
+
 
     @Test
     public void testClient() {
