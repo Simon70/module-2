@@ -11,22 +11,18 @@ public class MulticastSocketServer implements Runnable {
         new MulticastSocketServer().run();
     }
 
-
     @Override
     public void run() {
         try {
             DatagramSocket serverSocket = new DatagramSocket(6868);
             byte[] receiveData = new byte[1024];
 
-            while (true) {
-                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                serverSocket.receive(receivePacket);
-                System.out.println("RECEIVED: " + new String(receivePacket.getData()));
-                byte[] sendData = "Message from Server!".getBytes();
-                DatagramPacket sendPacket =
-                        new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
-                serverSocket.send(sendPacket);
-            }
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            serverSocket.receive(receivePacket);
+            System.out.println("SERVER RECEIVED: " + new String(receivePacket.getData()));
+            //byte[] sendData = "Message from Server!".getBytes();
+            //DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
+            //serverSocket.send(sendPacket);
         } catch (IOException e) {
             e.printStackTrace();
         }
