@@ -36,7 +36,6 @@ public class BillTest {
 
 		//assertEquals("", bill.getSum(), newItem.getAmount() + newItem2.getAmount());
 		assertTrue(bill.getSum() == newItem.getAmount()+newItem2.getAmount());
-		assertNull("No check in with wrong password", null);
 
 		bill.close();
 	}

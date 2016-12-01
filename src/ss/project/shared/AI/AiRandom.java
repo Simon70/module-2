@@ -22,10 +22,8 @@ public class AiRandom implements IArtificialIntelligence {
 	private void setNewGameItem(World world) {
 		for (int x = 0; x < world.getSize().getX(); x++) {
 			for (int y = 0; y < world.getSize().getY(); y++) {
-				for (int z = 0; z < world.getSize().getZ(); z++) {
-					if (world.addGameItem(new Vector3(x, y, z), player)) {
-						return;
-					}
+				if (world.addGameItem(new Vector2(x, y), player)) {
+					return;
 				}
 			}
 		}

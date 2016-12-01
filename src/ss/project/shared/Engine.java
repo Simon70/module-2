@@ -74,23 +74,23 @@ public class Engine {
 	public int getPlayerCount() {
 		return players.length;
 	}
-
+	
 	/**
-	 * Start the game and make every player do turns. TODO: A seperate thread so
-	 * the program doesn't freeze?
+	 * Start the game and make every player do turns.
 	 */
 	private void startGame() {
 		gameRunning = true;
-		int turns = 0;
 		
+		int turns = 0;
+
 		//By default start with player 0.
 		int currentPlayer = 0;
 
 		//Don't start the game if there are no players.
-		if(getPlayerCount()<=0) {
+		if (getPlayerCount() <= 0) {
 			return;
 		}
-		
+
 		while (gameRunning) {
 			getPlayer(currentPlayer).doTurn();
 
@@ -98,10 +98,10 @@ public class Engine {
 			if (currentPlayer >= getPlayerCount()) {
 				currentPlayer = 0;
 			}
-			
+
 			//TODO: make the game end when someone wins.
 			turns++;
-			if(turns > 10) {
+			if (turns > 10) {
 				System.out.println(turns);
 				return;
 			}

@@ -32,7 +32,7 @@ public class Vector3Test {
 
     @Test
     public void staticVectorOne() {
-        Vector3 staticVector = Vector3.One();
+        Vector3 staticVector = Vector3.ONE;
 
         assertNotNull("Static vector should not be null.", staticVector);
 
@@ -43,7 +43,7 @@ public class Vector3Test {
 
     @Test
     public void staticVectorZero() {
-        Vector3 staticVector = Vector3.Zero();
+        Vector3 staticVector = Vector3.ZERO;
 
         assertNotNull("Static vector should not be null.", staticVector);
 
@@ -54,10 +54,10 @@ public class Vector3Test {
 
     @Test
     public void testEquals() {
-        Vector3 staticVector = Vector3.Zero();
+        Vector3 staticVector = Vector3.ZERO;
 
         assertTrue(staticVector.equals(staticVector));
-        assertTrue(staticVector.equals(Vector3.Zero()));
+        assertTrue(staticVector.equals(Vector3.ZERO));
 
         assertFalse(staticVector.equals(new Vector3(1, 0, 0)));
         assertFalse(staticVector.equals(new Vector3(0, 1, 0)));

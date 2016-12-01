@@ -8,7 +8,6 @@ public class Vector3 {
      */
     public static final Vector3 ONE = new Vector3(1, 1, 1);
 
-
     /**
      * Easy way of writing Vector3(0,0,0).
      * but instead refer to an existing Vector.
@@ -30,6 +29,12 @@ public class Vector3 {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+    
+    public Vector3(Vector2 vector2) {
+        this.x = vector2.getX();
+        this.y = vector2.getY();
+        this.z = 0;
     }
 
     /**
@@ -76,5 +81,23 @@ public class Vector3 {
             return false;
         }
         return true;
+    }
+    
+    /**
+     * Subtract the argument from this vector3.
+     * @param vector3
+     * @return
+     */
+    public Vector3 substract(Vector3 vector3) {
+    	return new Vector3(getX() - vector3.getX(), getY() - vector3.getZ(), getZ() - vector3.getZ());
+    }
+    
+    /**
+     * Add a vector2 to a vector3 (vector3 = vector2 = vector2)
+     * @param vector2
+     * @return
+     */
+    public Vector3 add(Vector3 vector3) {
+    	return new Vector3(getX() + vector3.getX(), getY() + vector3.getY(), getZ() + vector3.getZ());
     }
 }
