@@ -2,64 +2,51 @@ package ss.project.shared;
 
 public class Vector3 {
 
-	private final int	x;
-	private final int	y;
-	private final int	z;
+    /**
+     * Easy way of writing Vector3(1,1,1).
+     * but instead refer to an existing Vector.
+     */
+    public static final Vector3 ONE = new Vector3(1, 1, 1);
 
-	/**
-	 * Create a Vector3 with x, y, z.
-	 * 
-	 * @param x
-	 *            the x coordinate.
-	 * @param y
-	 *            the y coordinate.
-	 * @param z
-	 *            the z coordinate.
-	 */
-	public Vector3(int x, int y, int z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
-	}
 
     /**
-     * Easy way of writing Vector3(1,1,1). TODO: Don't create a new instance,
+     * Easy way of writing Vector3(0,0,0).
      * but instead refer to an existing Vector.
-     *
-     * @return a standard Vector3(1,1,1).
      */
-    public static Vector3 One() {
-        return new Vector3(1, 1, 1);
+    public static final Vector3 ZERO = new Vector3(0, 0, 0);
+
+    private final int x;
+    private final int y;
+    private final int z;
+
+    /**
+     * Create a Vector3 with x, y, z.
+     *
+     * @param x the x coordinate.
+     * @param y the y coordinate.
+     * @param z the z coordinate.
+     */
+    public Vector3(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     /**
-     * Easy way of writing Vector3(0,0,0). TODO: Don't create a new instance,
-     * but instead refer to an existing Vector.
-     *
-     * @return a standard Vector3(0,0,0).
-     */
-    public static Vector3 Zero() {
-        return new Vector3(0, 0, 0);
-    }
-
-	/**
-     *
      * @return the x coordinate.
      */
     public int getX() {
         return x;
-	}
+    }
 
-	/**
-     *
+    /**
      * @return the y coordinate.
      */
     public int getY() {
         return y;
-	}
+    }
 
-	/**
-     *
+    /**
      * @return the z coordinate.
      */
     public int getZ() {
