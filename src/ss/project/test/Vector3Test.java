@@ -32,24 +32,20 @@ public class Vector3Test {
 
     @Test
     public void staticVectorOne() {
-        Vector3 staticVector = Vector3.ONE;
+        assertNotNull("Static vector should not be null.", Vector3.ONE);
 
-        assertNotNull("Static vector should not be null.", staticVector);
-
-        assertEquals("x should be equal to 1.", staticVector.getX(), 1);
-        assertEquals("y should be equal to 1.", staticVector.getY(), 1);
-        assertEquals("z should be equal to 1.", staticVector.getZ(), 1);
+        assertEquals("x should be equal to 1.", Vector3.ONE.getX(), 1);
+        assertEquals("y should be equal to 1.", Vector3.ONE.getY(), 1);
+        assertEquals("z should be equal to 1.", Vector3.ONE.getZ(), 1);
     }
 
     @Test
     public void staticVectorZero() {
-        Vector3 staticVector = Vector3.ZERO;
+        assertNotNull("Static vector should not be null.", Vector3.ZERO);
 
-        assertNotNull("Static vector should not be null.", staticVector);
-
-        assertEquals("x should be equal to 0.", staticVector.getX(), 0);
-        assertEquals("y should be equal to 0.", staticVector.getY(), 0);
-        assertEquals("z should be equal to 0.", staticVector.getZ(), 0);
+        assertEquals("x should be equal to 0.", Vector3.ZERO.getX(), 0);
+        assertEquals("y should be equal to 0.", Vector3.ZERO.getY(), 0);
+        assertEquals("z should be equal to 0.", Vector3.ZERO.getZ(), 0);
     }
 
     @Test
@@ -64,7 +60,7 @@ public class Vector3Test {
         assertFalse(staticVector.equals(new Vector3(0, 0, 1)));
         assertFalse(staticVector.equals(new Vector3(1, 1, 1)));
 
-        assertFalse(staticVector.equals(new WorldPosition(new Vector3(0, 0, 0))));
-        assertFalse(staticVector.equals(null));
+        assertNotEquals(staticVector, new WorldPosition(new Vector3(0, 0, 0)));
+        assertNotNull(staticVector);
     }
 }

@@ -1,29 +1,25 @@
 package ss.project.server;
 
-import ss.project.shared.Network;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.SocketException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class MulticastSocketServer implements Runnable {
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(Network.getMulticastInterfaces().size());
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws UnknownHostException {
+        new MulticastSocketServer().run();
     }
+
 
     @Override
     public void run() {
         try {
             String msg = "test";
-            DatagramSocket serverSocket = new DatagramSocket(1234);
+            DatagramSocket serverSocket = new DatagramSocket();
             serverSocket.setBroadcast(true);
-            DatagramPacket msgPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length);
+            DatagramPacket msgPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length, InetAddress.getByName("255.255.255.255"), 1234);
             serverSocket.send(msgPacket);
             serverSocket.close();
         } catch (
