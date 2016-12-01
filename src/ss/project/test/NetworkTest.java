@@ -16,12 +16,6 @@ public class NetworkTest {
     private Thread serverThread;
     private Thread clientThread;
 
-    public static void main(String[] args) {
-        NetworkTest nt = new NetworkTest();
-        nt.setup();
-        nt.testBoth();
-    }
-
     @Before
     public void setup() {
         server = new MulticastSocketServer();
@@ -45,5 +39,27 @@ public class NetworkTest {
     @Test
     public void testClient() {
         client.run();
+    }
+}
+
+class ServerTest {
+    private static MulticastSocketServer server;
+    private static Thread serverThread;
+
+
+    public static void main(String[] args) {
+        serverThread = new Thread(server);
+        serverThread.start();
+    }
+}
+
+class ClientTest {
+    private static MulticastSocketClient client;
+    private static Thread clientThread;
+
+
+    public static void main(String[] args) {
+        clientThread = new Thread(client);
+        clientThread.start();
     }
 }
