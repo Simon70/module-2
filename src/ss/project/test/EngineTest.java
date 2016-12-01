@@ -3,7 +3,7 @@ package ss.project.test;
 import org.junit.Before;
 import org.junit.Test;
 import ss.project.shared.Engine;
-import ss.project.shared.*;
+import ss.project.shared.Vector3;
 
 import static org.junit.Assert.*;
 
@@ -52,8 +52,8 @@ public class EngineTest {
 		game = new Engine(new Vector3(4, 4, 4), 2, 0);
 
 		assertTrue("The WorldPosition at coordinates (0,0,0) should have coordinates (0,0,0).",
-				game.getWorld().getWorldPosition(Vector3.Zero()).getCoordinates().equals(Vector3.Zero()));
-		assertTrue("The WorldPosition at coordinates (3,3,3) should have coordinates (3,3,3).",
+                game.getWorld().getWorldPosition(Vector3.ZERO).getCoordinates().equals(Vector3.ZERO));
+        assertTrue("The WorldPosition at coordinates (3,3,3) should have coordinates (3,3,3).",
 				game.getWorld().getWorldPosition(new Vector3(3, 3, 3)).getCoordinates().equals(new Vector3(3, 3, 3)));
 	}
 
