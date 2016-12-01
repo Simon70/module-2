@@ -15,7 +15,7 @@ public class MulticastSocketServer implements Runnable {
     @Override
     public void run() {
         try {
-            DatagramSocket serverSocket = new DatagramSocket(1234);
+            DatagramSocket serverSocket = new DatagramSocket(6868);
             byte[] receiveData = new byte[1024];
 
             while (true) {

@@ -13,7 +13,7 @@ public class MulticastSocketClient implements Runnable {
             DatagramSocket clientSocket = new DatagramSocket();
             byte[] sendData = "Message from Client!".getBytes();
             byte[] receiveData = new byte[1024];
-            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), 1234);
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), 6868);
             clientSocket.send(sendPacket);
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientSocket.receive(receivePacket);
