@@ -19,8 +19,6 @@ public class AiRandom implements IArtificialIntelligence {
 
 	@Override
 	public void doTurn(World world) {
-		//System.out.println("Do a turn");
-
 		setNewGameItem(world);
 	}
 

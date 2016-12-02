@@ -92,6 +92,7 @@ public class World {
 			return worldPos.isOwner(player);
 		}
 		return false;
+		
 	}
 
 	/**
@@ -116,8 +117,8 @@ public class World {
 	 *            Coordinates where the GameItem should be placed.
 	 * @param owner
 	 *            The owner of the GameItem.
-	 * @return False if this move is not possible, true if possible.
-	 *TODO: Sync this with the addGameItem Vector2 version.
+	 * @return False if this move is not possible, true if possible. TODO: Sync
+	 *         this with the addGameItem Vector2 version.
 	 */
 	public boolean addGameItem(Vector3 coordinates, Player owner) {
 		WorldPosition wp = getWorldPosition(coordinates);
@@ -127,9 +128,9 @@ public class World {
 			} else {
 				wp.setGameItem(owner);
 				remainingSpots--;
-				
+
 				//There's no space left!
-				if(remainingSpots<=0) {
+				if (remainingSpots <= 0) {
 					Engine.getEngine().finishGame();
 				}
 				return true;
@@ -158,12 +159,12 @@ public class World {
 				//Set the item to this owner.
 				wp.setGameItem(owner);
 				remainingSpots--;
-				
+
 				//Check whether we have 4 on a row.
 				checkWin(wp.getCoordinates(), owner);
-				
+
 				//There's no space left!
-				if(remainingSpots<=0) {
+				if (remainingSpots <= 0) {
 					Engine.getEngine().finishGame();
 				}
 				return true;
@@ -174,8 +175,12 @@ public class World {
 	}
 
 	/**
+	 * Check whether the newCoordinates make the player win the game.
 	 * 
 	 * @param newCoordinates
+	 *            The coordinates where the player has put a new object.
+	 * @param player
+	 *            The player has placed a new object.
 	 */
 	private void checkWin(Vector3 newCoordinates, Player player) {
 		for (int x = newCoordinates.getX() - 1; x < 2; x++) {
@@ -200,7 +205,20 @@ public class World {
 		}
 	}
 
-	//TODO: direction is not calculated correctly.
+	/**
+	 * Keep checking in a certain direction if we have 4 on a row.
+	 * 
+	 * @param coordinates
+	 *            Coordinates of the base, we add direction to this.
+	 * @param player
+	 *            The player who might win.
+	 * @param direction
+	 *            The direction we're going.
+	 * @param count
+	 *            The amount of objects that are ours, if this equals 4 player
+	 *            has won!
+	 * @return True if we have four on a row, false if not.
+	 */
 	private boolean checkWin(Vector3 coordinates, Player player, Vector3 direction, int count) {
 		Vector3 newCoordinates = coordinates.add(direction);
 		if (isOwner(newCoordinates, player)) {
