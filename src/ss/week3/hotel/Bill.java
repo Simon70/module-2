@@ -35,7 +35,7 @@ public class Bill {
 	
 	public void newItem(Item item) {
 		if(outStream!=null) {
-			outStream.println(item.toString());
+			outStream.println(item.toString()+item.getAmount());
 		}
 		totalBill += item.getAmount();
 	}

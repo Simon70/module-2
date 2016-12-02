@@ -89,27 +89,32 @@ public class Hotel {
 		return null;
 	}
 
-	public void getBill(String guestName, int nights, PrintStream printStream) {
+	public Bill getBill(String guestName, int nights, PrintStream printStream) {
 		Room room = getRoom(guestName);
 		double totalPay = 0;
+		Bill bill = new Bill(printStream);
+
 		if (room instanceof PricedRoom) {
 			//it's a paid room.
 			PricedRoom pricedRoom = (PricedRoom) room;
-			totalPay += pricedRoom.getAmount() * nights;
+			for (int i = 0; i < nights; i++) {
+				bill.newItem(pricedRoom);
+			}
 
 			Safe safe = pricedRoom.getSafe();
-			if (safe instanceof PricedSafe) {
+			if (safe.isActive() && safe instanceof PricedSafe) {
 				PricedSafe pricedSafe = (PricedSafe) safe;
-				totalPay += pricedSafe.getAmount() * nights;
+				for (int i = 0; i < nights; i++) {
+					bill.newItem(pricedSafe);
+				}
 			}
 		} else {
 			//It's a free room.
-			return;
+			return null;
 		}
 
-		if (printStream != null) {
-			printStream.println(totalPay);
-		}
+		bill.close();
+		return bill;
 	}
 
 	//@ pure

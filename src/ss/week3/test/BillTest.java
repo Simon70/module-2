@@ -25,17 +25,17 @@ public class BillTest {
 		BillItemBasic newItem = new BillItemBasic("Description", 3.00);
 
 		assertTrue(newItem.toString().equals("Description"));
-		
+
 		bill.newItem(newItem);
 
 		BillItemBasic newItem2 = new BillItemBasic("Description2", 1.50);
-		
+
 		assertTrue(newItem2.toString().equals("Description2"));
 
 		bill.newItem(newItem2);
 
 		//assertEquals("", bill.getSum(), newItem.getAmount() + newItem2.getAmount());
-		assertTrue(bill.getSum() == newItem.getAmount()+newItem2.getAmount());
+		assertEquals(bill.getSum(), newItem.getAmount() + newItem2.getAmount(), 0.001);
 
 		bill.close();
 	}
