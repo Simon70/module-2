@@ -23,6 +23,7 @@ public class Player {
 		if (this.hasAI) {
 			//Assign an AI.
 			this.ai = new AiRandom();
+			this.ai.initialize(this);
 		}
 	}
 
@@ -46,5 +47,9 @@ public class Player {
 			//The user can select a place to build.
 			return;
 		}
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

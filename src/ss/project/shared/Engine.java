@@ -2,6 +2,7 @@ package ss.project.shared;
 
 public class Engine {
 
+	private static Engine instance;
 	private World		world;
 	private Player[]	players;
 
@@ -18,11 +19,20 @@ public class Engine {
 	 * @param aiAmount
 	 */
 	public Engine(Vector3 worldSize, int playerAmount, int aiAmount) {
+		instance = this;
 		this.world = new World(worldSize);
 		createPlayers(playerAmount, aiAmount);
 		startGame();
 	}
-
+	
+	/**
+	 * TODO: recheck this.
+	 * @return
+	 */
+	public static Engine getEngine() {
+		return instance;
+	}
+	
 	/**
 	 * Create x new players and name them.
 	 *
@@ -74,14 +84,12 @@ public class Engine {
 	public int getPlayerCount() {
 		return players.length;
 	}
-	
+
 	/**
 	 * Start the game and make every player do turns.
 	 */
 	private void startGame() {
 		gameRunning = true;
-		
-		int turns = 0;
 
 		//By default start with player 0.
 		int currentPlayer = 0;
@@ -98,13 +106,11 @@ public class Engine {
 			if (currentPlayer >= getPlayerCount()) {
 				currentPlayer = 0;
 			}
-
-			//TODO: make the game end when someone wins.
-			turns++;
-			if (turns > 10) {
-				System.out.println(turns);
-				return;
-			}
 		}
+	}
+
+	public void finishGame() {
+		gameRunning = false;
+		System.out.println("Finished game");
 	}
 }

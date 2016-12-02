@@ -14,6 +14,7 @@ public class StrongChecker extends BasicChecker implements IChecker {
     }
 
     @Override
+    //@ pure
     public String generatePassword() {
         return super.generatePassword() + new Random().nextInt(10000);
     }

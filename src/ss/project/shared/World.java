@@ -2,6 +2,7 @@ package ss.project.shared;
 
 public class World {
 
+	private int					remainingSpots;
 	private Vector3				size;
 	private WorldPosition[][][]	worldPosition;
 
@@ -29,6 +30,7 @@ public class World {
 				}
 			}
 		}
+		remainingSpots = worldSize.getX() * worldSize.getY() * worldSize.getZ();
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class World {
 		//get the highest possible worldposition.
 		for (int z = 0; z < size.getZ(); z++) {
 			WorldPosition wp = worldPosition[coordinates.getX()][coordinates.getY()][z];
-			if (wp != null) {
+			if (wp != null && !wp.hasGameItem()) {
 				return wp;
 			}
 		}
@@ -115,6 +117,7 @@ public class World {
 	 * @param owner
 	 *            The owner of the GameItem.
 	 * @return False if this move is not possible, true if possible.
+	 *TODO: Sync this with the addGameItem Vector2 version.
 	 */
 	public boolean addGameItem(Vector3 coordinates, Player owner) {
 		WorldPosition wp = getWorldPosition(coordinates);
@@ -123,6 +126,12 @@ public class World {
 				return false;
 			} else {
 				wp.setGameItem(owner);
+				remainingSpots--;
+				
+				//There's no space left!
+				if(remainingSpots<=0) {
+					Engine.getEngine().finishGame();
+				}
 				return true;
 			}
 		} else {
@@ -145,10 +154,18 @@ public class World {
 			if (wp.hasGameItem()) {
 				return false;
 			} else {
+				System.out.println(wp.getCoordinates());
 				//Set the item to this owner.
 				wp.setGameItem(owner);
+				remainingSpots--;
+				
 				//Check whether we have 4 on a row.
-
+				checkWin(wp.getCoordinates(), owner);
+				
+				//There's no space left!
+				if(remainingSpots<=0) {
+					Engine.getEngine().finishGame();
+				}
 				return true;
 			}
 		} else {
@@ -166,19 +183,37 @@ public class World {
 				for (int z = newCoordinates.getZ() - 1; z < 2; z++) {
 					Vector3 vector = new Vector3(x, y, z);
 					//Don't check zero, because that's ourself.
-					if (!vector.equals(Vector3.ZERO)) {
-						if (isOwner(newCoordinates, player)) {
-							//We found a neighboar that is owner by us as well! Continue this path.
-							
+					if (!vector.equals(newCoordinates)) {
+						if (isOwner(vector, player)) {
+							//We found a neighbor that is owner by us as well! Continue this path.
+							if (checkWin(vector, player, newCoordinates.subtract(x, y, z), 1)) {
+								//we won!
+								System.out.println(player.getName() + " won!");
+								//TODO: show something on the screen, clean stuff up, stop the game.
+								Engine.getEngine().finishGame();
+								return;
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	
+
+	//TODO: direction is not calculated correctly.
 	private boolean checkWin(Vector3 coordinates, Player player, Vector3 direction, int count) {
-		//if(coordinates)
+		Vector3 newCoordinates = coordinates.add(direction);
+		if (isOwner(newCoordinates, player)) {
+			//again we're the owner!
+
+			//we have four on a row!
+			if (count >= 4) {
+				return true;
+			}
+
+			//check the next coordinates!
+			return checkWin(newCoordinates, player, direction, count + 1);
+		}
 		return false;
 	}
 }

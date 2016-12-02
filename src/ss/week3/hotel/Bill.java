@@ -20,16 +20,19 @@ public class Bill {
 		totalBill = 0;
 	}
 
+	//@ pure
 	public void close() {
 		if (outStream != null) {
 			outStream.println(totalBill);
 		}
 	}
 
+	//@ pure
 	public double getSum() {
 		return totalBill;
 	}
 
+	
 	public void newItem(Item item) {
 		if(outStream!=null) {
 			outStream.println(item.toString());

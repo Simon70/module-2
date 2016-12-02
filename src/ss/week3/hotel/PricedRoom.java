@@ -5,20 +5,23 @@ package ss.week3.hotel;
  */
 public class PricedRoom extends ss.week3.hotel.Room implements Bill.Item {
 
-	private double		roomPrice;
-	private PricedSafe	pricedSafe;
+	private /*@ spec_public @*/ double	roomPrice;
+	private PricedSafe						pricedSafe;
 
+	//@ ensures this.roomPrice == roomPrice;
 	public PricedRoom(int roomID, double roomPrice, double safePrice) {
 		super(roomID, new PricedSafe(safePrice));
 		this.roomPrice = roomPrice;
 	}
 
 	@Override
+	//@ pure
 	public double getAmount() {
 		return roomPrice;
 	}
 
 	@Override
+	//@ pure
 	public String toString() {
 		return "" + roomPrice;
 	}

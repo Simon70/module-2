@@ -1,12 +1,8 @@
 package ss.project.shared.AI;
 
-import java.util.Random;
-
-import java.util.concurrent.ThreadLocalRandom;
-
 import ss.project.shared.*;
 
-public class AiRandom implements IArtificialIntelligence {
+public class AiLinear implements IArtificialIntelligence {
 
 	private Player player;
 
@@ -25,12 +21,11 @@ public class AiRandom implements IArtificialIntelligence {
 	}
 
 	private void setNewGameItem(World world) {
-		while(true) {
-			int x = ThreadLocalRandom.current().nextInt(0,world.getSize().getX());
-			int y = ThreadLocalRandom.current().nextInt(0,world.getSize().getY());
-			
-			if (world.addGameItem(new Vector2(x, y), player)) {
-				return;
+		for (int x = 0; x < world.getSize().getX(); x++) {
+			for (int y = 0; y < world.getSize().getY(); y++) {
+				if (world.addGameItem(new Vector2(x, y), player)) {
+					return;
+				}
 			}
 		}
 	}

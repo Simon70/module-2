@@ -88,8 +88,19 @@ public class Vector3 {
      * @param vector3
      * @return
      */
-    public Vector3 substract(Vector3 vector3) {
+    public Vector3 subtract(Vector3 vector3) {
     	return new Vector3(getX() - vector3.getX(), getY() - vector3.getZ(), getZ() - vector3.getZ());
+    }
+    
+    /**
+     * Substract x,y,z from this vector3.
+     * @param x the x axis.
+     * @param y the y axis.
+     * @param z the z axis.
+     * @return
+     */
+    public Vector3 subtract(int x, int y, int z) {
+    	return new Vector3(getX() - x, getY() - y, getZ() - z);
     }
     
     /**
@@ -100,4 +111,20 @@ public class Vector3 {
     public Vector3 add(Vector3 vector3) {
     	return new Vector3(getX() + vector3.getX(), getY() + vector3.getY(), getZ() + vector3.getZ());
     }
+    
+    /**
+     * Add x,y,z to this vector3.
+     * @param x the x axis.
+     * @param y the y axis.
+     * @param z the z axis.
+     * @return
+     */
+    public Vector3 add(int x, int y, int z) {
+    	return new Vector3(getX() + x, getY() + y, getZ() + z);
+    }
+
+	@Override
+	public String toString() {
+		return "Vector3 [x=" + x + ", y=" + y + ", z=" + z + "]";
+	}
 }
