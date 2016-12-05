@@ -3,7 +3,7 @@ package ss.week4.math;
 /**
  * Created by simon on 28.11.16.
  */
-public class Sum implements Function {
+public class Sum implements Function, Integrandable {
 
 	private Function	func0;
 	private Function	func1;
@@ -29,5 +29,19 @@ public class Sum implements Function {
 	@Override
 	public Function derivative() {
 		return new Sum(func0.derivative(), func1.derivative());
+	}
+
+	@Override
+	/**
+	 * Integrand = Integrand(func0) + integrand(func1).
+	 */
+	public Function integrand() {
+		if (func0 instanceof Integrandable && func1 instanceof Integrandable) {
+			Integrandable fun0Integrand = (Integrandable) func0;
+			Integrandable fun1Integrand = (Integrandable) func1;
+			return new Sum(fun0Integrand.integrand(), fun1Integrand.integrand());
+		} else {
+			return null;
+		}
 	}
 }

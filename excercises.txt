@@ -153,9 +153,11 @@ You can't activate/change the password anymore.
 4.9
 	Done. There is no testClass to test this though?
 4.10
-	
+	Done by Simon, added JavaDocs.
 4.11
+	Because there are no standard rules for some functions. (for example product). 
 4.12
+	Added Integrand methods to all functions that were possible. (only Product was not possible)
 4.13
 4.14
 4.15

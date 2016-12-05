@@ -3,7 +3,7 @@ package ss.week4.math;
 /**
  * Created by simon on 28.11.16.
  */
-public class Exponent implements Function {
+public class Exponent implements Function, Integrandable {
 
 	private final int value;
 
@@ -27,5 +27,10 @@ public class Exponent implements Function {
 	 */
 	public Function derivative() {
 		return new LinearProduct(new Constant(value), new Exponent(value - 1));
+	}
+
+	@Override
+	public Function integrand() {
+		return new LinearProduct(new Constant(1 / (value + 1)), new Exponent(value + 1));
 	}
 }
