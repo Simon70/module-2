@@ -14,7 +14,7 @@ public class Polynomial implements Function, Integrandable {
 	 */
 	public Polynomial(double[] parts) {
 		linearProducts = new LinearProduct[parts.length];
-		for (int i = parts.length - 1; i >= 0; i++) {
+		for (int i = parts.length - 1; i >= 0; i--) {
 			linearProducts[i] = new LinearProduct(new Constant(parts[i]), new Exponent(i));
 		}
 	}
@@ -26,7 +26,7 @@ public class Polynomial implements Function, Integrandable {
 		}
 
 		double result = 0;
-		for (int i = 1; i < linearProducts.length; i++) {
+		for (int i = 0; i < linearProducts.length; i++) {
 			result += linearProducts[i].apply(x);
 		}
 		return result;
