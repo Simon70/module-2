@@ -12,3 +12,6 @@
 SoftwareSystems.iml
 SoftwareSystems.eml
 lib
+doc
+src/resources
+src/ss/project/client/ui

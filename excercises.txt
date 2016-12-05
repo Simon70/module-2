@@ -129,3 +129,39 @@ P - 1.15
 	
 3.7
 You can't activate/change the password anymore.
+
+========
+4.2
+	Done, checkStyle didn't work though, so not sure if I catched all checkStyle mistakes.
+4.3
+	Done by Simon, added some JavaDocs.
+4.4
+	Done by Simon, added a toString method.
+4.5
+	Done by Simon, added some JavaDocs.
+4.6
+	Done by Simon, added some JavaDocs.
+4.7
+	Done by Simon, but did not extend Product 
+	(instead implemented Function). Changed Function class 
+	to make the func0 and func1 protected instead of private.
+	
+	Old code is commented out.
+4.8
+	Done by Simon, added JavaDocs.
+	Changed constructor from Double --> int (exercise says we should do that :P)
+4.9
+	Done. There is no testClass to test this though?
+4.10
+	
+4.11
+4.12
+4.13
+4.14
+4.15
+4.16
+4.17
+4.18
+4.19
+4.20
+4.21

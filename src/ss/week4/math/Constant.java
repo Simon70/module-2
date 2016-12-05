@@ -6,9 +6,14 @@ package ss.week4.math;
 public class Constant implements Function {
     private double value;
 
+    /**
+     * The value of this function.
+     * @param value
+     */
     public Constant(double value) {
         this.value = value;
     }
+
 
     @Override
     public double apply(double x) {
@@ -20,4 +25,9 @@ public class Constant implements Function {
         return new Constant(0);
     }
 
+
+	@Override
+	public String toString() {
+		return value+"";
+	}
 }

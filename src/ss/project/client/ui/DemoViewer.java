@@ -29,7 +29,7 @@ public class DemoViewer {
                 g2.setColor(Color.BLACK);
                 g2.fillRect(0, 0, getWidth(), getHeight());
 
-                List<Triangle> tris = new ArrayList<>();
+                List<Triangle> tris = new ArrayList<Triangle>();
                 tris.add(new Triangle(new Vertex(100, 100, 100),
                         new Vertex(-100, -100, 100),
                         new Vertex(-100, 100, -100),

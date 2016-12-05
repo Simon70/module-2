@@ -4,19 +4,28 @@ package ss.week4.math;
  * Created by simon on 28.11.16.
  */
 public class Exponent implements Function {
-    private final double value;
 
-    public Exponent(double value) {
-        this.value = value;
-    }
+	private final int value;
 
-    @Override
-    public double apply(double x) {
-        return Math.pow(x, value);
-    }
+	/**
+	 * A function x^n where n is the argument.
+	 * 
+	 * @param value
+	 */
+	public Exponent(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public Function derivative() {
-        return new LinearProduct(new Constant(value), new Exponent(value - 1));
-    }
+	@Override
+	public double apply(double x) {
+		return Math.pow(x, value);
+	}
+
+	@Override
+	/**
+	 * Derivative = n*x^(n-1)
+	 */
+	public Function derivative() {
+		return new LinearProduct(new Constant(value), new Exponent(value - 1));
+	}
 }
