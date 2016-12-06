@@ -26,11 +26,27 @@ public class LinkedList<Element> {
 
     //@ ensures this.size == \old(size) - 1;
     public void remove(Element element) {
-        // TODO: implement, see exercise P-4.18
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (get(i).equals(element)) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            Node node = getNode(index - 1);
+            node.next = node.next.next.next;
+        }
     }
 
     public Node findBefore(Element element) {
-        // TODO: implement, see exercise P-4.18
+        Node last;
+        for (int i = 0; i < size - 1; i++) {
+            last = getNode(i);
+            if (get(i + 1).equals(element)) {
+                return last;
+            }
+        }
         return null;
     }
 
