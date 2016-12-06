@@ -32,4 +32,8 @@ public enum Mark {
             return EMPTY;
         }
     }
+
+    public boolean isEmpty() {
+        return this.equals(EMPTY);
+    }
 }
