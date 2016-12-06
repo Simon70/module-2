@@ -44,6 +44,6 @@ public class PolynomialTest {
 		System.out.println(sum.toString());
 		
 		//9.45 x + 2.615 x^2 + 1.08333 x^3 + 0.3075 x^4
-		assertEquals(2.06e6,polynomial.integrand().apply(CONSTANT_VALUE),0.1);
+		assertEquals(2064301.25,polynomial.integrand().apply(CONSTANT_VALUE),0.9);
 	}
 }
