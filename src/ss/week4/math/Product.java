@@ -31,4 +31,9 @@ public class Product implements Function {
     public Function derivative() {
         return new Sum(new Product(func0.derivative(), func1), new Product(func0, func1.derivative()));
     }
+
+	@Override
+	public String toString() {
+		return func0.toString() + " * " + func1.toString();
+	}
 }

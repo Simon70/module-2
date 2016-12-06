@@ -33,4 +33,9 @@ public class Exponent implements Function, Integrandable {
 	public Function integrand() {
 		return new LinearProduct(new Constant(1 / (value + 1)), new Exponent(value + 1));
 	}
+
+	@Override
+	public String toString() {
+		return "x^" + value;
+	}
 }

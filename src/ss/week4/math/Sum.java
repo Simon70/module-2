@@ -44,4 +44,9 @@ public class Sum implements Function, Integrandable {
 			return null;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return func0.toString() + " + " + func1.toString();
+	}
 }

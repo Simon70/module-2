@@ -67,4 +67,20 @@ public class Polynomial implements Function, Integrandable {
 		}
 		return sum;
 	}
+
+	@Override
+	public String toString() {
+		String result = "";
+		for(int i = 0; i<linearProducts.length;i++) {
+			if(i>0) {
+				result+=" ";
+			}
+			result+=linearProducts[i].toString();
+			
+			if(i<linearProducts.length-1) {
+				result+=" +";
+			}
+		}
+		return result;
+	}
 }

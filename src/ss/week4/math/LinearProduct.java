@@ -22,4 +22,9 @@ public class LinearProduct extends Product implements Integrandable {
     public Function integrand() {
         return (func1 instanceof Integrandable) ? new LinearProduct(new Constant(func0.apply(1)), ((Integrandable) func1).integrand()) : null;
     }
+
+	@Override
+	public String toString() {
+		return func0.toString() + " * " + func1.toString();
+	}
 }
