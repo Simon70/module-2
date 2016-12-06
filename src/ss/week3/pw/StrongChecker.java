@@ -9,8 +9,8 @@ public class StrongChecker extends BasicChecker implements IChecker {
     @Override
     public boolean acceptable(String suggestion) {
         return (super.acceptable(suggestion) &&
-                Character.isAlphabetic(suggestion.codePointAt(0)) &&
-                Character.isDigit(suggestion.codePointAt(suggestion.length() - 1)));
+                Character.isLetter(suggestion.codePointAt(0)) &&
+                Character.isDigit(suggestion.charAt(suggestion.length() - 1)));
     }
 
     @Override

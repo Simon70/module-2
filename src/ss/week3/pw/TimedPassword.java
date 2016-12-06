@@ -4,6 +4,7 @@ package ss.week3.pw;
  * Created by simon on 28.11.16.
  */
 public class TimedPassword extends Password {
+    public static final int EXTENDED_TIME = 5 * 60 * 1000;
     private /*@ spec_public @*/ long validTime;
 
     //@ensures this.validTime > 0;
@@ -14,7 +15,7 @@ public class TimedPassword extends Password {
 
     //@ ensures validTime > 0;
     public boolean setWord(String oldPass, String newPass) {
-        validTime = System.currentTimeMillis() + 5 * 60 * 1000;
+        validTime = System.currentTimeMillis() + EXTENDED_TIME;
         return super.setWord(oldPass, newPass);
     }
 

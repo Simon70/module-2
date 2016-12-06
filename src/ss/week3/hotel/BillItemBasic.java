@@ -2,21 +2,21 @@ package ss.week3.hotel;
 
 public class BillItemBasic implements Bill.Item {
 
-	private String description;
-	private Double amount;
+    private String description;
+    private double amount;
 
-	public BillItemBasic(String text, Double amount) {
-		this.description = text;
-		this.amount = amount;
-	}
-	
-	@Override
-	public double getAmount() {
-		return 0;
-	}
+    public BillItemBasic(String text, Double amount) {
+        this.description = text;
+        this.amount = amount;
+    }
 
-	@Override
-	public String toString() {
-		return description;
-	}
+    @Override
+    public double getAmount() {
+        return amount;
+    }
+
+    @Override
+    public String toString() {
+        return description;
+    }
 }

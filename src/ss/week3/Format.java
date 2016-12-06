@@ -9,6 +9,6 @@ public class Format {
     }
 
     public static void printLine(String text, double amount) {
-        System.out.format("%-20s %10.2f", text, amount);
+        System.out.format("%-20s %10.2f\n", text, amount);
     }
 }

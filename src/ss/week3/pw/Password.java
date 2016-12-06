@@ -4,7 +4,7 @@ package ss.week3.pw;
  * Created by simon on 16.11.16.
  */
 public class Password {
-    public static final String INITIAL = "123456";
+    public static String INITIAL;
     private IChecker checker;
     private String factoryPassword;
 
@@ -14,6 +14,7 @@ public class Password {
         this.checker = checker;
         this.factoryPassword = factoryPassword;
         this.password = factoryPassword;
+
     }
 
     //@ ensures password == INITIAL;

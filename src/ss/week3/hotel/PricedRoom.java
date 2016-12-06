@@ -6,7 +6,6 @@ package ss.week3.hotel;
 public class PricedRoom extends ss.week3.hotel.Room implements Bill.Item {
 
 	private /*@ spec_public @*/ double	roomPrice;
-	private PricedSafe						pricedSafe;
 
 	//@ensures this.roomPrice == roomPrice;
 	public PricedRoom(int roomID, double roomPrice, double safePrice) {
