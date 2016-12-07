@@ -30,39 +30,25 @@ public class DemoViewer {
                 g2.fillRect(0, 0, getWidth(), getHeight());
 
                 List<Triangle> tris = new ArrayList<Triangle>();
-                tris.add(new Triangle(new Vertex(100, 100, 100),
-                        new Vertex(-100, -100, 100),
-                        new Vertex(-100, 100, -100),
-                        Color.WHITE));
-                tris.add(new Triangle(new Vertex(100, 100, 100),
-                        new Vertex(-100, -100, 100),
-                        new Vertex(100, -100, -100),
-                        Color.RED));
-                tris.add(new Triangle(new Vertex(-100, 100, -100),
-                        new Vertex(100, -100, -100),
-                        new Vertex(100, 100, 100),
-                        Color.GREEN));
-                tris.add(new Triangle(new Vertex(-100, 100, -100),
-                        new Vertex(100, -100, -100),
-                        new Vertex(-100, -100, 100),
-                        Color.BLUE));
+                tris.add(new Triangle(new Vertex(100, 100, 100), new Vertex(-100, -100, 100),
+                        new Vertex(-100, 100, -100), Color.WHITE));
+                tris.add(new Triangle(new Vertex(100, 100, 100), new Vertex(-100, -100, 100),
+                        new Vertex(100, -100, -100), Color.RED));
+                tris.add(new Triangle(new Vertex(-100, 100, -100), new Vertex(100, -100, -100),
+                        new Vertex(100, 100, 100), Color.GREEN));
+                tris.add(new Triangle(new Vertex(-100, 100, -100), new Vertex(100, -100, -100),
+                        new Vertex(-100, -100, 100), Color.BLUE));
 
                 for (int i = 0; i < 4; i++) {
                     tris = inflate(tris);
                 }
 
                 double heading = Math.toRadians(headingSlider.getValue());
-                Matrix3 headingTransform = new Matrix3(new double[]{
-                        Math.cos(heading), 0, -Math.sin(heading),
-                        0, 1, 0,
-                        Math.sin(heading), 0, Math.cos(heading)
-                });
+                Matrix3 headingTransform = new Matrix3(new double[]{Math.cos(heading), 0, -Math.sin(heading), 0, 1, 0,
+                        Math.sin(heading), 0, Math.cos(heading)});
                 double pitch = Math.toRadians(pitchSlider.getValue());
-                Matrix3 pitchTransform = new Matrix3(new double[]{
-                        1, 0, 0,
-                        0, Math.cos(pitch), Math.sin(pitch),
-                        0, -Math.sin(pitch), Math.cos(pitch)
-                });
+                Matrix3 pitchTransform = new Matrix3(new double[]{1, 0, 0, 0, Math.cos(pitch), Math.sin(pitch), 0,
+                        -Math.sin(pitch), Math.cos(pitch)});
                 Matrix3 transform = headingTransform.multiply(pitchTransform);
 
                 BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -86,11 +72,8 @@ public class DemoViewer {
 
                     Vertex ab = new Vertex(v2.x - v1.x, v2.y - v1.y, v2.z - v1.z);
                     Vertex ac = new Vertex(v3.x - v1.x, v3.y - v1.y, v3.z - v1.z);
-                    Vertex norm = new Vertex(
-                            ab.y * ac.z - ab.z * ac.y,
-                            ab.z * ac.x - ab.x * ac.z,
-                            ab.x * ac.y - ab.y * ac.x
-                    );
+                    Vertex norm = new Vertex(ab.y * ac.z - ab.z * ac.y, ab.z * ac.x - ab.x * ac.z,
+                            ab.x * ac.y - ab.y * ac.x);
                     double normalLength = Math.sqrt(norm.x * norm.x + norm.y * norm.y + norm.z * norm.z);
                     norm.x /= normalLength;
                     norm.y /= normalLength;
@@ -208,8 +191,7 @@ class Matrix3 {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 for (int i = 0; i < 3; i++) {
-                    result[row * 3 + col] +=
-                            this.values[row * 3 + i] * other.values[i * 3 + col];
+                    result[row * 3 + col] += this.values[row * 3 + i] * other.values[i * 3 + col];
                 }
             }
         }
@@ -217,10 +199,8 @@ class Matrix3 {
     }
 
     Vertex transform(Vertex in) {
-        return new Vertex(
-                in.x * values[0] + in.y * values[3] + in.z * values[6],
+        return new Vertex(in.x * values[0] + in.y * values[3] + in.z * values[6],
                 in.x * values[1] + in.y * values[4] + in.z * values[7],
-                in.x * values[2] + in.y * values[5] + in.z * values[8]
-        );
+                in.x * values[2] + in.y * values[5] + in.z * values[8]);
     }
 }

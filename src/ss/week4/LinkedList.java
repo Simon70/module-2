@@ -1,6 +1,6 @@
 package ss.week4;
 
-public class LinkedList<Element> {
+public class LinkedList<E> {
 
     private /*@ spec_public @*/ int size;
     private Node first;
@@ -11,7 +11,7 @@ public class LinkedList<Element> {
         first = null;
     }
 
-    public void add(int index, Element element) {
+    public void add(int index, E element) {
         Node newNode = new Node(element);
         if (index == 0) {
             newNode.next = first;
@@ -21,11 +21,11 @@ public class LinkedList<Element> {
             newNode.next = p.next;
             p.next = newNode;
         }
-        size = size + 1;
+        size++;
     }
 
     //@ ensures this.size == \old(size) - 1;
-    public void remove(Element element) {
+    public void remove(E element) {
         int index = -1;
         for (int i = 0; i < size; i++) {
             if (get(i).equals(element)) {
@@ -33,13 +33,24 @@ public class LinkedList<Element> {
                 break;
             }
         }
-        if (index != -1) {
-            Node node = getNode(index - 1);
-            node.next = node.next.next.next;
+        switch (index) {
+            case -1:
+                // Do nothing, element not found.
+                break;
+            case 0:
+                // Element is the first element
+                first = first.next;
+                size--;
+                break;
+            default:
+                Node node = getNode(index - 1);
+                node.next = node.next.next;
+                size--;
+                break;
         }
     }
 
-    public Node findBefore(Element element) {
+    public Node findBefore(E element) {
         Node last;
         for (int i = 0; i < size - 1; i++) {
             last = getNode(i);
@@ -51,7 +62,7 @@ public class LinkedList<Element> {
     }
 
     //@ requires 0 <= index && index < this.size();
-    public Element get(int index) {
+    public E get(int index) {
         Node p = getNode(index);
         return p.element;
     }
@@ -74,14 +85,14 @@ public class LinkedList<Element> {
 
     public class Node {
         public Node next;
-        private Element element;
+        private E element;
 
-        public Node(Element element) {
+        public Node(E element) {
             this.element = element;
             this.next = null;
         }
 
-        public Element getElement() {
+        public E getElement() {
             return element;
         }
     }
