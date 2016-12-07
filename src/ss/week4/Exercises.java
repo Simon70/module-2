@@ -11,9 +11,9 @@ public class Exercises {
 
     public static void reverseArray(int[] ints) {
         for (int i = 0; i < ints.length / 2; i++) {
-            int temp = ints[ints.length - (i + 1)];
-            ints[ints.length - (i + 1)] = ints[i];
-            ints[i] = temp;
+            int temp = ints[i];
+            ints[i] = ints[ints.length - (i + 1)];
+            ints[ints.length - (i + 1)] = temp;
         }
     }
 

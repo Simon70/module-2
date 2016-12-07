@@ -45,12 +45,12 @@ public class HumanPlayer extends Player {
         String prompt = "> " + getName() + " (" + getMark().toString() + ")"
                 + ", what is your choice? ";
         int choice = readInt(prompt);
-        boolean valid = board.isField(choice) && board.isEmptyField(choice);
+        boolean valid = Board.isField(choice) && board.isEmptyField(choice);
         while (!valid) {
             System.out.println("ERROR: field " + choice
                     + " is no valid choice.");
             choice = readInt(prompt);
-            valid = board.isField(choice) && board.isEmptyField(choice);
+            valid = Board.isField(choice) && board.isEmptyField(choice);
         }
         return choice;
     }

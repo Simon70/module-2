@@ -68,11 +68,11 @@ public class Game {
      * the user does not want to play anymore.
      */
     public void start() {
-        boolean doorgaan = true;
-        while (doorgaan) {
+        boolean isRunning = true;
+        while (isRunning) {
             reset();
             play();
-            doorgaan = readBoolean("\n> Play another time? (y/n)?", "y", "n");
+            isRunning = readBoolean("\n> Play another time? (y/n)?", "y", "n");
         }
     }
 
@@ -95,7 +95,7 @@ public class Game {
             try (Scanner in = new Scanner(System.in)) {
                 answer = in.hasNextLine() ? in.nextLine() : null;
             }
-        } while (answer == null || (!answer.equals(yes) && !answer.equals(no)));
+        } while (answer == null || (!answer.equalsIgnoreCase(yes) && !answer.equalsIgnoreCase(no)));
         return answer.equals(yes);
     }
 
@@ -115,7 +115,20 @@ public class Game {
      * the changed game situation is printed.
      */
     private void play() {
-        // TODO: implement, see P-4.20
+        doGameplayLoop();
+        printResult();
+    }
+
+    private void doGameplayLoop() {
+        while (true) {
+            for (Player player : players) {
+                update();
+                player.makeMove(board);
+                if (board.gameOver()) {
+                    return;
+                }
+            }
+        }
     }
 
     /**

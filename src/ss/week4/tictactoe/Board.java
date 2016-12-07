@@ -10,8 +10,7 @@ import java.util.Arrays;
  */
 public class Board {
     public static final int DIM = 3;
-    private static final String[] NUMBERING = {" 0 | 1 | 2 ", "---+---+---",
-            " 3 | 4 | 5 ", "---+---+---", " 6 | 7 | 8 "};
+    private static final String[] NUMBERING = {" 0 | 1 | 2 ", "---+---+---", " 3 | 4 | 5 ", "---+---+---", " 6 | 7 | 8 "};
     private static final String LINE = NUMBERING[1];
     private static final String DELIM = "     ";
 
@@ -42,17 +41,6 @@ public class Board {
     }
 
     /**
-     * Creates a deep copy of this field.
-     */
-    /*@ ensures \result != this;
-        ensures (\forall int i; 0 <= i & i < DIM * DIM;
-                                \result.getField(i) == this.getField(i));
-      @*/
-    public Board deepCopy() {
-        return new Board(fields);
-    }
-
-    /**
      * Calculates the index in the linear array of fields from a (row, col)
      * pair.
      *
@@ -61,7 +49,7 @@ public class Board {
     //@ requires 0 <= row & row < DIM;
     //@ requires 0 <= col & col < DIM;
     /*@pure*/
-    public int index(int row, int col) {
+    public static int index(int row, int col) {
         return row * DIM + col;
     }
 
@@ -72,8 +60,8 @@ public class Board {
      */
     //@ ensures \result == (0 <= index && index < DIM * DIM);
     /*@pure*/
-    public boolean isField(int index) {
-        return (0 <= index && index < DIM * DIM);
+    public static boolean isField(int index) {
+        return 0 <= index && index < DIM * DIM;
     }
 
     /**
@@ -83,8 +71,19 @@ public class Board {
      */
     //@ ensures \result == (0 <= row && row < DIM && 0 <= col && col < DIM);
     /*@pure*/
-    public boolean isField(int row, int col) {
-        return (0 <= row && row < DIM && 0 <= col && col < DIM);
+    public static boolean isField(int row, int col) {
+        return 0 <= row && row < DIM && 0 <= col && col < DIM;
+    }
+
+    /**
+     * Creates a deep copy of this field.
+     */
+    /*@ ensures \result != this;
+        ensures (\forall int i; 0 <= i & i < DIM * DIM;
+                                \result.getField(i) == this.getField(i));
+      @*/
+    public Board deepCopy() {
+        return new Board(fields);
     }
 
     /**
@@ -150,8 +149,9 @@ public class Board {
     /*@pure*/
     public boolean isFull() {
         for (Mark field : fields) {
-            if (field.isEmpty())
+            if (field.isEmpty()) {
                 return false;
+            }
         }
         return true;
     }
@@ -185,8 +185,9 @@ public class Board {
                     break;
                 }
             }
-            if (hasRow)
+            if (hasRow) {
                 return true;
+            }
         }
         return false;
     }
@@ -208,8 +209,9 @@ public class Board {
                     break;
                 }
             }
-            if (hasCol)
+            if (hasCol) {
                 return true;
+            }
         }
         return false;
     }
@@ -223,7 +225,8 @@ public class Board {
      */
     /*@ pure */
     public boolean hasDiagonal(Mark m) {
-        return fields[0].equals(m) && fields[4].equals(m) && fields[8].equals(m) || fields[2].equals(m) && fields[4].equals(m) && fields[6].equals(m);
+        return fields[0].equals(m) && fields[4].equals(m) && fields[8].equals(m) ||
+                fields[2].equals(m) && fields[4].equals(m) && fields[6].equals(m);
     }
 
     /**
@@ -272,13 +275,14 @@ public class Board {
     }
 
     private String getString(int i, String row) {
+        String output = row;
         for (int j = 0; j < DIM; j++) {
-            row = row + " " + getField(i, j).toString() + " ";
+            output = output + " " + getField(i, j).toString() + " ";
             if (j < DIM - 1) {
-                row = row + "|";
+                output += "|";
             }
         }
-        return row;
+        return output;
     }
 
     /**
