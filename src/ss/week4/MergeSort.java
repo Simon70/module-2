@@ -3,10 +3,10 @@ package ss.week4;
 import java.util.List;
 
 public class MergeSort {
-    public static <E extends Comparable<E>>
-    void mergesort(List<E> list) {
-        if (list.size() > 0)
+    public static <E extends Comparable<E>> void mergesort(List<E> list) {
+        if (list.size() > 0) {
             merge(list, 0, list.size() - 1);
+        }
     }
 
     private static <E extends Comparable<E>> void merge(List<E> list, int start, int end) {

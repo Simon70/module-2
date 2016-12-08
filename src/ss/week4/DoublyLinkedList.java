@@ -19,9 +19,9 @@ public class DoublyLinkedList<E> {
     //@ ensures this.getNode(index).equals(element);
     public void add(int index, E element) {
         Node node = new Node(element);
-        if (size == 0)
+        if (size == 0) {
             head = node;
-        else if (index == 0) {
+        } else if (index == 0) {
             node.next = head;
             head.previous = node;
             head = node;
@@ -37,14 +37,11 @@ public class DoublyLinkedList<E> {
     //@ requires 0 <= index && index < this.size;
     //@ ensures this.size == \old(size) - 1;
     public void remove(int index) {
-        if (index == 0) {
-            head = head.next;
-            head.previous = null;
-        } else {
-            Node toRemove = getNode(index);
+        Node toRemove = getNode(index);
+        if (toRemove.previous != null)
             toRemove.previous.next = toRemove.next;
+        if (toRemove.next != null)
             toRemove.next.previous = toRemove.previous;
-        }
         size--;
     }
 
