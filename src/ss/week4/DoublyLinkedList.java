@@ -1,6 +1,6 @@
 package ss.week4;
 
-public class DoublyLinkedList<Element> {
+public class DoublyLinkedList<E> {
 
     private /*@ spec_public @*/ int size;
     private Node head;
@@ -17,14 +17,32 @@ public class DoublyLinkedList<Element> {
     //@ requires 0 <= index && index <= this.size;
     //@ ensures this.size == \old(size) + 1;
     //@ ensures this.getNode(index).equals(element);
-    public void add(int index, Element element) {
-        // TODO: implement, see exercise P-4.17
+    public void add(int index, E element) {
+        Node node = new Node(element);
+        if (size == 0) {
+            head = node;
+        } else if (index == 0) {
+            node.next = head;
+            head.previous = node;
+            head = node;
+        } else {
+            Node p = getNode(index - 1);
+            node.previous = p;
+            node.next = p.next;
+            p.next = node;
+        }
+        size++;
     }
 
     //@ requires 0 <= index && index < this.size;
     //@ ensures this.size == \old(size) - 1;
     public void remove(int index) {
-        // TODO: implement, see exercise P-4.17
+        Node toRemove = getNode(index);
+        if (toRemove.previous != null)
+            toRemove.previous.next = toRemove.next;
+        if (toRemove.next != null)
+            toRemove.next.previous = toRemove.previous;
+        size--;
     }
 
     //@ requires 0 <= index && index < this.size;
@@ -57,15 +75,15 @@ public class DoublyLinkedList<Element> {
     public class Node {
         public Node next;
         public Node previous;
-        private Element element;
+        private E element;
 
-        public Node(Element element) {
+        public Node(E element) {
             this.element = element;
             this.next = null;
             this.previous = null;
         }
 
-        public Element getElement() {
+        public E getElement() {
             return element;
         }
     }
