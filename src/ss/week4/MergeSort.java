@@ -25,5 +25,4 @@ public class MergeSort {
         list.set(start, list.get(end));
         list.set(end, temp);
     }
-
 }
