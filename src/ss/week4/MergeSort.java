@@ -8,6 +8,7 @@ public class MergeSort {
             merge(list, 0, list.size() - 1);
         }
     }
+
     private static <E extends Comparable<E>> void merge(List<E> list, int start, int end) {
         if (end - start > 2) {
             int mid = (end - start) / 2;

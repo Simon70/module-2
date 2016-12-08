@@ -47,7 +47,7 @@ public class DoublyLinkedList<E> {
 
     //@ requires 0 <= index && index < this.size;
     /*@ pure */
-    public Element get(int index) {
+    public E get(int index) {
         Node p = getNode(index);
         return p.element;
     }
