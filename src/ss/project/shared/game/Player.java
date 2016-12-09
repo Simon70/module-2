@@ -1,6 +1,7 @@
-package ss.project.shared;
+package ss.project.shared.game;
 
-import ss.project.shared.AI.*;
+import ss.project.shared.ai.AiRandom;
+import ss.project.shared.ai.IArtificialIntelligence;
 
 public class Player {
 
@@ -23,8 +24,8 @@ public class Player {
 		this.hasAI = ai;
 
 		if (this.hasAI) {
-			//Assign an AI.
-			this.ai = new AiRandom();
+            //Assign an ai.
+            this.ai = new AiRandom();
 			this.ai.initialize(this);
 		}
 	}
@@ -39,12 +40,12 @@ public class Player {
 
 	/**
 	 * Called everytime a new turn should be done. TODO: add the possibility for
-	 * the user to do a turn, now it's just AI.
-	 */
+     * the user to do a turn, now it's just ai.
+     */
 	public void doTurn() {
 		if (this.hasAI) {
-			//The user is an AI, make the AI do a turn.
-			this.ai.doTurn(engine.getWorld());
+            //The user is an ai, make the ai do a turn.
+            this.ai.doTurn(engine.getWorld());
 		} else {
 			//The user can select a place to build.
 			return;

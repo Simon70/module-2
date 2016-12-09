@@ -42,7 +42,7 @@
  * $State: Exp $
  */
 
-package ss.project.client.ui;
+package ss.project.client;
 
 import javax.media.j3d.Behavior;
 import javax.media.j3d.WakeupOnElapsedFrames;

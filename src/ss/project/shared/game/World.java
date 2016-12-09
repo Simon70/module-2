@@ -1,4 +1,4 @@
-package ss.project.shared;
+package ss.project.shared.game;
 
 import ss.project.client.ui.Positions;
 

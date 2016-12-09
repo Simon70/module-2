@@ -2,8 +2,8 @@ package ss.project.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import ss.project.shared.Vector3;
-import ss.project.shared.WorldPosition;
+import ss.project.shared.game.Vector3;
+import ss.project.shared.game.WorldPosition;
 
 import static org.junit.Assert.*;
 

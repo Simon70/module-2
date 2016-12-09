@@ -42,7 +42,7 @@
  * $State: Exp $
  */
 
-package ss.project.client.ui;
+package ss.project.client;
 
 import com.sun.j3d.utils.geometry.ColorCube;
 import com.sun.j3d.utils.universe.SimpleUniverse;

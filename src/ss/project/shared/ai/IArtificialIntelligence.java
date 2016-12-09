@@ -1,9 +1,11 @@
 /**
  * 
  */
-package ss.project.shared.AI;
+package ss.project.shared.ai;
 
-import ss.project.shared.*;
+import ss.project.shared.game.Player;
+import ss.project.shared.game.World;
+
 /**
  * @author fw
  *
