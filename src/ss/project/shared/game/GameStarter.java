@@ -1,4 +1,4 @@
-package ss.project.shared;
+package ss.project.shared.game;
 /**
  * Creates a game and has the main function.
  * 

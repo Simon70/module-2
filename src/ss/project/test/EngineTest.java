@@ -2,8 +2,8 @@ package ss.project.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import ss.project.shared.Engine;
-import ss.project.shared.Vector3;
+import ss.project.shared.game.Engine;
+import ss.project.shared.game.Vector3;
 
 import static org.junit.Assert.*;
 
@@ -48,8 +48,8 @@ public class EngineTest {
 
 	@Test
 	public void testCoordinates() {
-		//Create 2 players of which 0 AI.
-		game = new Engine(new Vector3(4, 4, 4), 2, 0);
+        //Create 2 players of which 0 ai.
+        game = new Engine(new Vector3(4, 4, 4), 2, 0);
 
 		assertTrue("The WorldPosition at coordinates (0,0,0) should have coordinates (0,0,0).",
 			game.getWorld().getWorldPosition(Vector3.ZERO).getCoordinates().equals(Vector3.ZERO));
@@ -59,8 +59,8 @@ public class EngineTest {
 
 	@Test
 	public void testPlayersReal() {
-		//Create 2 players of which 0 AI.
-		game = new Engine(new Vector3(4, 4, 4), 2, 0);
+        //Create 2 players of which 0 ai.
+        game = new Engine(new Vector3(4, 4, 4), 2, 0);
 
 		assertNotNull("Player 0 should be created. ", game.getPlayer(0));
 		assertNotNull("Player 1 should be created. ", game.getPlayer(1));
@@ -83,14 +83,14 @@ public class EngineTest {
 		assertNull("Player 2 should not be created. ", game.getPlayer(2));
 		assertNull("Player -1 should not be created. ", game.getPlayer(-1));
 
-		assertTrue("Player 0 should be an AI player.", game.getPlayer(0).isHasAI());
-		assertTrue("Player 1 should be an AI player.", game.getPlayer(1).isHasAI());
-	}
+        assertTrue("Player 0 should be an ai player.", game.getPlayer(0).isHasAI());
+        assertTrue("Player 1 should be an ai player.", game.getPlayer(1).isHasAI());
+    }
 
 	@Test
 	public void testPlayersRealAI() {
-		//Create 2 players of which 1 AI.
-		game = new Engine(new Vector3(4, 4, 4), 2, 1);
+        //Create 2 players of which 1 ai.
+        game = new Engine(new Vector3(4, 4, 4), 2, 1);
 
 		assertNotNull("Player 0 should be created. ", game.getPlayer(0));
 		assertNotNull("Player 1 should be created. ", game.getPlayer(1));
@@ -98,14 +98,14 @@ public class EngineTest {
 		assertNull("Player 2 should not be created. ", game.getPlayer(2));
 		assertNull("Player -1 should not be created. ", game.getPlayer(-1));
 
-		assertTrue("Player 0 should be an AI player.", game.getPlayer(0).isHasAI());
-		assertFalse("Player 1 should be a real player.", game.getPlayer(1).isHasAI());
+        assertTrue("Player 0 should be an ai player.", game.getPlayer(0).isHasAI());
+        assertFalse("Player 1 should be a real player.", game.getPlayer(1).isHasAI());
 	}
 
 	@Test
 	public void testPlayersInvalid() {
-		//Create 0 players of which 2 AI.
-		game = new Engine(new Vector3(4, 4, 4), 0, 2);
+        //Create 0 players of which 2 ai.
+        game = new Engine(new Vector3(4, 4, 4), 0, 2);
 
 		assertNull("Player 0 should not be created. ", game.getPlayer(0));
 		assertNull("Player 1 should not be created. ", game.getPlayer(0));

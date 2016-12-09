@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.12" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="ss.project.shared.Engine" project="SoftwareSystems" 
+  <class id="1" language="java" name="ss.project.shared.game.Engine" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/Engine.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="160" y="286"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -10,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="ss.project.shared.GameItem" project="SoftwareSystems" 
+  <class id="2" language="java" name="ss.project.shared.game.GameItem" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/GameItem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="449" y="543"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -19,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="ss.project.shared.GameStarter" project="SoftwareSystems" 
+  <class id="3" language="java" name="ss.project.shared.game.GameStarter" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/GameStarter.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="170" y="112"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="ss.project.shared.Player" project="SoftwareSystems" 
+  <class id="4" language="java" name="ss.project.shared.game.Player" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/Player.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="204" y="552"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="ss.project.shared.Vector3" project="SoftwareSystems" 
+  <class id="5" language="java" name="ss.project.shared.game.Vector3" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/Vector3.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="840" y="584"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="ss.project.shared.World" project="SoftwareSystems" 
+  <class id="6" language="java" name="ss.project.shared.game.World" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/World.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="441" y="313"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="ss.project.shared.WorldPosition" project="SoftwareSystems" 
+  <class id="7" language="java" name="ss.project.shared.game.WorldPosition" project="SoftwareSystems"
     file="/SoftwareSystems/src/ss/project/shared/WorldPosition.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="867" y="318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

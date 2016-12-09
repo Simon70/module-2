@@ -1,4 +1,4 @@
-package ss.project.shared;
+package ss.project.shared.game;
 
 public class Vector3 {
 

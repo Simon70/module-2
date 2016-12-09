@@ -1,4 +1,4 @@
-package ss.project.client.ui;
+package ss.project.client;
 
 /**
  * Created by simon on 02.12.16.

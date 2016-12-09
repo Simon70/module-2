@@ -1,4 +1,4 @@
-package ss.project.shared;
+package ss.project.shared.game;
 
 public class Engine {
 
@@ -78,9 +78,9 @@ public class Engine {
 	}
 
 	/**
-	 * 
-	 * @return the amount of current players, both AI and real.
-	 */
+	 *
+     * @return the amount of current players, both ai and real.
+     */
 	public int getPlayerCount() {
 		return players.length;
 	}

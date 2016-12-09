@@ -1,4 +1,4 @@
-package ss.project.client.ui;
+package ss.project.client;
 
 import javax.swing.*;
 import java.awt.*;
