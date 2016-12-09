@@ -32,9 +32,7 @@ public class Board {
     //@ ensures (\forall int i; 0 <= i & i < DIM * DIM; this.getField(i) == Mark.EMPTY);
     public Board() {
         fields = new Mark[DIM * DIM];
-        for (int i = 0; i < fields.length; i++) {
-            fields[i] = Mark.EMPTY;
-        }
+        reset();
     }
 
     private Board(Mark[] fields) {
@@ -177,8 +175,8 @@ public class Board {
      */
     /*@ pure */
     public boolean hasRow(Mark m) {
-        boolean hasRow = true;
         for (int i = 0; i < fields.length; i += DIM) {
+            boolean hasRow = true;
             for (int j = i; j < i + DIM; j++) {
                 if (!m.equals(fields[j])) {
                     hasRow = false;
@@ -200,8 +198,8 @@ public class Board {
      */
     /*@ pure */
     public boolean hasColumn(Mark m) {
-        boolean hasCol = true;
         for (int i = 0; i <= DIM; i++) {
+            boolean hasCol = true;
             for (int j = i; j < fields.length; j += DIM) {
                 if (!m.equals(fields[j])) {
                     hasCol = false;

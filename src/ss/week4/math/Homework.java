@@ -29,7 +29,5 @@ public class Homework {
 		System.out.println("f(x) = " + f5 + ", f(8) =  "+f5.apply(8));
 		System.out.println("f(x) = " + f2 + ", f(8) =  "+f2.apply(8));
 		System.out.println("f(x) = " + f3 + ", f(8) =  "+f3.apply(8));
-		
-		
 	}
 }
