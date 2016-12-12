@@ -1,8 +1,5 @@
 package ss.project.shared;
 
-import com.sun.j3d.utils.applet.MainFrame;
-
-import ss.project.client.ui.WorldViewer;
 
 public class Engine {
 
@@ -26,9 +23,6 @@ public class Engine {
 	public Engine(Vector3 worldSize, int playerAmount, int aiAmount) {
 		instance = this;
 		this.world = new World(worldSize);
-
-		//Create the visual part
-		new MainFrame(new WorldViewer(), 730, 450);
 
 		createPlayers(playerAmount, aiAmount);
 		startGame();
