@@ -1,19 +1,24 @@
 package ss.project.shared;
 
+import com.sun.j3d.utils.applet.MainFrame;
+
+import ss.project.client.ui.WorldViewer;
+
 public class Engine {
 
-	private static Engine instance;
-	private World		world;
-	private Player[]	players;
+	private static Engine	instance;
+	private World			world;
+	private Player[]		players;
 
 	/**
 	 * True while the game is running.
 	 */
-	private boolean		gameRunning;
+	private boolean			gameRunning;
 
 	/**
-	 * Create a new world and create players.
-	 *
+	 * Create a new world and create players. TODO: remove the playerAmount and
+	 * aiAmount out of this constructor. The Engine should run multiple games.
+	 * 
 	 * @param worldSize
 	 * @param playerAmount
 	 * @param aiAmount
@@ -21,18 +26,23 @@ public class Engine {
 	public Engine(Vector3 worldSize, int playerAmount, int aiAmount) {
 		instance = this;
 		this.world = new World(worldSize);
+
+		//Create the visual part
+		new MainFrame(new WorldViewer(), 730, 450);
+
 		createPlayers(playerAmount, aiAmount);
 		startGame();
 	}
-	
+
 	/**
 	 * TODO: recheck this.
+	 * 
 	 * @return
 	 */
 	public static Engine getEngine() {
 		return instance;
 	}
-	
+
 	/**
 	 * Create x new players and name them.
 	 *
