@@ -13,10 +13,10 @@ public class InverseBijectionTest {
 
     @Test
     public void testInverseBijection() {
-        Map<Integer, Character> f1 = new HashMap<Integer, Character>();
+        Map<Integer, Character> f1 = new HashMap<>();
         f1.put(1, 'a');
 
-        Map<Character, Integer> f1Inv = new HashMap<Character, Integer>();
+        Map<Character, Integer> f1Inv = new HashMap<>();
         f1Inv.put('a', 1);
 
         assertEquals(f1Inv, MapUtil.inverseBijection(f1));
@@ -24,11 +24,8 @@ public class InverseBijectionTest {
 
     @Test
     public void testInverseInverse() {
-        Map<Integer, Character> f1 = new HashMap<Integer, Character>();
+        Map<Integer, Character> f1 = new HashMap<>();
         f1.put(1, 'a');
-
-        Map<Character, Integer> f1Inv = new HashMap<Character, Integer>();
-        f1Inv.put('a', 1);
 
         assertEquals(f1, MapUtil.inverseBijection(MapUtil.inverseBijection(f1)));
     }

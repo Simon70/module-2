@@ -12,12 +12,12 @@ public class ComposedTest {
 
     @Test
     public void testCorrectMap() {
-        Map<Integer, Character> f1 = new HashMap<Integer, Character>();
+        Map<Integer, Character> f1 = new HashMap<>();
         f1.put(1, 'a');
         f1.put(2, 'a');
         f1.put(3, 'b');
 
-        Map<Character, Double> f2 = new HashMap<Character, Double>();
+        Map<Character, Double> f2 = new HashMap<>();
         f2.put('a', 3.0);
         f2.put('b', -4.2);
 

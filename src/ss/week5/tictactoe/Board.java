@@ -1,4 +1,4 @@
-package ss.week4.tictactoe;
+package ss.week5.tictactoe;
 
 import java.util.Arrays;
 

@@ -42,6 +42,8 @@ public class DoublyLinkedList<E> {
             toRemove.previous.next = toRemove.next;
         if (toRemove.next != null)
             toRemove.next.previous = toRemove.previous;
+        if (toRemove.equals(head))
+            head = head.next;
         size--;
     }
 
