@@ -15,14 +15,14 @@ public class CompatibleTest {
 
     @Before
     public void setUp() {
-        f3 = new HashMap<Character, Double>();
+        f3 = new HashMap<>();
         f3.put('a', 3.0);
     }
 
     @Test
     public void testEmptyMap() {
-        Map<Integer, Character> f1 = new HashMap<Integer, Character>();
-        Map<Character, Integer> f2 = new HashMap<Character, Integer>();
+        Map<Integer, Character> f1 = new HashMap<>();
+        Map<Character, Integer> f2 = new HashMap<>();
 
         assertTrue(MapUtil.compatible(f1, f2));
         assertTrue(MapUtil.compatible(f2, f1));
@@ -35,7 +35,7 @@ public class CompatibleTest {
 
     @Test
     public void testCorrectMap() {
-        Map<Integer, Character> f4 = new HashMap<Integer, Character>();
+        Map<Integer, Character> f4 = new HashMap<>();
         f4.put(1, 'a');
         f4.put(2, 'a');
 
@@ -44,7 +44,7 @@ public class CompatibleTest {
 
     @Test
     public void testWrongMap() {
-        Map<Integer, Character> f5 = new HashMap<Integer, Character>();
+        Map<Integer, Character> f5 = new HashMap<>();
         f5.put(1, 'a');
         f5.put(2, 'b');
 

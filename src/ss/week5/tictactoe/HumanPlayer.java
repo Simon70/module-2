@@ -64,18 +64,17 @@ public class HumanPlayer extends Player {
      */
     private int readInt(String prompt) {
         int value = 0;
-        boolean intRead = false;
-        @SuppressWarnings("resource")
+        boolean done = false;
         Scanner line = new Scanner(System.in);
         do {
             System.out.print(prompt);
-            try (Scanner scannerLine = new Scanner(line.nextLine());) {
-                if (scannerLine.hasNextInt()) {
-                    intRead = true;
-                    value = scannerLine.nextInt();
-                }
+            try {
+                value = Integer.parseInt(line.nextLine());
+                done = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number!");
             }
-        } while (!intRead);
+        } while (!done);
         return value;
     }
 

@@ -14,7 +14,7 @@ public class Engine {
 	/**
 	 * Create a new world and create players. TODO: remove the playerAmount and
 	 * aiAmount out of this constructor. The Engine should run multiple games.
-	 * 
+	 *
 	 * @param worldSize
 	 * @param playerAmount
 	 * @param aiAmount
@@ -29,7 +29,7 @@ public class Engine {
 
 	/**
 	 * TODO: recheck this.
-	 * 
+	 *
 	 * @return
 	 */
 	public static Engine getEngine() {

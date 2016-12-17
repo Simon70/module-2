@@ -91,12 +91,11 @@ public class Game {
     private boolean readBoolean(String prompt, String yes, String no) {
         String answer;
         do {
+            Scanner in = new Scanner(System.in);
             System.out.print(prompt);
-            try (Scanner in = new Scanner(System.in)) {
-                answer = in.hasNextLine() ? in.nextLine() : null;
-            }
-        } while (answer == null || (!answer.equalsIgnoreCase(yes) && !answer.equalsIgnoreCase(no)));
-        return answer.equals(yes);
+            answer = in.nextLine();
+        } while (!answer.equalsIgnoreCase(yes) && !answer.equalsIgnoreCase(no));
+        return answer.equalsIgnoreCase(yes);
     }
 
     /**

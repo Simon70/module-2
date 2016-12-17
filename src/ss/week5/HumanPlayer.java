@@ -1,5 +1,9 @@
 package ss.week5;
 
+import ss.week4.tictactoe.Board;
+import ss.week4.tictactoe.Mark;
+import ss.week4.tictactoe.Player;
+
 import java.util.Scanner;
 
 /**
