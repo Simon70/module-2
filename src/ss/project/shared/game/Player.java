@@ -7,6 +7,7 @@ public class Player {
 
 	private Engine					engine;
 	private String					name;
+	private int						id;
 	private boolean					hasAI;
 	private IArtificialIntelligence	ai;
 
@@ -16,7 +17,8 @@ public class Player {
 	 * @param name
 	 *            name of the new player.
 	 */
-	public Player(Engine engine, String name, boolean ai) {
+	public Player(int id, Engine engine, String name, boolean ai) {
+		this.id = id;
 		this.engine = engine;
 		this.name = name;
 		this.hasAI = ai;
@@ -49,12 +51,22 @@ public class Player {
 			return;
 		}
 	}
-	
+
 	/**
 	 * get the name of this player. Set when initializing.
+	 * 
 	 * @return a string of the name.
 	 */
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String toString() {
+		return getName();
+	}
+
+	public int getID() {
+		return id;
 	}
 }

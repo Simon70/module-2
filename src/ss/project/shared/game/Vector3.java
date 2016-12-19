@@ -113,6 +113,14 @@ public class Vector3 {
     }
     
     /**
+     * Return the inverse of the vector3.
+     * @return
+     */
+    public Vector3 inverse() {
+    	return new Vector3(-getX(), -getY(), -getZ());
+    }
+    
+    /**
      * Add x,y,z to this vector3.
      * @param x the x axis.
      * @param y the y axis.

@@ -1,5 +1,7 @@
 package ss.project.shared.game;
 
+import ss.project.client.ui.Positions;
+
 public class World {
 
 	private int					remainingSpots;
@@ -92,7 +94,7 @@ public class World {
 			return worldPos.isOwner(player);
 		}
 		return false;
-		
+
 	}
 
 	/**
@@ -155,7 +157,6 @@ public class World {
 			if (wp.hasGameItem()) {
 				return false;
 			} else {
-				System.out.println(wp.getCoordinates());
 				//Set the item to this owner.
 				wp.setGameItem(owner);
 				remainingSpots--;
@@ -191,7 +192,7 @@ public class World {
 					if (!vector.equals(newCoordinates)) {
 						if (isOwner(vector, player)) {
 							//We found a neighbor that is owner by us as well! Continue this path.
-							if (checkWin(vector, player, newCoordinates.subtract(x, y, z), 1)) {
+							if (checkWin(vector, player, newCoordinates.subtract(x, y, z), 1) + checkWin(vector, player, newCoordinates.subtract(x, y, z).inverse(), 0) >= 4) {
 								//we won!
 								System.out.println(player.getName() + " won!");
 								//TODO: show something on the screen, clean stuff up, stop the game.
@@ -217,21 +218,65 @@ public class World {
 	 * @param count
 	 *            The amount of objects that are ours, if this equals 4 player
 	 *            has won!
-	 * @return True if we have four on a row, false if not.
+	 * @return The amount on a row.
 	 */
-	private boolean checkWin(Vector3 coordinates, Player player, Vector3 direction, int count) {
+	private int checkWin(Vector3 coordinates, Player player, Vector3 direction, int count) {
+
 		Vector3 newCoordinates = coordinates.add(direction);
 		if (isOwner(newCoordinates, player)) {
 			//again we're the owner!
-
+			counter++;
+			if(counter>30) {
+				System.out.println("  "+count);
+			}
+			
 			//we have four on a row!
 			if (count >= 4) {
-				return true;
+				System.out.println("four on a row");
+				return count;
 			}
 
 			//check the next coordinates!
 			return checkWin(newCoordinates, player, direction, count + 1);
 		}
-		return false;
+		return count;
+	}
+	
+	int counter = 0;
+	
+	@Override
+	public String toString() {
+		String result = "";
+		for (int z = 0; z < size.getZ(); z++) {
+			result += "\n\n"+"z: " + z + "\n";
+			
+			result+="   ";
+			for(int header = 0; header < size.getY();header++) {
+				result+="Y ";
+			}
+			
+			for (int x = 0; x < size.getX(); x++) {
+				result+="\n";
+				
+				result += "X: ";
+				Player owner = worldPosition[x][0][z].getOwner();
+				if (owner != null) {
+					result += owner.getID();
+				} else {
+					result += "x";
+				}
+
+				for (int y = 1; y < size.getY(); y++) {
+					owner = worldPosition[x][y][z].getOwner();
+					if (owner != null) {
+						result += " " + owner.getID();
+					} else {
+						result += " x";
+					}
+				}
+			}
+		}
+
+		return result;//buf.toString();
 	}
 }
