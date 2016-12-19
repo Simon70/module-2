@@ -1,3 +1,4 @@
+package ss.project.shared.game;
 package ss.project.shared;
 
 import com.sun.j3d.utils.applet.MainFrame;
