@@ -1,6 +1,5 @@
 package ss.project.shared;
 
-
 public class Engine {
 
 	private static Engine	instance;
@@ -56,7 +55,7 @@ public class Engine {
 			}
 
 			//Create new players with name: Player1
-			players[i] = new Player(this, "Player " + i, isAI);
+			players[i] = new Player(i, this, "Player " + i, isAI);
 		}
 	}
 
@@ -116,5 +115,6 @@ public class Engine {
 	public void finishGame() {
 		gameRunning = false;
 		System.out.println("Finished game");
+		System.out.println(world.toString());
 	}
 }

@@ -34,7 +34,6 @@ public class MapUtil {
 				return false;
 			}
 		}
-
 		return true;
 	}
 
@@ -55,11 +54,7 @@ public class MapUtil {
 	public static <K, V> Map<V, K> inverseBijection(Map<K, V> f) {
 		// exercise P-5.3
 		if (isOneOnOne(f)) {
-			Set<V> range = new HashSet<V>();
-			Iterator<V> values = f.values().iterator();
-			while (values.hasNext()) {
-				range.add(values.next());
-			}
+			Set<V> range = new HashSet<V>(f.values());
 
 			if (isSurjectiveOnRange(f, range)) {
 				Map<V,K> result = new HashMap<V,K>();
