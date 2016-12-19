@@ -116,9 +116,9 @@ public class EngineTest {
 	@Test
 	public void testAddItems() {
 		game = new Engine(new Vector3(4, 4, 4), 2, 0);
-		
-		assertTrue("Player 0 should be able to place his GameItem at (0,0,0).",
-			game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
+
+        assertTrue("Player 0 should be able to place his GameItem at (0,0,0).",
+                game.getWorld().addGameItem(new Vector3(0, 0, 0), game.getPlayer(0)));
 
 		assertEquals("Owner should be player 0.",
 			game.getWorld().getWorldPosition(new Vector3(0, 0, 0)).getGameItem().getOwner(),

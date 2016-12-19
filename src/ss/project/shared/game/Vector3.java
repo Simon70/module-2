@@ -111,13 +111,14 @@ public class Vector3 {
     public Vector3 add(Vector3 vector3) {
     	return new Vector3(getX() + vector3.getX(), getY() + vector3.getY(), getZ() + vector3.getZ());
     }
-    
+
     /**
      * Return the inverse of the vector3.
+     *
      * @return
      */
     public Vector3 inverse() {
-    	return new Vector3(-getX(), -getY(), -getZ());
+        return new Vector3(-getX(), -getY(), -getZ());
     }
     
     /**

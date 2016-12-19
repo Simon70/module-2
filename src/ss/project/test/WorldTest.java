@@ -1,12 +1,10 @@
 package ss.project.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import ss.project.shared.Engine;
 import ss.project.shared.Vector3;
+
+import static org.junit.Assert.fail;
 
 public class WorldTest {
 

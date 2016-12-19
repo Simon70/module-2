@@ -51,11 +51,11 @@ public class WorldPosition {
 		}
 		return false;
 	}
-	
-	public Player getOwner() {
-		if (hasGameItem()) {
-			return getGameItem().getOwner();
-		}
-		return null;
-	}
+
+    public Player getOwner() {
+        if (hasGameItem()) {
+            return getGameItem().getOwner();
+        }
+        return null;
+    }
 }
