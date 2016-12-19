@@ -7,7 +7,7 @@ public class Player {
 
 	private Engine					engine;
 	private String					name;
-	private int id;
+	private int						id;
 	private boolean					hasAI;
 	private IArtificialIntelligence	ai;
 
@@ -54,7 +54,7 @@ public class Player {
 
 	/**
 	 * get the name of this player. Set when initializing.
-	 * 
+	 *
 	 * @return a string of the name.
 	 */
 	public String getName() {

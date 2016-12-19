@@ -1,15 +1,16 @@
 package ss.project.shared.game;
 
+import ss.project.client.ui.Positions;
+
 public class World {
 
-	int counter = 0;
-	private int remainingSpots;
+	private int					remainingSpots;
 	private Vector3				size;
 	private WorldPosition[][][]	worldPosition;
 
 	/**
 	 * Create a new world object, set the size and initialize it.
-	 *
+	 * 
 	 * @param size
 	 *            A vector3 containing width,height and length.
 	 */
@@ -36,7 +37,7 @@ public class World {
 
 	/**
 	 * Get the size of this world.
-	 *
+	 * 
 	 * @return the size of this world.
 	 */
 	public Vector3 getSize() {
@@ -44,7 +45,7 @@ public class World {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param coordinates
 	 *            coordinates of the WorldPosition we want to know.
 	 * @return WorldPosition at specified coordinates. Returns null if
@@ -58,7 +59,7 @@ public class World {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param coordinates
 	 *            coordinates of the z axis we want to get.
 	 * @return WorldPosition at the first empty WorldPosition at x and y.
@@ -82,7 +83,7 @@ public class World {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param coordinates
 	 * @param player
 	 * @return
@@ -93,11 +94,11 @@ public class World {
 			return worldPos.isOwner(player);
 		}
 		return false;
-
+		
 	}
 
 	/**
-	 *
+	 * 
 	 * @param coordinates
 	 * @return True if the coordinates are inside the world range.
 	 */
@@ -113,7 +114,7 @@ public class World {
 
 	/**
 	 * Create and set a new GameItem in this world with specified owner.
-	 *
+	 * 
 	 * @param coordinates
 	 *            Coordinates where the GameItem should be placed.
 	 * @param owner
@@ -143,7 +144,7 @@ public class World {
 
 	/**
 	 * Create and set a new GameItem in this world with specified owner.
-	 *
+	 * 
 	 * @param coordinates
 	 *            Coordinates where the GameItem should be placed.
 	 * @param owner
@@ -156,6 +157,7 @@ public class World {
 			if (wp.hasGameItem()) {
 				return false;
 			} else {
+				System.out.println(wp.getCoordinates());
 				//Set the item to this owner.
 				wp.setGameItem(owner);
 				remainingSpots--;
@@ -176,7 +178,7 @@ public class World {
 
 	/**
 	 * Check whether the newCoordinates make the player win the game.
-	 *
+	 * 
 	 * @param newCoordinates
 	 *            The coordinates where the player has put a new object.
 	 * @param player
@@ -191,7 +193,7 @@ public class World {
 					if (!vector.equals(newCoordinates)) {
 						if (isOwner(vector, player)) {
 							//We found a neighbor that is owner by us as well! Continue this path.
-							if (checkWin(vector, player, newCoordinates.subtract(x, y, z), 1) + checkWin(vector, player, newCoordinates.subtract(x, y, z).inverse(), 0) >= 4) {
+							if (checkWin(vector, player, newCoordinates.subtract(x, y, z), 1)) {
 								//we won!
 								System.out.println(player.getName() + " won!");
 								//TODO: show something on the screen, clean stuff up, stop the game.
@@ -207,7 +209,7 @@ public class World {
 
 	/**
 	 * Keep checking in a certain direction if we have 4 on a row.
-	 *
+	 * 
 	 * @param coordinates
 	 *            Coordinates of the base, we add direction to this.
 	 * @param player
@@ -225,8 +227,8 @@ public class World {
 		if (isOwner(newCoordinates, player)) {
 			//again we're the owner!
 			counter++;
-			if (counter > 30) {
-				System.out.println("  " + count);
+			if(counter>30) {
+				System.out.println("  "+count);
 			}
 
 			//we have four on a row!
@@ -241,19 +243,21 @@ public class World {
 		return count;
 	}
 
+	int counter = 0;
+
 	@Override
 	public String toString() {
 		String result = "";
 		for (int z = 0; z < size.getZ(); z++) {
-			result += "\n\n" + "z: " + z + "\n";
+			result += "\n\n"+"z: " + z + "\n";
 
-			result += "   ";
-			for (int header = 0; header < size.getY(); header++) {
-				result += "Y ";
+			result+="   ";
+			for(int header = 0; header < size.getY();header++) {
+				result+="Y ";
 			}
 
 			for (int x = 0; x < size.getX(); x++) {
-				result += "\n";
+				result+="\n";
 
 				result += "X: ";
 				Player owner = worldPosition[x][0][z].getOwner();
