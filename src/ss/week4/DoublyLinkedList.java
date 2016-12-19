@@ -62,7 +62,7 @@ public class DoublyLinkedList<E> {
     //@ pure
     public Node getNode(int i) {
         Node p = head;
-        int pos = 0;
+        int pos = -1;
         while (pos < i) {
             p = p.next;
             pos = pos + 1;

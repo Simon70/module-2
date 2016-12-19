@@ -39,6 +39,17 @@ public class Board {
     }
 
     /**
+     * Creates a deep copy of this field.
+     */
+    /*@ ensures \result != this;
+        ensures (\forall int i; 0 <= i & i < DIM * DIM;
+                                \result.getField(i) == this.getField(i));
+      @*/
+    public Board deepCopy() {
+        return new Board(fields);
+    }
+
+    /**
      * Calculates the index in the linear array of fields from a (row, col)
      * pair.
      *
@@ -70,18 +81,7 @@ public class Board {
     //@ ensures \result == (0 <= row && row < DIM && 0 <= col && col < DIM);
     /*@pure*/
     public boolean isField(int row, int col) {
-        return 0 <= row && row < DIM && 0 <= col && col < DIM;
-    }
-
-    /**
-     * Creates a deep copy of this field.
-     */
-    /*@ ensures \result != this;
-        ensures (\forall int i; 0 <= i & i < DIM * DIM;
-                                \result.getField(i) == this.getField(i));
-      @*/
-    public Board deepCopy() {
-        return new Board(fields);
+        return (0 <= row && row < DIM && 0 <= col && col < DIM);
     }
 
     /**
@@ -270,17 +270,6 @@ public class Board {
             }
         }
         return s;
-    }
-
-    private String getString(int i, String row) {
-        String output = row;
-        for (int j = 0; j < DIM; j++) {
-            output = output + " " + getField(i, j).toString() + " ";
-            if (j < DIM - 1) {
-                output += "|";
-            }
-        }
-        return output;
     }
 
     /**

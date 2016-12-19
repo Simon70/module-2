@@ -200,3 +200,17 @@ You can't activate/change the password anymore.
 
 4.21
 
+D4.1
+	Method lines of code does not depend on comment. Does depend on formatting.
+	Afferent = 6 at hotel. Number of classes outside a package that depend on classes inside the package.
+	Efferent = 11 at week4.test. Number of classes inside a package that depend on classes outside of the package.
+
+D4.2
+	name	3	
+	room	3	
+	avg	3	
+	LCOM	3-6	-3
+	1-6	-5
+	Result	-3/-5	0.6
+	
+

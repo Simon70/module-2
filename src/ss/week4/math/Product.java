@@ -34,6 +34,6 @@ public class Product implements Function {
 
 	@Override
 	public String toString() {
-		return func0.toString() + " * " + func1.toString();
+		return "("+func0.toString() + ") * (" + func1.toString()+")";
 	}
 }

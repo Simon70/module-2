@@ -4,7 +4,7 @@ public class Exercises {
     public static int countNegativeNumbers(int[] arr) {
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
-            count += (arr[i] < 0) ? 1 : 0;
+            count += (i < 0) ? 1 : 0;
         }
         return count;
     }
@@ -12,8 +12,8 @@ public class Exercises {
     public static void reverseArray(int[] ints) {
         for (int i = 0; i < ints.length / 2; i++) {
             int temp = ints[i];
-            ints[i] = ints[ints.length - (i + 1)];
-            ints[ints.length - (i + 1)] = temp;
+            ints[ints.length - i] = ints[i];
+            ints[i] = temp;
         }
     }
 

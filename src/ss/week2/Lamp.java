@@ -21,6 +21,7 @@ public class Lamp {
     //@ ensures \old(getStatus())==LampOptions.MEDIUM ==> getStatus()==LampOptions.HIGH;
     //@ ensures \old(getStatus())==LampOptions.HIGH ==> getStatus()==LampOptions.OFF;
     public void changeStatus() {
+        LampOptions temp = status;
         assert status == LampOptions.OFF || status == LampOptions.LOW || status == LampOptions.MEDIUM || status == LampOptions.HIGH : "Lamp has to have a valid status";
         switch (status) {
             case OFF:
@@ -34,6 +35,20 @@ public class Lamp {
                 break;
             case HIGH:
                 status = LampOptions.OFF;
+                break;
+        }
+        switch (temp) {
+            case OFF:
+                assert status == LampOptions.LOW;
+                break;
+            case LOW:
+                assert status == LampOptions.MEDIUM;
+                break;
+            case MEDIUM:
+                assert status == LampOptions.HIGH;
+                break;
+            case HIGH:
+                assert status == LampOptions.OFF;
                 break;
         }
     }
