@@ -1,19 +1,19 @@
 package ss.project.shared.ui;
 
-import ss.project.shared.IThread;
+import ss.project.shared.IStartStop;
 
 /**
  * Created by simon on 09.12.16.
  */
-public class ServerTUI extends ServerUI implements IUserInterface, IThread {
+public class ServerTUI extends ServerUI implements IUserInterface, IStartStop {
 
     @Override
-    public void run() {
+    public void start() {
 
     }
 
     @Override
-    public void shutdown() {
+    public void stop() {
 
     }
 }
