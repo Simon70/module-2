@@ -3,29 +3,17 @@ package ss.week5;
 import java.util.*;
 
 public class MapUtil {
-    Map<K, W> result = new HashMap<>();
-    Map.Entry<K, V> entry
-
-    {
-        result.put(entry.getKey(), g.get(entry.getValue()));
-    }
-
-        for(
-
     public static <K, V> boolean isOneOnOne(Map<K, V> map) {
-        ArrayList<V> items = new ArrayList<>();
-        for (V item : map.values()) {
-            if (items.contains(item)) {
-                return false;
-            } else {
-                items.add(item);
-            }
-        }
-        return true;
-    } :f.entrySet())
+        return containsDuplicates(map.values());
+    }
 
     public static <K, V>
     boolean isSurjectiveOnRange(Map<K, V> map, Set<V> range) {
+        for (V item : map.values()) {
+            if (!range.contains(item)) {
+                return false;
+            }
+        }
         for (V item : range) {
             if (!map.containsValue(item)) {
                 return false;
@@ -72,5 +60,17 @@ public class MapUtil {
             result.put(entry.getKey(), g.get(entry.getValue()));
         }
         return result;
+    }
+
+    private static <E> boolean containsDuplicates(Collection<E> collection) {
+        ArrayList<E> items = new ArrayList<>();
+        for (E item : collection) {
+            if (items.contains(item)) {
+                return false;
+            } else {
+                items.add(item);
+            }
+        }
+        return true;
     }
 }
