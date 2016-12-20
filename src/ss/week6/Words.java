@@ -4,14 +4,13 @@ import java.util.Scanner;
 
 public class Words {
 
-	public Words() {
+    public Words() {
 
-	}
+    }
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Line (or \"end\"): ");
-
 		while (scanner.hasNextLine()) {
 			String sentence = scanner.nextLine();
 
