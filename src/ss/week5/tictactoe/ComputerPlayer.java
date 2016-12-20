@@ -13,7 +13,10 @@ public class ComputerPlayer extends Player {
     /**
      * Creates a new Player object.
      *
-     * @param mark
+     * @ requires mark != null
+     * @ requires strategy != null
+     * @ ensures this.name == strategy.getName() + " - " + mark.toString()
+     * @ ensures this.strategy == strategy
      */
     public ComputerPlayer(Mark mark, Strategy strategy) {
         super(strategy.getName() + " - " + mark, mark);
@@ -23,13 +26,21 @@ public class ComputerPlayer extends Player {
     /**
      * Creates a new Player object.
      *
-     * @param mark
+     * @ requires mark != null
+     * @ ensures this.name == strategy.getName() + " - " + mark.toString()
+     * @ ensures this.strategy == DEFAULT_STRATEGY
      */
     public ComputerPlayer(Mark mark) {
         super(DEFAULT_STRATEGY.getName() + " - " + mark, mark);
         this.strategy = DEFAULT_STRATEGY;
     }
 
+    /**
+     * @ pure
+     * @ requires !board.isFull()
+     * @ requires board != null
+     * @ ensures 0 <= \result < 9
+     */
     @Override
     public int determineMove(Board board) {
         return strategy.determineMove(board, getMark());

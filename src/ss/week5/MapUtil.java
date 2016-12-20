@@ -9,11 +9,6 @@ public class MapUtil {
 
     public static <K, V>
     boolean isSurjectiveOnRange(Map<K, V> map, Set<V> range) {
-        for (V item : map.values()) {
-            if (!range.contains(item)) {
-                return false;
-            }
-        }
         for (V item : range) {
             if (!map.containsValue(item)) {
                 return false;
