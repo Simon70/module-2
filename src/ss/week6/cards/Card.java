@@ -1,6 +1,13 @@
 package ss.week6.cards;
 
+import java.io.BufferedReader;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.EOFException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.io.PrintWriter;
 
 import ss.week6.TooFewArgumentsException;
@@ -69,6 +76,38 @@ public class Card {
 		for (i = 0; i < 13 && RANK_CHARACTERS[i] != rank; i++)
 			;
 		return (i == 13) ? null : RANK_STRINGS[i];
+	}
+
+	public static Card read(BufferedReader in) throws EOFException, IOException {
+		String line = in.readLine();
+		String[] data = line.split(" ");
+
+		if (data.length <= 1) {
+			return null;
+		}
+
+		if (data[1] == "10") {
+			data[1] = "T";
+		}
+		data[1] = data[1].toUpperCase();
+		return new Card(data[0].charAt(0), data[1].charAt(0));
+	}
+
+	public static Card read(DataInput in) throws IOException {
+		String rawData = in.readLine();
+
+		String[] cardData = rawData.split(" ");
+		return new Card(cardData[0].charAt(0), cardData[1].charAt(0));
+	}
+
+	public static Card read(ObjectInput objectInput) throws IOException {
+		try {
+			return (Card)objectInput.readObject();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
@@ -228,6 +267,8 @@ public class Card {
 	 */
 	public Card(char s, char r) {
 		assert isValidSuit(s) && isValidRank(r);
+		System.out.println(s);
+		System.out.println(r);
 		suit = s;
 		rank = r;
 	}
@@ -371,6 +412,24 @@ public class Card {
 	}
 
 	public void write(PrintWriter printWriter) {
-		printWriter.print(this.toString());
+		printWriter.println(this.toString());
+	}
+
+	public void write(DataOutput out) throws IOException {
+		String[] data = this.toString().split(" ");
+		String result = data[0].charAt(0) + " ";
+
+		if (data[1] == "10") {
+			data[1] = "T";
+		}
+		data[1] = data[1].toUpperCase();
+
+		result += data[1].charAt(0);
+
+		out.writeBytes(result);
+	}
+	
+	public void write(ObjectOutput objectOutput) throws IOException {
+		objectOutput.writeObject(this);
 	}
 }
