@@ -1,37 +1,67 @@
 package ss.week6.cards;
 
-public class Card
-{
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import ss.week6.TooFewArgumentsException;
+import ss.week6.WrongArgumentException;
+
+public class Card {
 
 	// ---- constants -----------------------------------
 
 	// ranks are 2, ..., 9 and:
-	public static final char JACK = 'J';
-	public static final char QUEEN = 'Q';
-	public static final char KING = 'K';
-	public static final char ACE = 'A';
-	public static final char TEN = 'T';
+	public static final char		JACK			= 'J';
+	public static final char		QUEEN			= 'Q';
+	public static final char		KING			= 'K';
+	public static final char		ACE				= 'A';
+	public static final char		TEN				= 'T';
 
 	// suits are:
-	public static final char CLUBS = 'C';
-	public static final char DIAMONDS = 'D';
-	public static final char HEARTS = 'H';
-	public static final char SPADES = 'S';
+	public static final char		CLUBS			= 'C';
+	public static final char		DIAMONDS		= 'D';
+	public static final char		HEARTS			= 'H';
+	public static final char		SPADES			= 'S';
 
 	// some convenient arrays
-	private static final char[] RANK_CHARACTERS = "23456789TJQKA".toCharArray();
-	private static final char[] SUIT_CHARACTERS = {'C', 'D', 'H', 'S'};
-	private static final String[] RANK_STRINGS = {"2", "3", "4", "5", "6", "7",
-	    "8", "9", "10", "jack", "queen", "king", "ace"};
-	private static final String[] SUIT_STRINGS = {"Clubs", "Diamonds",
-	    "Hearts", "Spades"};
+	private static final char[]		RANK_CHARACTERS	= "23456789TJQKA".toCharArray();
+	private static final char[]		SUIT_CHARACTERS	= { 'C', 'D', 'H', 'S' };
+	private static final String[]	RANK_STRINGS	= { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen",
+			"king", "ace" };
+	private static final String[]	SUIT_STRINGS	= { "Clubs", "Diamonds", "Hearts", "Spades" };
 
 	// ---- class methods -------------------------------------
 
+	public static void main(String[] args) {
+		PrintWriter printWriter = null;
+		if (args.length <= 0 || !args[0].contains(".")) {
+			//Too few arguments or not a file name
+			printWriter = new PrintWriter(System.out);
+		} else {
+			try {
+				printWriter = new PrintWriter(args[0]);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+		Card crd1 = new Card('C', 'J');
+		Card crd2 = new Card('D', 'Q');
+		Card crd3 = new Card('T', 'S');
+
+		crd1.write(printWriter);
+		crd2.write(printWriter);
+		crd3.write(printWriter);
+
+		printWriter.close();
+	}
+
 	/**
 	 * Translates a char encoding of rank into it's String representation.
+	 * 
 	 * @return the String representation of rank
-	 * @param  rank the char encoding a rank
+	 * @param rank
+	 *            the char encoding a rank
 	 * @return null if <code>isValidRank(rank)</code> returns <code>false</code>
 	 */
 	private static String rankChar2String(char rank) {
@@ -43,8 +73,10 @@ public class Card
 
 	/**
 	 * Translates a suit encoding of rank into its String representation.
+	 * 
 	 * @return the String representation of suit
-	 * @param  rank the char encoding a suit
+	 * @param rank
+	 *            the char encoding a suit
 	 * @return null if <code>isValidSuit(suit)</code> returns <code>false</code>
 	 */
 	private static String suitChar2String(char suit) {
@@ -56,7 +88,9 @@ public class Card
 
 	/**
 	 * Translates a String encoding of rank into its character representation.
-	 * @param  rank the String encoding a rank
+	 * 
+	 * @param rank
+	 *            the String encoding a rank
 	 * @return the char encoding of rank
 	 * @return '?' if <code>isValidRank(rank)</code> returns <code>false</code>
 	 */
@@ -69,7 +103,9 @@ public class Card
 
 	/**
 	 * Translates a suit String into its character encoding.
-	 * @param  rank the String representation of a suit
+	 * 
+	 * @param rank
+	 *            the String representation of a suit
 	 * @return the character encoding of suit
 	 * @return '?' if <code>isValidSuit(suit)</code> returns <code>false</code>
 	 */
@@ -82,33 +118,32 @@ public class Card
 
 	/**
 	 * Tests if a <tt>char</tt> represents a valid suit.
-	 * @return <tt>true</tt> if 
-	 *         <tt>k</tt> in <tt>CLUBS | DIAMONDS | HEARTS | SPADES</tt>
+	 * 
+	 * @return <tt>true</tt> if <tt>k</tt> in
+	 *         <tt>CLUBS | DIAMONDS | HEARTS | SPADES</tt>
 	 */
-	/*@pure*/
+	/* @pure */
 	public static boolean isValidSuit(char suit) {
-		return suit == CLUBS || suit == DIAMONDS || suit == HEARTS
-				|| suit == SPADES;
+		return suit == CLUBS || suit == DIAMONDS || suit == HEARTS || suit == SPADES;
 	}
 
 	/**
 	 * Tests if a <tt>char</tt> represents a valid rank.
-	 * @return <tt>true</tt> if 
-	 * <tt>k</tt> in <tt>'2'..'9' | TEN | JACK | QUEEN | KING | ACE</tt>
+	 * 
+	 * @return <tt>true</tt> if <tt>k</tt> in
+	 *         <tt>'2'..'9' | TEN | JACK | QUEEN | KING | ACE</tt>
 	 */
-    /*@pure*/
+	/* @pure */
 	public static boolean isValidRank(char r) {
-		return ('2' <= r && r <= '9') || r == TEN || r == JACK || r == QUEEN
-				|| r == KING || r == ACE;
+		return ('2' <= r && r <= '9') || r == TEN || r == JACK || r == QUEEN || r == KING || r == ACE;
 	}
 
-	/*@
-	   requires isValidSuit(s1) && isValidSuit(s2);
+	/*
+	 * @ requires isValidSuit(s1) && isValidSuit(s2);
 	 */
 	/**
-	 * Tests if a suit is value of a suit is less than the value of
-	 * another suit following the order
-	 * CLUBS < DIAMONDS < HEARTS < SPADES.
+	 * Tests if a suit is value of a suit is less than the value of another suit
+	 * following the order CLUBS < DIAMONDS < HEARTS < SPADES.
 	 */
 	public static boolean suitLessThan(char s1, char s2) {
 		boolean result = false;
@@ -122,12 +157,12 @@ public class Card
 		return result;
 	}
 
-    /*@
-       requires isValidRank(r1) && isValidRank(r2);
-     */
+	/*
+	 * @ requires isValidRank(r1) && isValidRank(r2);
+	 */
 	/**
-	 * Tests if one rank is less then the other following the order
-	 * '2' < '3' < ... < TEN < JACK < QUEEN < KING < ACE.
+	 * Tests if one rank is less then the other following the order '2' < '3' <
+	 * ... < TEN < JACK < QUEEN < KING < ACE.
 	 */
 	public static boolean rankLessThan(char r1, char r2) {
 		int i;
@@ -136,12 +171,12 @@ public class Card
 		return RANK_CHARACTERS[i] == r2 ? false : RANK_CHARACTERS[i] == r1;
 	}
 
-	/*@
-       requires isValidRank(r1) && isValidRank(r2);
-     */
+	/*
+	 * @ requires isValidRank(r1) && isValidRank(r2);
+	 */
 	/**
-	 * Tests if one rank directly follows the other accroding to
-	 * '2' < '3' < ... < TEN < JACK < QUEEN < KING < ACE.
+	 * Tests if one rank directly follows the other accroding to '2' < '3' < ...
+	 * < TEN < JACK < QUEEN < KING < ACE.
 	 */
 	public static boolean isRankFollowing(char r1, char r2) {
 		boolean result = false;
@@ -160,33 +195,36 @@ public class Card
 		}
 		return result;
 	}
-	
+
 	// ---- instance variabeles -----------------------------------
 
-	/*@
-	   private invariant isValidSuit(suit);
+	/*
+	 * @ private invariant isValidSuit(suit);
 	 */
 	/**
 	 * Suit of this card.
 	 */
-	private char suit;
-	/*@
-	   private invariant isValidRank(rank);
+	private char	suit;
+	/*
+	 * @ private invariant isValidRank(rank);
 	 */
 	/**
 	 * Rank of this card..
 	 */
-	private char rank;
+	private char	rank;
 
 	// ---- constructors -----------------------------------
 
-	/*@
-	   requires isValidSuit(s) && isValidRank(r);
+	/*
+	 * @ requires isValidSuit(s) && isValidRank(r);
 	 */
-	/** 
+	/**
 	 * Creates a new Card with the given suit and rank.
-	 * @param   s suit of the new card.
-	 * @param   r rank of the new card.
+	 * 
+	 * @param s
+	 *            suit of the new card.
+	 * @param r
+	 *            rank of the new card.
 	 */
 	public Card(char s, char r) {
 		assert isValidSuit(s) && isValidRank(r);
@@ -196,22 +234,24 @@ public class Card
 
 	// ---- queries ---------------------------------------
 
-	/*@
-	   ensures isValidSuit(\result);
+	/*
+	 * @ ensures isValidSuit(\result);
 	 */
 	/**
-	 * Returns the suit of this card. 
+	 * Returns the suit of this card.
+	 * 
 	 * @return suit of this card.
 	 */
 	public char getSuit() {
 		return suit;
 	}
 
-    /*@
-       ensures isValidRank(\result);
-    */
-	/** 
-	 * Returns the rank of this card. 
+	/*
+	 * @ ensures isValidRank(\result);
+	 */
+	/**
+	 * Returns the rank of this card.
+	 * 
 	 * @return rank of this card.
 	 */
 	public char getRank() {
@@ -223,37 +263,37 @@ public class Card
 		String res;
 
 		switch (getSuit()) {
-    		case CLUBS:
-    		    res = "Clubs";
-    		    break;
-    		case DIAMONDS:
-    		    res = "Diamonds";
-    		    break;
-    		case HEARTS:
-    		    res = "Hearts";
-    		    break;
-    		default:
-    		    res = "Spades";
+			case CLUBS:
+				res = "Clubs";
+				break;
+			case DIAMONDS:
+				res = "Diamonds";
+				break;
+			case HEARTS:
+				res = "Hearts";
+				break;
+			default:
+				res = "Spades";
 		}
 		res += " ";
 		switch (getRank()) {
-    		case TEN:
-    		    res += "10";
-    		    break;
-    		case JACK:
-    		    res += "jack";
-    		    break;
-    		case QUEEN:
-    		    res += "queen";
-    		    break;
-    		case KING:
-    		    res += "king";
-    		    break;
-    		case ACE:
-    		    res += "ace";
-    		    break;
-    		default:
-    		    res += getRank();
+			case TEN:
+				res += "10";
+				break;
+			case JACK:
+				res += "jack";
+				break;
+			case QUEEN:
+				res += "queen";
+				break;
+			case KING:
+				res += "king";
+				break;
+			case ACE:
+				res += "ace";
+				break;
+			default:
+				res += getRank();
 		}
 
 		return res;
@@ -261,17 +301,18 @@ public class Card
 
 	/**
 	 * Tests if this card is equal to another (i.e., same suit and rank).
-	 * @param  obj Card to be compared.
-	 * @return <code>true</code> if the suit and rank of <code>obj</code> 
-	 *         are the same as of this Card.
+	 * 
+	 * @param obj
+	 *            Card to be compared.
+	 * @return <code>true</code> if the suit and rank of <code>obj</code> are
+	 *         the same as of this Card.
 	 */
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Card)) {
 			return false;
 		}
 		Card card = (Card) obj;
-		return this.getSuit() == card.getSuit()
-				&& this.getRank() == card.getRank();
+		return this.getSuit() == card.getSuit() && this.getRank() == card.getRank();
 	}
 
 	/**
@@ -281,43 +322,55 @@ public class Card
 		return 100 * rank + suit;
 	}
 
-	/*@
-	   requires card != null;
+	/*
+	 * @ requires card != null;
 	 */
 	/**
 	 * Tests if this Card is less in suit than another Card.
+	 * 
 	 * @see #suitLessThan(char, char)
-	 * @param   card Card for the comparison.
-	 * @return  <code>true</code> if the suit of this Card is less than that of <code>card</code>.
+	 * @param card
+	 *            Card for the comparison.
+	 * @return <code>true</code> if the suit of this Card is less than that of
+	 *         <code>card</code>.
 	 */
 	public boolean ltSuit(Card card) {
 		return suitLessThan(this.getSuit(), card.getSuit());
 	}
 
-    /*@
-       requires card != null;
-     */
+	/*
+	 * @ requires card != null;
+	 */
 	/**
 	 * Tests if this Card is less in rank that another Card.
+	 * 
 	 * @see #rankLessThan(char, char)
-	 * @param   card Card for the comparison
-	 * @return  <code>true</code> if the rank of this Card is less than that of <code>kaart</code>.
+	 * @param card
+	 *            Card for the comparison
+	 * @return <code>true</code> if the rank of this Card is less than that of
+	 *         <code>kaart</code>.
 	 */
 	public boolean ltRank(Card card) {
 		return rankLessThan(this.getRank(), card.getRank());
 	}
 
-    /*@
-       requires card != null;
-     */
+	/*
+	 * @ requires card != null;
+	 */
 	/**
-	 * Tests if this Card is directly followed in rank by another Card.
-	 * Does not consider suit.
-	 * see {@link #isRankFollowing(char, char)}
-	 * @param   card Card for the comparison.
-	 * @return  <code>true</code> if the rank of this Card directly precedes the rank of <code>card</code>.
+	 * Tests if this Card is directly followed in rank by another Card. Does not
+	 * consider suit. see {@link #isRankFollowing(char, char)}
+	 * 
+	 * @param card
+	 *            Card for the comparison.
+	 * @return <code>true</code> if the rank of this Card directly precedes the
+	 *         rank of <code>card</code>.
 	 */
 	public boolean isInRankBefore(Card card) {
 		return isRankFollowing(this.getRank(), card.getRank());
+	}
+
+	public void write(PrintWriter printWriter) {
+		printWriter.print(this.toString());
 	}
 }
