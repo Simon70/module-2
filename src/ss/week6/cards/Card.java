@@ -78,8 +78,14 @@ public class Card {
 		return (i == 13) ? null : RANK_STRINGS[i];
 	}
 
-	public static Card read(BufferedReader in) throws EOFException, IOException {
-		String line = in.readLine();
+	public static Card read(BufferedReader in){
+		String line = "";
+		try {
+			line = in.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String[] data = line.split(" ");
 
 		if (data.length <= 1) {
@@ -93,17 +99,23 @@ public class Card {
 		return new Card(data[0].charAt(0), data[1].charAt(0));
 	}
 
-	public static Card read(DataInput in) throws IOException {
-		String rawData = in.readLine();
+	public static Card read(DataInput in) {
+		String rawData = "";
+		try {
+			rawData = in.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		String[] cardData = rawData.split(" ");
 		return new Card(cardData[0].charAt(0), cardData[1].charAt(0));
 	}
 
-	public static Card read(ObjectInput objectInput) throws IOException {
+	public static Card read(ObjectInput objectInput) {
 		try {
 			return (Card)objectInput.readObject();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
