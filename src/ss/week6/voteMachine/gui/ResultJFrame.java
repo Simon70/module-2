@@ -1,17 +1,8 @@
 package ss.week6.voteMachine.gui;
 
-import java.awt.Container;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-
-import ss.week6.voteMachine.VoteList;
 
 /**
  * P2 prac wk3.

@@ -4,23 +4,24 @@ import ss.week3.hotel.Bill.Item;
 
 public class PricedSafe extends ss.week3.hotel.Safe implements Item {
 
-	private double amount;
+    private double amount;
 
-	//@ ensures this.getAmount() == amount;
-	public PricedSafe(double amount) {
-		this.amount = amount;
-	}
+    //@ ensures this.getAmount() == amount;
+    public PricedSafe(double amount) {
+        super();
+        this.amount = amount;
+    }
 
-	@Override
-	//@ pure
-	public double getAmount() {
-		return amount;
-	}
+    @Override
+    //@ pure
+    public double getAmount() {
+        return amount;
+    }
 
-	@Override
-	//@ pure
-	public String toString() {
-		return "" + amount;
-	}
+    @Override
+    //@ pure
+    public String toString() {
+        return "" + amount;
+    }
 
 }

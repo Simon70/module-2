@@ -1,23 +1,37 @@
 package ss.week6.voteMachine.gui;
 
+import ss.week6.voteMachine.VoteMachine;
+import ss.week6.voteMachine.VoteView;
+import ss.week6.voteMachine.model.PartyList;
+import ss.week6.voteMachine.model.VoteList;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Scanner;
 
-import ss.week6.voteMachine.PartyList;
-import ss.week6.voteMachine.VoteList;
-import ss.week6.voteMachine.VoteMachine;
-import ss.week6.voteMachine.VoteView;
-
 public class VoteGUIView implements VoteView {
-	private VoteMachine voteMachine;
+    private static Scanner in = new Scanner(System.in);
+    private VoteMachine voteMachine;
 	private VoteFrame voteFrame;
 	private ResultJFrame uitslagJFrame;
 
 	public VoteGUIView(VoteMachine machine) {
 		this.voteMachine = machine;
 	}
+
+    private static void print(String message) {
+        System.out.println(message);
+    }
+
+    private static String readString(String prompt) {
+        String result = null;
+        System.out.print(prompt);
+        if (in.hasNextLine()) {
+            result = in.nextLine();
+        }
+        return result;
+    }
 
 	public void start() {
 		VoteFrame stemFrame = new VoteFrame(this);
@@ -72,20 +86,5 @@ public class VoteGUIView implements VoteView {
 			}
 		}
 
-	}
-
-	private static Scanner in = new Scanner(System.in);
-
-	private static void print(String message) {
-		System.out.println(message);
-	}
-
-	private static String readString(String prompt) {
-		String result = null;
-		System.out.print(prompt);
-		if (in.hasNextLine()) {
-			result = in.nextLine();
-		}
-		return result;
 	}
 }

@@ -7,36 +7,35 @@ import java.io.PrintStream;
  */
 public class Bill {
 
-	public static interface Item {
+    private PrintStream outStream;
+    private float totalBill;
 
-		public double getAmount();
-	}
+    public Bill(PrintStream outStream) {
+        this.outStream = outStream;
+        totalBill = 0;
+    }
 
-	private PrintStream	outStream;
-	private float		totalBill;
+    //@ pure
+    public void close() {
+        if (outStream != null) {
+            outStream.println(totalBill);
+        }
+    }
 
-	public Bill(PrintStream outStream) {
-		this.outStream = outStream;
-		totalBill = 0;
-	}
+    //@ pure
+    public double getSum() {
+        return totalBill;
+    }
 
-	//@ pure
-	public void close() {
-		if (outStream != null) {
-			outStream.println(totalBill);
-		}
-	}
+    public void newItem(Item item) {
+        if (outStream != null) {
+            outStream.println(item.toString() + item.getAmount());
+        }
+        totalBill += item.getAmount();
+    }
 
-	//@ pure
-	public double getSum() {
-		return totalBill;
-	}
 
-	
-	public void newItem(Item item) {
-		if(outStream!=null) {
-			outStream.println(item.toString()+item.getAmount());
-		}
-		totalBill += item.getAmount();
-	}
+    public static interface Item {
+        public double getAmount();
+    }
 }

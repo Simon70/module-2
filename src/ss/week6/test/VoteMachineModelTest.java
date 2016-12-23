@@ -2,8 +2,8 @@ package ss.week6.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import ss.week6.voteMachine.PartyList;
-import ss.week6.voteMachine.VoteList;
+import ss.week6.voteMachine.model.PartyList;
+import ss.week6.voteMachine.model.VoteList;
 
 import java.util.Map;
 
@@ -17,14 +17,13 @@ import static org.junit.Assert.*;
  */
 public class VoteMachineModelTest {
 
+    public static final String PARTY1 = "Party 1";
+    public static final String PARTY2 = "Party 2";
+    public static final String PARTY3 = "Party 3";
     /** Testvariabele for a <tt>PartyList</tt> object. */
     private PartyList partyList;
     /** Testvariabele for a <tt>VoteList</tt> object. */
     private VoteList voteList;
-
-    public static final String PARTY1 = "Party 1";
-    public static final String PARTY2 = "Party 2";
-    public static final String PARTY3 = "Party 3";
 
     @Before
     public void setUp() {
