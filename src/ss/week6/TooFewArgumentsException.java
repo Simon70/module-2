@@ -5,7 +5,7 @@ package ss.week6;
  */
 public class TooFewArgumentsException extends WrongArgumentException {
     public TooFewArgumentsException() {
-        super();
+        super("Too few arguments.");
     }
     public TooFewArgumentsException(String s) {
         super(s);

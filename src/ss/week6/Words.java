@@ -23,7 +23,7 @@ public class Words {
 					wordReader.close();
 					return;
 				}
-				
+
 				counter++;
 				System.out.println("Word " + counter + ": " + word);
 			}

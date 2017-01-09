@@ -1,12 +1,7 @@
 package ss.week6.voteMachine;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Scanner;
 
 public class VoteTUIView implements Observer, VoteView {
 
@@ -57,7 +52,7 @@ public class VoteTUIView implements Observer, VoteView {
 						break;
 					case "help":
 						System.out.println(
-							"VOTE [PARTY] \n ADD PARTY [party]\n VOTES \n PARTIES \n EXIT \n HELP");
+								"VOTE [PARTY] \n ADD PARTY [party]\n VOTES \n PARTIES \n EXIT \n HELP");
 						break;
 					default:
 						System.out.println("Uknown argument.");
