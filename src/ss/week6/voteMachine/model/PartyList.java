@@ -2,11 +2,12 @@ package ss.week6.voteMachine.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by simon on 20.12.16.
  */
-public class PartyList {
+public class PartyList extends Observable {
     private List<String> parties;
 
     public PartyList() {
@@ -15,10 +16,8 @@ public class PartyList {
 
     public void addParty(String party) {
         parties.add(party);
-    }
-
-    public void removeParty(String party) {
-        parties.remove(party);
+        setChanged();
+        notifyObservers();
     }
 
     public List<String> getParties() {

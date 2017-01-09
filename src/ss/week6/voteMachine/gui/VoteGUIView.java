@@ -85,6 +85,5 @@ public class VoteGUIView implements VoteView {
 				this.uitslagJFrame.update(((VoteList) object).getVotes());
 			}
 		}
-
 	}
 }

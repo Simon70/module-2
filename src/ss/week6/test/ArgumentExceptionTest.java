@@ -12,12 +12,15 @@ import static org.junit.Assert.assertTrue;
 /**
  * Testprogram for ArgumentException.
  * Lab Exercise SoftwareSystems
+ *
  * @author Jip Spel
  * @version $Revision: 1.0 $
  */
 public class ArgumentExceptionTest {
 
-    /** Testvariabele for a <tt>WrongArgumentException</tt> object. */
+    /**
+     * Testvariabele for a <tt>WrongArgumentException</tt> object.
+     */
     private WrongArgumentException wrongArgumentException;
 
     @Before

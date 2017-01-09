@@ -12,16 +12,20 @@ import static org.junit.Assert.assertTrue;
 /**
  * Testprogram for DictionaryAttack.
  * Lab Exercise SoftwareSystems
+ *
  * @author Jip Spel
- * @version $Revision: 1.0 $
+ * @version $Revision: 2.0 $
  */
 public class DictionaryAttackTest {
 
-    /** Testvariabele for a <tt>DictionaryAttack</tt> object. */
+    /**
+     * Path to the text file
+     */
+    private static final String PATH = "./src/ss/week6/test/"; //Your path to the test folder
+    /**
+     * Testvariabele for a <tt>DictionaryAttack</tt> object.
+     */
     private DictionaryAttack dictionaryAttack;
-
-    /** Path to the text file */
-    private static final String PATH = ""; //Your path to the test folder
 
     @Before
     public void setUp() {

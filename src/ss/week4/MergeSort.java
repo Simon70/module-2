@@ -26,7 +26,7 @@ public class MergeSort {
     private static <E extends Comparable<E>> List<E> merge(List<E> left, List<E> right) {
         int cLeft = 0;
         int cRight = 0;
-        List<E> result = new ArrayList<E>();
+        List<E> result = new ArrayList<>();
         while (cLeft < left.size() && cRight < right.size()) {
             if (left.get(cLeft).compareTo(right.get(cRight)) < 0) {
                 result.add(left.get(cLeft++));
@@ -44,11 +44,5 @@ public class MergeSort {
             }
         }
         return result;
-    }
-
-    private static <E extends Comparable<E>> void swap(List<E> list, int start, int end) {
-        E temp = list.get(start);
-        list.set(start, list.get(end));
-        list.set(end, temp);
     }
 }

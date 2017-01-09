@@ -10,7 +10,6 @@ import java.util.Map;
  * Created by simon on 20.12.16.
  */
 public class VoteMachine {
-
     private static VoteView ui;
     private final PartyList partyList;
     private final VoteList voteList;
@@ -23,6 +22,7 @@ public class VoteMachine {
     public static void main(String[] args) {
         VoteMachine vm = new VoteMachine(new PartyList(), new VoteList());
         ui = new VoteTUIView(vm);
+        ui.start();
     }
 
     public void addParty(String party) {
@@ -38,7 +38,6 @@ public class VoteMachine {
     }
 
     public void vote(String party) {
-
-        voteList.vote(party);
+        voteList.addVote(party);
     }
 }

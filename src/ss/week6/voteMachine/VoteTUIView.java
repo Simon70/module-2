@@ -2,6 +2,8 @@ package ss.week6.voteMachine;
 
 
 import ss.week6.Util;
+import ss.week6.voteMachine.model.PartyList;
+import ss.week6.voteMachine.model.VoteList;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,9 @@ public class VoteTUIView implements VoteView {
 
     @Override
     public void start() {
+        System.out.println("Votemachine started!");
+        System.out.println();
+        showHelp();
         while (true) {
             String input = Util.getNextLine();
             String[] args = input.split(" ");
@@ -27,7 +32,6 @@ public class VoteTUIView implements VoteView {
                 case "vote":
                     if (args.length == 2) {
                         vm.vote(args[1]);
-                        System.out.println("Vote registered!");
                         break;
                     }
                     showHelp();
@@ -82,6 +86,12 @@ public class VoteTUIView implements VoteView {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        if (arg instanceof String) {
+            if (arg.equals("party")) {
+                showParties(((PartyList) o).getParties());
+            } else if (arg.equals("vote")) {
+                showVotes(((VoteList) o).getVotes());
+            }
+        }
     }
 }
