@@ -1,43 +1,46 @@
 package ss.week6.voteMachine;
 
-import ss.week6.voteMachine.model.PartyList;
-import ss.week6.voteMachine.model.VoteList;
-
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by simon on 20.12.16.
- */
+import ss.week6.voteMachine.gui.VoteGUIView;
+
 public class VoteMachine {
-    private static VoteView ui;
-    private final PartyList partyList;
-    private final VoteList voteList;
 
-    public VoteMachine(PartyList partyList, VoteList voteList) {
-        this.partyList = partyList;
-        this.voteList = voteList;
-    }
+	private VoteView	voteTUIView;
+	private PartyList	partyList;
+	private VoteList	voteList;
 
-    public static void main(String[] args) {
-        VoteMachine vm = new VoteMachine(new PartyList(), new VoteList());
-        ui = new VoteTUIView(vm);
-        ui.start();
-    }
+	public VoteMachine() {
+		partyList = new PartyList();
+		voteList = new VoteList();
+		start();
+	}
 
-    public void addParty(String party) {
-        partyList.addParty(party);
-    }
+	public void addParty(String party) {
+		partyList.addParty(party);
+	}
 
-    public List<String> getParties() {
-        return partyList.getParties();
-    }
+	public void vote(String party) {
+		voteList.addVote(party);
+	}
 
-    public Map<String, Integer> getVotes() {
-        return voteList.getVotes();
-    }
+	public static void main(String[] args) {
+		new VoteMachine();
+	}
 
-    public void vote(String party) {
-        voteList.addVote(party);
-    }
+	public List<String> getParties() {
+		return partyList.getParties();
+	}
+
+	public Map<String, Integer> getVotes() {
+		return voteList.getVotes();
+	}
+
+	public void start() {
+		voteTUIView = new VoteGUIView(this);
+		partyList.addObserver(voteTUIView);
+		voteList.addObserver(voteTUIView);
+		voteTUIView.start();
+	}
 }

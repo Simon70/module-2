@@ -23,28 +23,28 @@ public class ArgumentExceptionTest {
      */
     private WrongArgumentException wrongArgumentException;
 
-    @Before
-    public void setUp() {
-        wrongArgumentException = new WrongArgumentException();
-    }
+	@Before
+	public void setUp() {
+		wrongArgumentException = new WrongArgumentException();
+	}
 
-    /**
-     * Test <tt>TooFewArgumentsException</tt>
-     */
-    @Test
-    public void testTooFewArgumentsException() {
-        TooFewArgumentsException exception = new TooFewArgumentsException();
-        assertTrue(exception instanceof WrongArgumentException);
-        assertFalse(exception.getMessage().equals(wrongArgumentException.getMessage()));
-    }
+	/**
+	 * Test <tt>TooFewArgumentsException</tt>
+	 */
+	@Test
+	public void testTooFewArgumentsException() {
+		TooFewArgumentsException exception = new TooFewArgumentsException();
+		assertTrue(exception instanceof WrongArgumentException);
+		assertFalse(exception.getMessage().equals(wrongArgumentException.getMessage()));
+	}
 
-    /**
-     * Test <tt>ArgumentLengthsDifferException</tt>
-     */
-    @Test
-    public void testArgumentLengthsDifferException() {
-        ArgumentLengthsDifferException exception = new ArgumentLengthsDifferException(2, 3);
-        assertTrue(exception instanceof WrongArgumentException);
-        assertFalse(exception.getMessage().equals(wrongArgumentException.getMessage()));
-    }
+	/**
+	 * Test <tt>ArgumentLengthsDifferException</tt>
+	 */
+	@Test
+	public void testArgumentLengthsDifferException() {
+		ArgumentLengthsDifferException exception = new ArgumentLengthsDifferException(2, 3);
+		assertTrue(exception instanceof WrongArgumentException);
+		assertFalse(exception.getMessage().equals(wrongArgumentException.getMessage()));
+	}
 }
