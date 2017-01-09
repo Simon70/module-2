@@ -85,6 +85,7 @@ public class Card {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		String[] data = line.split(" ");
 

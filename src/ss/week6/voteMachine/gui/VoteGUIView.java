@@ -8,6 +8,7 @@ import java.util.Scanner;
 import ss.week6.voteMachine.PartyList;
 import ss.week6.voteMachine.VoteList;
 import ss.week6.voteMachine.VoteMachine;
+import ss.week6.voteMachine.VoteList;
 import ss.week6.voteMachine.VoteView;
 
 public class VoteGUIView implements VoteView {
