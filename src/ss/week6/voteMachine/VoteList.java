@@ -10,7 +10,7 @@ public class VoteList extends Observable {
 
     //@ ensures getVotes() != null;
     public VoteList() {
-        votes = new HashMap<String, Integer>();
+        votes = new HashMap<>();
     }
 
     public void addVote(String party) {

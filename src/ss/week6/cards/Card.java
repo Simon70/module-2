@@ -102,31 +102,30 @@ public class Card {
             return null;
         }
 
-        if (data[1] == "10") {
+        if (data[1].equals("10")) {
             data[1] = "T";
         }
         data[1] = data[1].toUpperCase();
         return new Card(data[0].charAt(0), data[1].charAt(0));
     }
 
-    public static Card read(DataInput in) {
-        String rawData = "";
+    public static Card read(DataInput in) throws EOFException {
         try {
-            rawData = in.readLine();
+            return new Card(in.readChar(), in.readChar());
+        } catch (EOFException e) {
+            throw e;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        String[] cardData = rawData.split(" ");
-        return new Card(cardData[0].charAt(0), cardData[1].charAt(0));
+        return null;
     }
 
-    public static Card read(ObjectInput objectInput) {
+    public static Card read(ObjectInput objectInput) throws EOFException {
         try {
             return (Card) objectInput.readObject();
-        } catch (ClassNotFoundException | IOException e) {
-            // TODO Auto-generated catch block
+        } catch (EOFException e) {
+            throw e;
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;
@@ -183,7 +182,7 @@ public class Card {
      * Tests if a <tt>char</tt> represents a valid suit.
      *
      * @return <tt>true</tt> if <tt>k</tt> in
-     *         <tt>CLUBS | DIAMONDS | HEARTS | SPADES</tt>
+     * <tt>CLUBS | DIAMONDS | HEARTS | SPADES</tt>
      */
     /* @pure */
     public static boolean isValidSuit(char suit) {
@@ -198,7 +197,7 @@ public class Card {
      * Tests if a <tt>char</tt> represents a valid rank.
      *
      * @return <tt>true</tt> if <tt>k</tt> in
-     *         <tt>'2'..'9' | TEN | JACK | QUEEN | KING | ACE</tt>
+     * <tt>'2'..'9' | TEN | JACK | QUEEN | KING | ACE</tt>
      */
     /* @pure */
     public static boolean isValidRank(char r) {
@@ -343,10 +342,9 @@ public class Card {
     /**
      * Tests if this card is equal to another (i.e., same suit and rank).
      *
-     * @param obj
-     *            Card to be compared.
+     * @param obj Card to be compared.
      * @return <code>true</code> if the suit and rank of <code>obj</code> are
-     *         the same as of this Card.
+     * the same as of this Card.
      */
     public boolean equals(Object obj) {
         if (!(obj instanceof Card)) {
@@ -370,11 +368,10 @@ public class Card {
     /**
      * Tests if this Card is less in suit than another Card.
      *
-     * @see #suitLessThan(char, char)
-     * @param card
-     *            Card for the comparison.
+     * @param card Card for the comparison.
      * @return <code>true</code> if the suit of this Card is less than that of
-     *         <code>card</code>.
+     * <code>card</code>.
+     * @see #suitLessThan(char, char)
      */
     public boolean ltSuit(Card card) {
         return suitLessThan(this.getSuit(), card.getSuit());
@@ -387,11 +384,10 @@ public class Card {
     /**
      * Tests if this Card is less in rank that another Card.
      *
-     * @see #rankLessThan(char, char)
-     * @param card
-     *            Card for the comparison
+     * @param card Card for the comparison
      * @return <code>true</code> if the rank of this Card is less than that of
-     *         <code>kaart</code>.
+     * <code>kaart</code>.
+     * @see #rankLessThan(char, char)
      */
     public boolean ltRank(Card card) {
         return rankLessThan(this.getRank(), card.getRank());
@@ -405,10 +401,9 @@ public class Card {
      * Tests if this Card is directly followed in rank by another Card. Does not
      * consider suit. see {@link #isRankFollowing(char, char)}
      *
-     * @param card
-     *            Card for the comparison.
+     * @param card Card for the comparison.
      * @return <code>true</code> if the rank of this Card directly precedes the
-     *         rank of <code>card</code>.
+     * rank of <code>card</code>.
      */
     public boolean isInRankBefore(Card card) {
         return isRankFollowing(this.getRank(), card.getRank());
@@ -419,17 +414,19 @@ public class Card {
     }
 
     public void write(DataOutput out) throws IOException {
-        String[] data = this.toString().split(" ");
-        String result = data[0].charAt(0) + " ";
-
-        if (data[1] == "10") {
-            data[1] = "T";
-        }
-        data[1] = data[1].toUpperCase();
-
-        result += data[1].charAt(0);
-
-        out.writeBytes(result);
+//        String[] data = this.toString().split(" ");
+//        String result = data[0].charAt(0) + " ";
+//
+//        if (data[1] == "10") {
+//            data[1] = "T";
+//        }
+//        data[1] = data[1].toUpperCase();
+//
+//        result += data[1].charAt(0);
+//
+//        out.writeBytes(result);
+        out.writeChar(suit);
+        out.writeChar(rank);
     }
 
     public void write(ObjectOutput objectOutput) throws IOException {

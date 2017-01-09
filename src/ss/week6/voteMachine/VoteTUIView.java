@@ -17,10 +17,9 @@ public class VoteTUIView implements Observer, VoteView {
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNextLine()) {
 			String input = scanner.nextLine();
-			input.toLowerCase();
-			String[] cmd = input.split(" ");
+			String[] cmd = input.toLowerCase().split(" ");
 
-			if (cmd != null && cmd.length > 0) {
+			if (cmd.length > 0) {
 				String cmd1 = cmd[0];
 
 				switch (cmd1) {

@@ -7,40 +7,39 @@ import java.util.Map;
 
 public class VoteMachine {
 
-	private VoteView voteTUIView;
-	private PartyList partyList;
-	private VoteList voteList;
+    private VoteView voteTUIView;
+    private PartyList partyList;
+    private VoteList voteList;
 
-	public VoteMachine() {
-		partyList = new PartyList();
-		voteList = new VoteList();
-		start();
-	}
+    public VoteMachine() {
+        partyList = new PartyList();
+        voteList = new VoteList();
+    }
 
-	public static void main(String[] args) {
-		new VoteMachine();
-	}
+    public static void main(String[] args) {
+        new VoteMachine().start();
+    }
 
-	public void addParty(String party) {
-		partyList.addParty(party);
-	}
+    public void addParty(String party) {
+        partyList.addParty(party);
+    }
 
-	public void vote(String party) {
-		voteList.addVote(party);
-	}
+    public void vote(String party) {
+        voteList.addVote(party);
+    }
 
-	public List<String> getParties() {
-		return partyList.getParties();
-	}
+    public List<String> getParties() {
+        return partyList.getParties();
+    }
 
-	public Map<String, Integer> getVotes() {
-		return voteList.getVotes();
-	}
+    public Map<String, Integer> getVotes() {
+        return voteList.getVotes();
+    }
 
-	public void start() {
-		voteTUIView = new VoteGUIView(this);
-		partyList.addObserver(voteTUIView);
-		voteList.addObserver(voteTUIView);
-		voteTUIView.start();
-	}
+    public void start() {
+        voteTUIView = new VoteGUIView(this);
+        partyList.addObserver(voteTUIView);
+        voteList.addObserver(voteTUIView);
+        voteTUIView.start();
+    }
 }

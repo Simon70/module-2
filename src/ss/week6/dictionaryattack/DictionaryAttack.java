@@ -110,5 +110,4 @@ public class DictionaryAttack {
         System.out.println("Found " + found + " out of " + passwordMap.size() + " Passwords using " +
                                    hashDictionary.size() + " Hashes.");
     }
-
 }

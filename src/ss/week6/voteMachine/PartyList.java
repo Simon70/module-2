@@ -10,7 +10,7 @@ public class PartyList extends Observable {
 
     //@ ensures getParties()!=null;
     public PartyList() {
-        parties = new ArrayList<String>();
+        parties = new ArrayList<>();
     }
 
     //@ requires party!=null;
