@@ -1,13 +1,12 @@
 package ss.week7.cmdchat;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 /**
  * ClientHandler.
- * @author  Theo Ruys
+ *
+ * @author Theo Ruys
  * @version 2005.02.21
  */
 public class ClientHandler extends Thread {
@@ -15,6 +14,7 @@ public class ClientHandler extends Thread {
     private BufferedReader in;
     private BufferedWriter out;
     private String clientName;
+    private boolean closed;
 
     /**
      * Constructs a ClientHandler object
@@ -22,18 +22,24 @@ public class ClientHandler extends Thread {
      */
     //@ requires serverArg != null && sockArg != null;
     public ClientHandler(Server serverArg, Socket sockArg) throws IOException {
-        // TODO insert body
+        closed = false;
+        server = serverArg;
+        in = new BufferedReader(new InputStreamReader(sockArg.getInputStream()));
+        out = new BufferedWriter(new OutputStreamWriter(sockArg.getOutputStream()));
+//        server.print("Connected Streams to client!");
+        this.setName("ClientHandler: null");
     }
 
     /**
-     * Reads the name of a Client from the input stream and sends 
+     * Reads the name of a Client from the input stream and sends
      * a broadcast message to the Server to signal that the Client
-     * is participating in the chat. Notice that this method should 
+     * is participating in the chat. Notice that this method should
      * be called immediately after the ClientHandler has been constructed.
      */
     public void announce() throws IOException {
         clientName = in.readLine();
         server.broadcast("[" + clientName + " has entered]");
+        this.setName("ClientHandler: " + clientName);
     }
 
     /**
@@ -42,10 +48,39 @@ public class ClientHandler extends Thread {
      * of the Client, and the new message is offered to the Server
      * for broadcasting. If an IOException is thrown while reading
      * the message, the method concludes that the socket connection is
-     * broken and shutdown() will be called. 
+     * broken and shutdown() will be called.
      */
     public void run() {
-        // TODO insert body
+//        server.print("Handling Client Input now!");
+        String line;
+        try {
+//            server.print("Expecting username:");
+            announce();
+            while (!closed) {
+//                server.print("Ready to read chat from client!");
+                line = in.readLine();
+                if (line == null || line.equals("end")) {
+                    shutdown();
+                } else if (line.equals("/list")) {
+                    sendMessage(server.getClientList());
+                } else {
+                    server.broadcast(getClientName() + ": " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            closed = true;
+        }
+
+    }
+
+    private String getClientName() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(clientName);
+        for (int i = 0; i < 10 - clientName.length(); i++) {
+            sb.append(' ');
+        }
+        return sb.toString();
     }
 
     /**
@@ -55,16 +90,24 @@ public class ClientHandler extends Thread {
      * and shutdown() is called.
      */
     public void sendMessage(String msg) {
-        // TODO insert body
+        try {
+            out.write(msg);
+            out.newLine();
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            closed = true;
+        }
     }
 
     /**
      * This ClientHandler signs off from the Server and subsequently
      * sends a last broadcast to the Server to inform that the Client
-     * is no longer participating in the chat. 
+     * is no longer participating in the chat.
      */
     private void shutdown() {
         server.removeHandler(this);
         server.broadcast("[" + clientName + " has left]");
+        closed = true;
     }
 }

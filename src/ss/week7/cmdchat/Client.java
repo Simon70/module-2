@@ -1,72 +1,76 @@
 package ss.week7.cmdchat;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 
 /**
- * Client class for a simple client-server application
- * @author  Theo Ruys
+ * Client class for a simple client-server application.
+ *
+ * @author Theo Ruys
  * @version 2005.02.21
  */
-public class Client extends Thread{
-	private static final String USAGE
-        = "usage: java week7.cmdchat.Client <name> <address> <port>";
+public class Client extends Thread {
+    private static final String USAGE
+            = "usage: java week7.cmdchat.Client <name> <address> <port>";
     private String clientName;
-    private Socket sock;
+    private Socket socket;
     private BufferedReader in;
     private BufferedWriter out;
+    private boolean closed;
 
     /**
-     * Constructs a Client-object and tries to make a socket connection
+     * Constructs a Client-object and tries to make a socket connection.
      */
     public Client(String name, InetAddress host, int port)
             throws IOException {
-        // TODO insert body
+        clientName = name;
+        socket = new Socket(host, port);
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        closed = false;
+        new ClientInputReader(this).start();
+        this.setName("ServerInputReader");
     }
 
-	/** Start een Client-applicatie op. */
-	public static void main(String[] args) {
-		if (args.length != 3) {
-			System.out.println(USAGE);
-			System.exit(0);
-		}
+    /**
+     * Start een Client-applicatie op.
+     */
+    public static void main(String[] args) {
+        if (args.length != 3) {
+            System.out.println(USAGE);
+            System.exit(0);
+        }
 
-		InetAddress host=null;
-		int port =0;
+        InetAddress host = null;
+        int port = 0;
 
-		try {
-			host = InetAddress.getByName(args[1]);
-		} catch (UnknownHostException e) {
-			print("ERROR: no valid hostname!");
-			System.exit(0);
-		}
+        try {
+            host = InetAddress.getByName(args[1]);
+        } catch (UnknownHostException e) {
+            print("ERROR: no valid hostname!");
+            System.exit(-1);
+        }
 
-		try {
-			port = Integer.parseInt(args[2]);
-		} catch (NumberFormatException e) {
-			print("ERROR: no valid portnummer!");
-			System.exit(0);
-		}
+        try {
+            port = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            print("ERROR: no valid portnummer!");
+            System.exit(-1);
+        }
 
-		try {
-			Client client = new Client(args[0], host, port);
-			client.sendMessage(args[0]);
-			client.start();
-
-			do{
-				String input = readString("");
-				client.sendMessage(input);
-			}while(true);
-
-		} catch (IOException e) {
-			print("ERROR: couldn't construct a client object!");
-			System.exit(0);
+        try {
+            Client client = new Client(args[0], host, port);
+            print("Connecting...");
+            client.sendMessage(args[0]);
+            client.start();
+            print("Connection established");
+        } catch (IOException e) {
+            e.printStackTrace();
+            print("ERROR: couldn't construct a client object!");
+            System.exit(0);
         }
 
     }
@@ -75,40 +79,83 @@ public class Client extends Thread{
         System.out.println(message);
     }
 
-    public static String readString(String tekst) {
-        System.out.print(tekst);
-        String antw = null;
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                                                                                System.in));
-            antw = in.readLine();
-        } catch (IOException e) {
+    /**
+     * Reads the messages in the socket connection. Each message will
+     * be forwarded to the MessageUI
+     */
+    public void run() {
+        print("Waiting for Server response...");
+        String line;
+        while (!closed) {
+            try {
+                line = in.readLine();
+                if (line == null) {
+                    shutdown();
+                } else if (!line.startsWith(clientName)) {
+                    print(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
-        return (antw == null) ? "" : antw;
     }
 
-	/**
-	 * Reads the messages in the socket connection. Each message will
-	 * be forwarded to the MessageUI
-	 */
-	public void run() {
-		// TODO insert body
-	}
+    /**
+     * send a message to a ClientHandler.
+     */
+    public void sendMessage(String msg) {
+        try {
+//            print("Sent message: " + msg);
+            out.write(msg);
+            out.newLine();
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	/** send a message to a ClientHandler. */
-	public void sendMessage(String msg) {
-		// TODO insert body
-	}
+    /**
+     * close the socket connection.
+     */
+    public void shutdown() {
+        print("Closing socket connection...");
+        try {
+            out.write("end");
+            out.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        closed = true;
+    }
 
-    /** close the socket connection. */
-	public void shutdown() {
-		print("Closing socket connection...");
-		// TODO insert body
-	}
+    private class ClientInputReader extends Thread {
 
-    /** returns the client name */
-	public String getClientName() {
-		return clientName;
-	}
+        private final Client client;
+        private BufferedReader in;
+
+        public ClientInputReader(Client client) {
+            this.client = client;
+            in = new BufferedReader(new InputStreamReader(System.in));
+            this.setDaemon(true);
+            this.setName("ConsoleInputReader");
+        }
+
+        @Override
+        public void run() {
+            try {
+                String line;
+                while (!client.closed) {
+//                    print("Ready to read Client input:");
+                    line = in.readLine();
+                    if (line.equals("end")) {
+                        client.shutdown();
+                    }
+                    client.sendMessage(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                closed = true;
+            }
+        }
+    }
 }

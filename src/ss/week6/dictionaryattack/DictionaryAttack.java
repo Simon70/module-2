@@ -23,7 +23,7 @@ public class DictionaryAttack {
     public static void main(String[] args) throws IOException {
         DictionaryAttack da = new DictionaryAttack();
         da.readPasswords("./src/ss/week6/test/LeakedPasswords.txt");
-        da.addToHashDictionary("./hashes.txt");
+        da.addToHashDictionary("./1000hashes.txt");
         da.doDictionaryAttack();
     }
 

@@ -214,3 +214,19 @@ D4.2
 	Result	-3/-5	0.6
 	
 
+7.14
+    1. Doesn't have to be unlocked in the same method (like the synchronized keyword)
+    2. Yes, see above.
+    3. See above.
+    4. It can be forgotten to unlock and create a DeadLock
+
+7.16
+    Consumer 1: 23 read
+    'Producer 1: 14 written
+    'Producer 2: 24 written
+    'Consumer 1: 24 read
+    'Consumer 2: 24 read
+    Producer 2: 25 written
+
+    14 is never read due to being overwritten.
+
