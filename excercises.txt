@@ -218,3 +218,11 @@ D4.2
 7.20.1) 3, if everything runs in order.
 		2 if getting is not synchronized.
 		1
+	2) The result would always be 3, because it's single threaded.
+	
+	3) 0, if no thread as done it's code yet.
+		1, if only a1 did it
+		2, if only a2 did it
+		3, if both are done.
+	4) 3, because it is synchronized.
+	5) TODO
