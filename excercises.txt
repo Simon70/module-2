@@ -213,4 +213,8 @@ D4.2
 	1-6	-5
 	Result	-3/-5	0.6
 	
+7.19.6) You would have to create a thread and pass MyThread and call start. The body does not have to change at all.
 
+7.20.1) 3, if everything runs in order.
+		2 if getting is not synchronized.
+		1

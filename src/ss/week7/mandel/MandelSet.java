@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.WindowConstants;
 
 /**
  * Drawing the mandelbrot set is a time consuming process.
@@ -44,6 +45,7 @@ public class MandelSet {
 		win.setJMenuBar(menuBar);
 		c.add(canvas, BorderLayout.CENTER);
 		win.setSize(400, 400);
+		win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		win.setVisible(true);
 	}
 

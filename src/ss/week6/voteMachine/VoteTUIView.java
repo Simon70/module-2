@@ -22,7 +22,7 @@ public class VoteTUIView implements Observer, VoteView {
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNextLine()) {
 			String input = scanner.nextLine();
-			input.toLowerCase();
+			input = input.toLowerCase();
 			String[] cmd = input.split(" ");
 
 			if (cmd != null && cmd.length > 0) {
