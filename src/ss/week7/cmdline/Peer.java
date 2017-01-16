@@ -57,7 +57,7 @@ public class Peer implements Runnable {
 			System.out.println(userInput + " asdf");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		System.out.println("end");
 	}
@@ -74,12 +74,12 @@ public class Peer implements Runnable {
 				break;
 			}
 
-//			try {
-//				out.write(scannerLine);
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			//			try {
+			//				out.write(scannerLine);
+			//			} catch (IOException e) {
+			//				// TODO Auto-generated catch block
+			//				e.printStackTrace();
+			//			}
 			out.println(scannerLine);
 		}
 		scanner.close();
@@ -91,8 +91,6 @@ public class Peer implements Runnable {
 	 */
 	public void shutDown() {
 		try {
-			in.close();
-			out.close();
 			sock.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -26,7 +26,7 @@ public class SynchronizedIntCell implements IntCell {
 	@Override
 	public synchronized int getValue() {
 		unconsumedValue = false;
-		this.notifyAll();
+		this.notify();
 		return value;
 	}
 

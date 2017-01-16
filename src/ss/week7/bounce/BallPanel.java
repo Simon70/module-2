@@ -28,8 +28,8 @@ public class BallPanel extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Implements the method from the interface ActionListener
-	 * Move and repaint the balls
+	 * Implements the method from the interface ActionListener.
+	 * Move and repaint the balls.
 	 */
 	public void actionPerformed(ActionEvent evt) {
 		moveBalls();

@@ -17,6 +17,7 @@ public class MyThread extends Thread {
 	public void run() {
 		for (int i = 0; i < freq; i++) {
 			acc.transaction(am);
+			System.out.println(acc.getBalance());
 		}
 	}
 }
