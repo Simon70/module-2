@@ -4,20 +4,35 @@ package ss.week7.threads;
  * Incorrect communication between IntProducer en IntConsumer.
  */
 public class SynchronizedIntCell implements IntCell {
-    private int value = 0;
+    private int value;
+    private boolean isUnread;
+
+    public SynchronizedIntCell() {
+        value = 0;
+        isUnread = false;
+    }
 
     public synchronized int getValue() {
-        try {
-            this.wait();
-        } catch (InterruptedException e) {
-            return value;
-        }
+        this.notify();
+        isUnread = false;
         return value;
     }
 
     public synchronized void setValue(int valueArg) {
+        try {
+            while (!isUnread) {
+                Thread.sleep(10);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        isUnread = true;
         this.value = valueArg;
-        this.notifyAll();
     }
 }
 

@@ -2,6 +2,7 @@ package ss.week7.cmdchat;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * ClientHandler.
@@ -52,13 +53,17 @@ public class ClientHandler extends Thread {
      */
     public void run() {
 //        server.print("Handling Client Input now!");
-        String line;
+        String line = null;
         try {
 //            server.print("Expecting username:");
             announce();
             while (!closed) {
 //                server.print("Ready to read chat from client!");
-                line = in.readLine();
+                try {
+                    line = in.readLine();
+                } catch (SocketException e) {
+                    shutdown();
+                }
                 if (line == null || line.equals("end")) {
                     shutdown();
                 } else if (line.equals("/list")) {
@@ -96,7 +101,7 @@ public class ClientHandler extends Thread {
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
-            closed = true;
+            shutdown();
         }
     }
 

@@ -35,7 +35,10 @@ class Adder extends Thread {
         this.cell = cellArg;
         this.amount = amountArg;
     }
+
     public void run() {
-        cell.add(amount);
+        synchronized (cell) {
+            cell.add(amount);
+        }
     }
 }

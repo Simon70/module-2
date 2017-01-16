@@ -24,12 +24,11 @@ public class MyThread extends Thread {
         MyThread t1 = new MyThread(100d, 1, 10000, account);
         MyThread t2 = new MyThread(-100d, 1, 10000, account);
 
-        System.out.print("Starting...");
+        System.out.print("Running...");
 
         t1.start();
         t2.start();
 
-        System.out.println("DONE!");
 
         try {
             t1.join();
@@ -38,18 +37,20 @@ public class MyThread extends Thread {
             e.printStackTrace();
         }
 
+        System.out.println("DONE!");
         System.out.println("Balance: " + account.getBalance());
     }
 
     @Override
     public void run() {
-        try {
-            for (int i = 0; i < times; i++) {
-                account.transaction(amount);
-                Thread.sleep(frequency);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+//        try {
+        for (int i = 0; i < times; i++) {
+            account.transaction(amount);
+            System.out.println(account.getBalance());
+//                Thread.sleep(frequency);
         }
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }

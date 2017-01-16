@@ -1,6 +1,7 @@
 package ss.week7.cmdchat;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -14,18 +15,18 @@ import java.util.List;
  */
 public class Server {
     private static final String USAGE
-            = "usage: " + Server.class.getName() + " <port>";
+            = "usage: " + Server.class.getName() + " <ip> <port>";
+    private String ip;
     private int port;
     private List<ClientHandler> threads;
-    private boolean closed;
 
     /**
      * Constructs a new Server object.
      */
-    public Server(int portArg) {
+    public Server(String ip, int portArg) {
+        this.ip = ip;
         port = portArg;
         threads = new ArrayList<>();
-        closed = false;
         Thread.currentThread().setName("Server");
     }
 
@@ -33,12 +34,12 @@ public class Server {
      * Start een Server-applicatie op.
      */
     public static void main(String[] args) {
-        if (args.length != 1) {
+        if (args.length != 2) {
             System.out.println(USAGE);
             System.exit(0);
         }
 
-        Server server = new Server(Integer.parseInt(args[0]));
+        Server server = new Server(args[0], Integer.parseInt(args[1]));
         server.run();
     }
 
@@ -50,7 +51,7 @@ public class Server {
      */
     public void run() {
         try {
-            ServerSocket serverSocket = new ServerSocket(port);
+            ServerSocket serverSocket = new ServerSocket(port, 255, InetAddress.getByName(ip));
             print("Now listening on: " + port);
             while (true) {
 //                print("Waiting for incoming connections...");

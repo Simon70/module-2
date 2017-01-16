@@ -135,7 +135,7 @@ public class Game {
      */
     private void update() {
         System.out.println("\ncurrent game situation: \n\n" + board.toString()
-                + "\n");
+                                   + "\n");
     }
 
     /*@
@@ -148,9 +148,9 @@ public class Game {
     private void printResult() {
         if (board.hasWinner()) {
             Player winner = board.isWinner(players[0].getMark()) ? players[0]
-                    : players[1];
+                                    : players[1];
             System.out.println("Speler " + winner.getName() + " ("
-                    + winner.getMark().toString() + ") has won!");
+                                       + winner.getMark().toString() + ") has won!");
         } else {
             System.out.println("Draw. There is no winner!");
         }

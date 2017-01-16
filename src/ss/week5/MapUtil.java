@@ -4,7 +4,15 @@ import java.util.*;
 
 public class MapUtil {
     public static <K, V> boolean isOneOnOne(Map<K, V> map) {
-        return containsDuplicates(map.values());
+        ArrayList<V> items = new ArrayList<>();
+        for (V item : map.values()) {
+            if (items.contains(item)) {
+                return false;
+            } else {
+                items.add(item);
+            }
+        }
+        return true;
     }
 
     public static <K, V>
@@ -55,17 +63,5 @@ public class MapUtil {
             result.put(entry.getKey(), g.get(entry.getValue()));
         }
         return result;
-    }
-
-    private static <E> boolean containsDuplicates(Collection<E> collection) {
-        ArrayList<E> items = new ArrayList<>();
-        for (E item : collection) {
-            if (items.contains(item)) {
-                return false;
-            } else {
-                items.add(item);
-            }
-        }
-        return true;
     }
 }

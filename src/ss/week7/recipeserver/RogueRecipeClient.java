@@ -63,46 +63,9 @@ public class RogueRecipeClient {
                 System.out.println(line);
                 line = in.readLine();
             }
-
-
-//            List<String> recipeNames = new ArrayList<>();
-//            String line = in.readLine();
-//            while (line != null && !line.equals("")) {
-//                recipeNames.add(line);
-//                line = in.readLine();
-//            }
-//            do {
-//                System.out.println("Available recipes on server:");
-//                for (int i = 0; i < recipeNames.size(); i++) {
-//                    System.out.printf("%3d: %s" + System.lineSeparator(), i + 1, recipeNames.get(i));
-//                }
-//                System.out.print("Enter recipe number (or 0 to exit): ");
-//                System.out.flush();
-//                if (userIn.hasNextInt()) {
-//                    rNum = userIn.nextInt();
-//                } else {
-//                    System.out.println("Invalid input, try again.");
-//                    userIn.next();
-//                }
-//                if (rNum > 0 && rNum < recipeNames.size() + 1) {
-//                    out.write("GET " + recipeNames.get(rNum - 1));
-//                    out.newLine();
-//                    out.flush();
-//                    System.out.println("Recipe text:");
-//                    System.out.println("------");
-//                    line = in.readLine();
-//                    while (line != null && !line.equals("--EOT--")) {
-//                        // The server uses a special string ("--EOT--") to mark the end of a recipe.
-//                        System.out.println(line);
-//                        line = in.readLine();
-//                    }
-//                    System.out.println("------");
-//                } else {
-//                    System.out.println("Invalid recipe number, try again.");
-//                }
-//            } while (rNum != 0);
-//            System.out.println("Exiting.");
-//            userIn.close();
+            in.close();
+            out.close();
+            socket.close();
         } catch (IOException e) {
             System.out.println("ERROR: unable to communicate to server");
             e.printStackTrace();
